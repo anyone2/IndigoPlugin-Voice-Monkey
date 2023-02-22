@@ -149,3 +149,15 @@ def alexa_routine(routine, device=None):
         'monkeyId': routine,
     }
     return ifPluginEnabledExecuteAction('AlexaRoutine', props)
+
+
+def pass_cmd_line_args(arguments, deviceId=None):
+    """
+    This function is used to perform Text-to-Speech on the given device.
+    The text passed will be spoken by the Alexa device.
+    """    
+    props = {   
+        'arguments': arguments,
+        
+    }
+    return ifPluginEnabledExecuteAction('passArgs', props, deviceId=None)
