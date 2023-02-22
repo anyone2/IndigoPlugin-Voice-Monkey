@@ -30,7 +30,7 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 
 ## Voice Monkey Skill Setup Instructions
 
-Follow the instructions details on the [https://voicemonkey.io/start](https://voicemonkey.io/start):
+Follow the instructions detailed on the [https://voicemonkey.io/start](https://voicemonkey.io/start):
 
 1. Enable the Voice Monkey Skill
 2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
@@ -86,7 +86,7 @@ This process involves multiple steps and it is important to know, that Text-To-S
 
 Place the file named 'voice_monkey.py' in your Python3-Includes folder.
 
- the full is path **'/Library/Application Support/Perceptive Automation/Python3-includes'**
+The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
  The plugin allows you to call functions for Text-To-Speech, Triggering Routines, playing sounds or asking Yes or No questions.
 
@@ -99,33 +99,30 @@ Place the file named 'voice_monkey.py' in your Python3-Includes folder.
     dogs_barking = 'https://dl.dropboxusercontent.com/s/dqk73c2cduxjg6k/one_dog_barking_audacity.mp3?dl=1'
     voice_monkey.play_audio(audioFileUrl=dogs_barking, deviceId=651183378)
 
-
     say_this = ('I am not sure why you would want to talk over dogs barking. <break time="5s"/>But you could if you really wanted to but again, I am not really sure why you would do this.<break time="7s"/>')
 
     dogs_barking = 'https://dl.dropboxusercontent.com/s/dqk73c2cduxjg6k/one_dog_barking_audacity.mp3?dl=1'
-
     voice_monkey.play_background_audio(
             text=say_this, audioFileUrl=dogs_barking, deviceId=651183378)
 
-
-
+    ask_this 'Is this plugin working out for you?'
     voice_monkey.yes_or_no(question=ask_this, 
                            executeWhenYes=800994550, 
                            executeWhenNo=None, 
                            deviceId=651183378)
 
-    voice_monkey.speak(text='It is working extremely well.', deviceId=651183378)
+    voice_monkey.speak(text='Yes, it is working extremely well.', deviceId=651183378)
 
 
 ## "One more thing..."
 
-The plugin also works with alexa_remote_control, which gives it even greater control over Amazon Alexa devices.
+The plugin also works with **alexa_remote_control**, which gives it even greater control over Amazon Alexa devices.
 
 For more information and installation instructions see the following page: 
 
 [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control)
 
-The configuration and installation of alexa_remote_control is optional, the Voice Monkey API skills mentioned above, will all work without installing it.
+The configuration and installation of alexa_remote_control is **optional**, the Voice Monkey skill discussed above, will work without installing it.
 
 
 ## Supported Features: (with alexa_remote_control installed)
@@ -136,26 +133,28 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 - Type a Request to Alexa (Type in **anything** you would otherwise say to Alexa)
 - Pass commands from Indigo, directly to alexa_remote_control
     - change the volume
-    - pause, play, repeat
+    - pause
+    - play
+    - repeat
     - connect/disconnect from BlueTooth
     - etc.
 
 
 ## Additional Indigo Plugin Installlation Instructions
 
-After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands from the MacOS command line, there are only a few additional steps.
+After successfully configuring **alexa_remote_control**, which you can test by issuing any of the available commands from the MacOS command line, there are only a few additional steps.
 
 - Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
 
-The full is path '/Library/Application Support/Perceptive Automation/Python3-includes'
+The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
 - In Indigo, under Plugins -> Reload Libraries and Attachments
 - In Indigo, under Plugins -> Voice Monkey -> Reload
 
-In the Indigo log, the plugin "should" now indicate the alexa_remote_control module was imported.
+In the Indigo log, the plugin "should" now indicate the **alexa_remote_control** module was imported.
 
     Starting plugin "Voice Monkey 2022.1.0" (pid 25946)
-    Voice Monkey                    alexa_remote_control was imported
+    Voice Monkey                    **alexa_remote_control was imported**
     Started plugin "Voice Monkey 2022.1.0"
     Voice Monkey                    There are no pending Yes/No Questions
 
@@ -163,9 +162,9 @@ In the Indigo log, the plugin "should" now indicate the alexa_remote_control mod
 
 - Click the checkbox for 'Use alexa-remote-control'
 
-Now test to ensure it works by creating an Action Group. Select Voice Monkey Actions and then select 'Pass command line arguments'
+To test your installation and configuration, create an Action Group. Select Voice Monkey Actions and then select 'Pass command line arguments'
 
-- Type in some command that can be executed and heard on a device near by. 
+- Type in some command that can be executed and heard on a nearby device.
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
 
 ## Advanced Scripting
@@ -174,10 +173,10 @@ If everything is working up to this point, you will be able to leverage the Plug
 
     import alexa_remote_control
 
-    ask_this = 'How many days until christmas?' 
-    alexa_remote_control.ask_alexa(ask_this, "Loft Echo")
+    ask_alexa_this = 'How many days until christmas?' 
+    alexa_remote_control.ask_alexa(ask_alexa_this, "Loft Echo")
 
-    say_this = 'Only a few more days until February 9th.' 
+    say_this = 'Its only a few more days until christmas' 
     alexa_remote_control.alexa_speak(say_this, "Loft Echo", 'Aditi')
 
     alexa_remote_control.alexa_play_sound('Bell 2', 'Loft Echo')
