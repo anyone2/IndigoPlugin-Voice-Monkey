@@ -23,9 +23,9 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 ## Additional capabilities worth mentioning:
 
 - Speech Synthesis Markup Language (SSML) is supported in Text-To-Speech
-- Multiple voices are available to choose from for Text-To-Speech
-- Indigo variable substitution is supported in Text-To-Speech and file name fields
-    - %%v:12345%% for variables and %%d:12345:someStateId%% for device 
+- Multiple voices are available to choose from for Text-To-Speech only
+- Indigo variable substitution is supported in the Text-To-Speech and file name fields
+    - i.e. %%v:12345%% for variables and %%d:12345:someStateId%% for device 
 
 
 ## Voice Monkey Skill Setup Instructions
@@ -33,11 +33,11 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 Follow the instructions details on the [https://voicemonkey.io/start](https://voicemonkey.io/start):
 
 1. Enable the Voice Monkey Skill
-2. Sign In to the Voice Monkey website (to obtain API Tokens for the Plugin)
+2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
 3. Create your first Monkey and routine
 4. Trigger your Monkey
 
-After following these steps, detailed on the Voice Monkey site, you will be able to generate a URL, confirm that it is working, and use it to trigger your monkeys from either your web browser or from services such as IFTTT or this plugin.
+By following these steps, you will be able to generate a URL, confirm that it is working, and use it to trigger your monkeys from either your web browser or from services such as IFTTT or this plugin.
 
 
 ## Indigo Plugin Installlation Instructions
@@ -49,6 +49,18 @@ Download the plugin, after the plugin starts, add your Voice Monkey Access and S
 
 ( Describe how a monkey would be created to do this )
 
+## Text-To-Speech
+
+- Create an Action Group
+- Select Type: Device Actions
+- then Voice Monkey Controls -> Text to Speech
+- Select the previously configured device
+
+- In the text box, type what you want the device to attempt to speak. 
+
+    - Click the checkbox, to change the language if you you want
+
+( Describe how a monkey would be created to do this )
 
 ## Ask a Prompted Yes/No Question (a Pro feature)
 
