@@ -17,8 +17,16 @@ Visit [https://voicemonkey.io/start](https://voicemonkey.io/start) to learn more
 
 With the non-Pro feature (singular), you are limited to, if you want to call it a limit, triggering Alexa routines. 
 
-
 The support forum for this plugin is located here: [https://forums.indigodomo.com/viewforum.php?f=157](https://forums.indigodomo.com/viewforum.php?f=157)
+
+
+## Additional capabilities worth mentioning:
+
+- Speech Synthesis Markup Language (SSML) is supported in Text-To-Speech
+- Multiple voices are available to choose from for Text-To-Speech
+- Indigo variable substitution is supported
+    - %%v:12345%% for variables and %%d:12345:someStateId%% for device 
+
 
 ## Voice Monkey Skill Setup Instructions
 
@@ -39,16 +47,16 @@ Download the plugin, after the plugin starts, add your Voice Monkey Access and S
 
 ## Triggering a Alexa Routine
 
-( Describe how a monkey would be create to do this )
+( Describe how a monkey would be created to do this )
 
 
 ## Ask a Prompted Yes/No Question (Pro feature)
 
-( Describe how a monkey would be create to do this )
+( Describe how a monkey would be created to do this )
 
-Get the basic features working before you attempt this, this process involves multiple steps and it is important to know, that Text-To-Speech works at a minimum. 
+Get the basic features working before you attempt to set this up. This process involves multiple steps and it is important to know, that Text-To-Speech at a minimum is working.
 
-This abiliity also requires that you enable the Indigo Alexa Plugin.
+This feature requires that you enable the Indigo Alexa Plugin.
 
 - Decide which device you have created will ask the question. Simple enough. 
 - Within the Indigo Alexa Plugin
@@ -62,7 +70,7 @@ This abiliity also requires that you enable the Indigo Alexa Plugin.
 (Describe the required configuration on the Voice Monkey Website)
 
 
-## Scripting
+## Basic Scripting
 
  If you place the file titled 'voice_monkey.py' in your Python3-Includes folder,
 
@@ -88,15 +96,13 @@ This abiliity also requires that you enable the Indigo Alexa Plugin.
 
 
 
-    voice_monkey.yes_or_no(question='Is your plugin finally working?',
-                           execute_when_yes=800994550,
-                           execute_when_no=920250421,
-                           device_id=651183378)
+    voice_monkey.yes_or_no(question=ask_this, 
+                           executeWhenYes=800994550, 
+                           executeWhenNo=None, 
+                           deviceId=651183378)
 
     voice_monkey.speak(text='It is working extremely well.', deviceId=651183378)
 
-*SSML tags are supported for Text-to-Speech throught the plugin*
-*Indigo variable substation is also supported*
 
 ## "One more thing..."
 
@@ -114,7 +120,7 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 - Perform Text-To-Speech
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
 - Execute an Alexa Routine (By the name shown in the Alexa App)
-- Type a Request to Alexa (Type in anything you would otherwise say to Alexa)
+- Type a Request to Alexa (Type in **anything** you would otherwise say to Alexa)
 - Pass any command from Indigo, directly to alexa_remote_control
     - change the volume
     - pause, play, repeat
@@ -124,7 +130,7 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 
 ## Additional Indigo Plugin Installlation Instructions
 
-After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands, there are only a few additional steps.
+After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands from the command line, there are only a few additional steps.
 
 - Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
 
@@ -133,7 +139,7 @@ The full is path '/Library/Application Support/Perceptive Automation/Python3-inc
 - In Indigo, under Plugins -> Reload Libraries and Attachments
 - In Indigo, under Plugins -> Voice Monkey -> Reload
 
-In the log, you "should" see the plugin indicate the alexa_remote_control module was imported.
+In the log, the plugin "should" now indicate the alexa_remote_control module was imported.
 
     Starting plugin "Voice Monkey 2022.1.0" (pid 25946)
     Voice Monkey                    alexa_remote_control was imported
@@ -149,8 +155,19 @@ Now test to ensure it works. Create an Action Group, select Voice Monkey Actions
 - Type in some command that can be executed by a device near by. 
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
 
+## Advanced Scripting
 
+If everything is working up to this point, you will be able to leverage the Plugin to call alexa_remote_control functions
 
+    import alexa_remote_control
+
+    ask_this = 'How many days until christmas?' 
+    alexa_remote_control.ask_alexa(ask_this, "Loft Echo")
+
+    say_this = 'Only a few more days until February 9th.' 
+    alexa_remote_control.alexa_speak(say_this, "Loft Echo", 'Aditi')
+
+    alexa_remote_control.alexa_play_sound('Bell 2', 'Loft Echo')
 
 
 

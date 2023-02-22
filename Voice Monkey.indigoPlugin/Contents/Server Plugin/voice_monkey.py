@@ -52,12 +52,11 @@ def routine(monkeyId, deviceId):
     
 
 def yes_or_no(question, 
-              execute_when_yes=0, execute_when_no=0, 
-              repeats=False, 
-              stop_when_yes=False, stop_when_no=False,
-              cycles=0, seconds=0,
-              no_response=None, no_response_group=None,
-              device_id=None):
+              executeWhenYes=0, executeWhenNo=0, 
+              stopWhenYes=False, stopWhenNo=False,
+              repeats=False, cycles=0, seconds=0,
+              executeNoResponse=None, noResponseActionGroup=None,
+              deviceId=None):
     """
     This function uses Text-to-Speech to ask a Yes or No prompted Question 
     on a given device.
@@ -68,18 +67,18 @@ def yes_or_no(question,
     """
     props = {   
         'QuestionToAsk': question, 
-        'executeWhenYes': execute_when_yes, 
-        'executeWhenNo': execute_when_no,  
-        'executeNoResponse': no_response,  
-        'noResponseActionGroup': no_response_group,  
+        'executeWhenYes': executeWhenYes, 
+        'executeWhenNo': executeWhenNo,  
+        'executeNoResponse': executeNoResponse,  
+        'noResponseActionGroup': noResponseActionGroup,  
         'RepeatQuestion': repeats,  
         'cycles': cycles,  
         'seconds': seconds,  
-        'StopWhenYes': stop_when_yes,  
-        'StopWhenNo': stop_when_no,
-        'whichDevice': device_id,  
+        'StopWhenYes': stopWhenYes,  
+        'StopWhenNo': stopWhenNo,
+        'whichDevice': deviceId,  
     }
-    return ifPluginEnabledExecuteAction('YesNoQuestion', props, device_id)
+    return ifPluginEnabledExecuteAction('YesNoQuestion', props, deviceId)
 
 
 def play_audio(audioFileUrl, deviceId):
