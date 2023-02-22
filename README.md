@@ -74,6 +74,19 @@ This abiliity also requires that you enable the Indigo Alexa Plugin.
 
     voice_monkey.routine(monkeyId='routine-trigger-one', deviceId=651183378)
 
+    voice_monkey.play_sound(soundName=the_sound, deviceId=651183378)
+
+    dogs_barking = 'https://dl.dropboxusercontent.com/s/dqk73c2cduxjg6k/one_dog_barking_audacity.mp3?dl=1'
+    voice_monkey.play_audio(audioFileUrl=dogs_barking, deviceId=651183378)
+
+    say_this = ('I am not sure why you would want to talk over dogs barking. <break time="5s"/>But you could if you really wanted to but again, I am not really sure why you would do this.<break time="7s"/>')
+
+    dogs_barking = 'https://dl.dropboxusercontent.com/s/dqk73c2cduxjg6k/one_dog_barking_audacity.mp3?dl=1'
+
+    voice_monkey.play_background_audio(
+            text=say_this, audioFileUrl=dogs_barking, deviceId= 651183378)
+
+
 
     voice_monkey.yes_or_no(question='Is your plugin finally working?',
                            execute_when_yes=800994550,
@@ -82,12 +95,14 @@ This abiliity also requires that you enable the Indigo Alexa Plugin.
 
     voice_monkey.speak(text='It is working extremely well.', deviceId=651183378)
 
+*SSML tags are supported for Text-to-Speech throught the plugin*
+*Indigo variable substation is also supported*
 
 ## "One more thing..."
 
 The plugin also works with alexa_remote_control, which gives it even greater control over Amazon Alexa devices.
 
-For more information and installation instructions see this page, 
+For more information and installation instructions see the following page: 
 
 [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control)
 
@@ -111,7 +126,7 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 
 After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands, there are only a few additional steps.
 
-- Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
+- Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
 
 The full is path '/Library/Application Support/Perceptive Automation/Python3-includes'
 
@@ -129,7 +144,7 @@ In the log, you "should" see the plugin indicate the alexa_remote_control module
 
 - Click the checkbox for 'Use alexa-remote-control'
 
-Now test to ensure it works. Create an Action Group, select a Voice Monkey Actions and then select 'Pass command line arguments'
+Now test to ensure it works. Create an Action Group, select Voice Monkey Actions and then select 'Pass command line arguments'
 
 - Type in some command that can be executed by a device near by. 
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
