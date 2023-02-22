@@ -4,7 +4,6 @@ import indigo
 import logging
 import subprocess
 import shlex
-# import textwrap 
 
 
 def run_shell(the_parameters):
@@ -12,7 +11,6 @@ def run_shell(the_parameters):
     file_name = 'alexa_remote_control.sh'
     file_path = '/Library/Application Support/Perceptive Automation/Scripts/'
 
-    # add path to alexa-remote-control to the beginning of the list
     the_parameters.insert(0, f'{file_path}{file_name}')
 
     with subprocess.Popen(the_parameters,
@@ -83,7 +81,7 @@ def alexa_speak(say_this, the_device, voice=''):
     process_output(stdout, stderr, log_entry, 'alexa_speak')
 
 
-def ask_alexa(ask_this, the_device='Loft Echo'):
+def ask_alexa(ask_this, the_device):
 
     # format log output
     log_entry = (f'{the_device} : Typed Request : "{ask_this}"')
@@ -100,7 +98,7 @@ def ask_alexa(ask_this, the_device='Loft Echo'):
     process_output(stdout, stderr, log_entry, 'ask_alexa')
 
 
-def pass_device_arg(args, the_device='Loft Echo'):
+def pass_device_arg(args, the_device):
 
     # format log output
     log_entry = (f'{the_device} : Pass Arguments : "{args}"')
@@ -137,10 +135,11 @@ def pass_cmd_line_args(args, the_device=None):
     process_output(stdout, stderr, log_entry, 'pass_cmd_line_args')
 
 
-def alexa_routine(routine_name, the_device='Loft Echo'):
+def alexa_routine(routine_name, the_device):
 
     # format log output
-    log_entry = f'{the_device} : Run a Alexa Routine by Name : "{routine_name}"'
+    log_entry = (
+        f'{the_device} : Run a Alexa Routine by Name : "{routine_name}"')
 
     # only speak if a device identified
     if the_device:
@@ -201,7 +200,7 @@ def list_available_devices():
         return []
 
 
-def alexa_play_sound(the_sound, the_device='Loft Echo'):
+def alexa_play_sound(the_sound, the_device):
 
     sounds = {
               'Air Horn 1': '/alarms/air_horns/air_horn_01',
