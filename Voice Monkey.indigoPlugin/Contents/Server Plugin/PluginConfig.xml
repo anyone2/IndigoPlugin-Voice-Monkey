@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<PluginConfig>
+    <SupportURL>https://app.voicemonkey.io/dashboard</SupportURL>
+    <Field id="topLabel" type="label">
+        <Label>To use the Voice Monkey API, you need to enter your Access Tokens. They an be found on the Voice Monkey site.</Label>
+    </Field>
+
+    <Field id="ClickUrlLabel" type="label">
+        <Label>Click '?' for https://app.voicemonkey.io/dashboard</Label>
+    </Field>
+
+    <Field id="accessToken" type="textfield">
+        <Label>API Access Token:</Label>
+    </Field>
+
+    <Field id="secretToken" type="textfield">
+        <Label>API Secret Token:</Label>
+    </Field>
+
+    <Field id="AdjustSeparator1" type="separator"></Field>
+
+    <Field id="AdjustTiming" type="checkbox" defaultValue="false">
+        <Label>Adjust Y/N Question Timing</Label>
+        <Description>(Optional adjustments)</Description>
+    </Field>
+
+    <Field id="minYesNoDelay" type="textfield" visibleBindingId="AdjustTiming" visibleBindingValue="true" defaultValue="35">
+        <Label>Time between questions</Label>
+    </Field>
+
+    <Field id="YesNoDelayLabel" type="label" fontColor="blue" fontSize="medium" alignWithControl="false" visibleBindingId="AdjustTiming" visibleBindingValue="true">
+        <Label>Enter the minimum number of seconds that must elapse before a question can be repeated. The default time is 35 seconds.</Label>
+    </Field>
+
+    <Field id="AdjustSeparator3" type="separator" visibleBindingId="AdjustTiming" visibleBindingValue="true"></Field>
+
+    <Field id="maxTimeToWait" type="textfield" visibleBindingId="AdjustTiming" visibleBindingValue="true" defaultValue="30">
+        <Label>Time to wait for a response</Label>
+    </Field>
+
+    <Field id="TimeToWaitLabel" type="label" fontColor="blue" fontSize="medium" alignWithControl="false" visibleBindingId="AdjustTiming" visibleBindingValue="true">
+        <Label>Enter the maximum number of seconds that the system should wait for a response. The default time is 30 seconds.</Label>
+    </Field>
+
+    <Field id="AdjustSeparator4" type="separator" visibleBindingId="AdjustTiming" visibleBindingValue="true"></Field>
+
+    <Field id="sleepTime" type="textfield" visibleBindingId="AdjustTiming" visibleBindingValue="true" defaultValue="5">
+        <Label>Sleep time in seconds</Label>
+    </Field>
+
+    <Field id="sleepTimeLabel" type="label" fontColor="blue" fontSize="regular" alignWithControl="false" visibleBindingId="AdjustTiming" visibleBindingValue="true">
+        <Label>Enter the number of seconds to sleep between checks for unanswered questions. The default value is 5 seconds.</Label>
+    </Field>
+
+
+    <Field id="simpleSeparator1" type="separator"></Field>
+
+
+    <Field id="useAlexaRemoteControl" type="checkbox" defaultValue="false">
+        <Label>Use alexa-remote-control</Label>
+        <Description>(OPTIONAL: Github repository tool)</Description>
+    </Field>
+
+    <Field id="createSomeSpace1" type="label" fontColor="darkgray" fontSize="large" readonly="True" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>Use Alexa Remote Control instead of Voice Monkey</Label>
+
+    </Field>
+
+
+    <Field id="forTextToSpeech" type="checkbox" defaultValue="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>For Text-to-Speech?</Label>
+    </Field>
+
+
+    <Field id="forPlayingSounds" type="checkbox" defaultValue="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>To Play a Sound?</Label>
+    </Field>
+
+    <Field id="simpleSeparator2" type="separator"></Field>
+
+    <Field id="githubLabel" type="label" fontColor="blue" fontSize="medium" alignWithControl="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>Installing and setting up 'alexa-remote-control' provides a wider range of complementary capabilities to control your Amazon Alexa devices, beyond what is available through the Voice Monkey API. </Label>
+    </Field>
+
+    <Field id="githubLabel2" type="label" fontColor="black" fontSize="medium" alignWithControl="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>There is some overlap with Text-to-Speech and Playing Sounds, so you are allowed to choose to use 'alexa-remote-control' or the Voice Monkey API for those functions.</Label>
+    </Field>
+
+
+    <Field id="githubLabel5" type="label" fontColor="black" fontSize="medium" alignWithControl="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
+        <Label>For info go to: https://github.com/thorsten-gehrig/alexa-remote-control</Label>
+    </Field>
+
+    <Field id="creatingSpace" type="label" fontColor="darkgray" fontSize="large" readonly="True">
+        <Label>:
+
+
+
+
+        </Label>
+
+    </Field>
+
+</PluginConfig>

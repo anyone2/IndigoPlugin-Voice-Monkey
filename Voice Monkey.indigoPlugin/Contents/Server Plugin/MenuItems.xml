@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<MenuItems>
+	<MenuItem id="menu0">
+		<Name>Show Pending Yes/No Questions in Log</Name>
+        <CallbackMethod>show_pending_questions</CallbackMethod>
+	</MenuItem>
+	<MenuItem id="menu1"/>
+
+    <MenuItem id="menu10">
+        <Name>Manage Yes/No Questions...</Name>
+        <ConfigUI>
+            <Field id="questions" type="list">
+                <List class="self" filter="" method="questionList" dynamicReload="true"/> 
+            </Field>
+            <Field id="cancelQuestion" type="button"> 
+                <Label/>
+                <Title>Cancel Questions</Title>
+                <CallbackMethod>cancel_question</CallbackMethod> 
+            </Field>
+            <Field id="label2" type="label" fontColor="darkgray" fontSize="small" alignWithControl="true">
+                <Label>This will cancel the selected questions.</Label>
+            </Field>
+
+        </ConfigUI>
+    </MenuItem>
+	<MenuItem id="menu4"/>
+
+
+	<MenuItem id="menu2">
+		<Name>Test Devices...</Name>
+		<ConfigUI>
+
+
+			<Field id="whichDevice" type="menu">
+				<Label>Select a device:</Label>
+				<List class="indigo.devices" filter="self.VoiceMonkeyDevice"/>
+			</Field>
+            <Field id="label1" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="true">
+				<Label>Button presses should be displayed in the log unless there is a problem.</Label>
+            </Field>
+
+
+			<Field id="exampleButton1" type="button">
+				<Title>Speech Test</Title>
+				<CallbackMethod>speech_test</CallbackMethod>
+			</Field>
+            <Field id="label11" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="true">
+				<Label>Press 'Speech Test' to play a message on the selected device. If a message is heard on the device, it is configured correctly.</Label>
+            </Field>
+			<Field id="exampleButton2" type="button">
+				<Title>Yes/No Test</Title>
+				<CallbackMethod>yes_no_test</CallbackMethod>
+			</Field>
+            <Field id="label22" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="true">
+				<Label>Press 'Yes/No Test' to ask a Yes or No question on the selected device. If a question is heard on the selected device, the device is configured correctly. No action is taken based on any received Yes or No responses during this test.</Label>
+            </Field>
+		</ConfigUI>
+	</MenuItem>
+
+	<MenuItem id="MenuSeparator"/>
+
+<MenuItem id="menu20">
+    <Name>Logging Options...</Name>
+            <CallbackMethod>logging_options</CallbackMethod>
+
+        <ConfigUI>
+
+
+	    <Field id="LoggingLabel" type="label" fontColor="black" fontSize="regular" alignText="center">
+	        <Label>Adjust the number of characters used for word wrap in the log.</Label>
+	    </Field>
+
+    	<Field id="LoggingSeperator2" type="separator"></Field>
+
+	    <Field id="maxCombinedLength" type="textfield" defaultValue="120">
+	        <Label>First line log length limit</Label>
+	    </Field>
+
+	    <Field id="maxCombinedLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
+	        <Label>Specify the maximum number of characters to display in the log for the first line of output by entering a value in the text field. The default value is 120 characters.</Label>
+	    </Field>
+
+    	<Field id="LoggingSeperator1" type="separator"></Field>
+
+	    <Field id="maxTextLength" type="textfield" defaultValue="100">
+	        <Label>Max line length</Label>
+	    </Field>
+
+	    <Field id="maxTextLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
+	        <Label>Enter the number of characters to display on one line when wrapping text. The default value is 100 characters.</Label>
+	    </Field>
+
+	</ConfigUI>
+</MenuItem>
+
+
+	<MenuItem id="MenuSeparator2"/>
+
+	<MenuItem id="toggleDebug">
+		<Name>Toggle Debugging</Name>
+        <CallbackMethod>toggleDebugging</CallbackMethod>
+	</MenuItem>
+
+</MenuItems>
+

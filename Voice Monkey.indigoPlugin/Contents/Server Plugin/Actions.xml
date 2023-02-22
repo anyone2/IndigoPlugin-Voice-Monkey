@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+
+<Actions>
+
+    <Action id="TriggerRoutine" uiPath="DeviceActions">
+        <Name>Trigger a Routine</Name>
+        <CallbackMethod>trigger_routine</CallbackMethod>
+
+        <ConfigUI>
+
+            <SupportURL>https://voicemonkey.io/docs</SupportURL>
+
+            <Field id="label70" type="label" fontColor="black" fontSize="large" alignWithControl="false">
+                <Label>Trigger a Routine</Label>
+            </Field>
+            <Field id="simpleSeparator70" type="separator"></Field>
+
+            <Field id="monkey_id" type="textfield">
+                <Label>Preset Monkey ID:</Label>
+            </Field>
+
+            <Field id="label71" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>Enter the Preset Monkey ID that will trigger the routine.</Label>
+            </Field>
+            <Field id="simpleSeparator71" type="separator"></Field>
+            <Field id="label72" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>This value can be found under API -> Presets and is in the Monkey ID column</Label>
+            </Field>
+
+            <Field id="simpleSeparator72" type="separator"></Field>
+            <Field id="label73" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access https://voicemonkey.io/docs for documenation about creating, configuring and using triggers aka monkeys</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+    
+    <Action id="TriggerSeparator" uiPath="DeviceActions"/>
+
+
+    <Action id="TextToSpeech" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Text to Speech</Name>
+        <CallbackMethod>text_to_speech</CallbackMethod>
+
+        <ConfigUI>
+            <Field id="label9" type="label" fontColor="black" fontSize="large" alignWithControl="false">
+                <Label>Send Text To Speech (TTS) commands to your device</Label>
+            </Field>
+            <Field id="simpleSeparator3" type="separator"></Field>
+
+            <Field id="label11" type="label" fontColor="blue" fontSize="small" alignWithControl="true">
+                <Label>Speech Synthesis Markup Language (SSML) tags are supported</Label>
+            </Field>
+
+            <Field id="TextToSpeech" type="textfield">
+                <Label>:
+
+
+
+                </Label>
+            </Field>
+            <Field id="messageNote1" type="label" fontSize="small" fontColor="black" alignWithControl="true">
+                <Label>(Use Option+Return to move the cursor to the next line)</Label>
+            </Field>
+
+            <Field id="messageNote2" type="label" fontSize="small" fontColor="blue" alignWithControl="true">
+                <Label>Variable and device state substituation is enabled for this field. Use the format</Label>
+            </Field>
+            <Field id="messageNote3" type="label" fontSize="small" fontColor="blue" alignWithControl="true">
+                <Label>%%v:12345%% for variables and %%d:12345:someStateId%% for device states.</Label>
+            </Field>
+
+            <Field id="simpleSeparator17" type="separator"></Field>
+
+            <Field id="label10" type="label" fontColor="black" fontSize="large" alignWithControl="false">
+                <Label>Your device will attempt to speak what you type in this field.</Label>
+            </Field>
+
+            <Field id="complexSeparator1" type="separator"></Field>
+
+            <Field id="ChangeVoice" type="checkbox" defaultValue="false">
+                <Label> </Label>
+                <Description>Change the Voice?</Description>
+            </Field>
+
+            <Field type="menu" id="selectedVoice" defaultValue="Alexa" visibleBindingId="ChangeVoice" visibleBindingValue="true">
+                <List>
+
+                    <Option value="Naja">Danish (F) - Naja</Option>
+                    <Option value="Mads">Danish (M) - Mads</Option>
+                    <Option value="Lotte">Dutch (F) - Lotte</Option>
+                    <Option value="Ruben">Dutch (M) - Ruben</Option>
+                    <Option value="Nicole">English, Australian (F) - Nicole</Option>
+                    <Option value="Russell">English, Australian (M) - Russell</Option>
+                    <Option value="Amy">English, British (F) - Amy</Option>
+                    <Option value="Emma">English, British (F) - Emma</Option>
+                    <Option value="Brian">English, British (M) - Brian</Option>
+                    <Option value="Raveena">English, Indian (F) - Raveena</Option>
+                    <Option value="Aditi">English, Indian (F) - Aditi</Option>
+                    <Option value="Ivy">English, US (F) - Ivy</Option>
+                    <Option value="Joanna">English, US (F) - Joanna</Option>
+                    <Option value="Kendra">English, US (F) - Kendra</Option>
+                    <Option value="Kimberly">English, US (F) - Kimberly</Option>
+                    <Option value="Salli">English, US (F) - Salli</Option>
+                    <Option value="Joey">English, US (M) - Joey</Option>
+                    <Option value="Justin">English, US (M) - Justin</Option>
+                    <Option value="Matthew">English, US (M) - Matthew</Option>
+                    <Option value="Geraint">English, Welsh (M) - Geraint</Option>
+                    <Option value="Celine">French (F) - Céline</Option>
+                    <Option value="Lea">French (F) - Léa</Option>
+                    <Option value="Mathieu">French (M) - Mathieu</Option>
+                    <Option value="Chantal">French, Canadian (F) - Chantal</Option>
+                    <Option value="Marlene">German (F) - Marlene</Option>
+                    <Option value="Vicki">German (F) - Vicki</Option>
+                    <Option value="Hans">German (M) - Hans</Option>
+                    <Option value="Aditi">Hindi (F) - Aditi</Option>
+                    <Option value="Dóra">Icelandic (F) - Dóra</Option>
+                    <Option value="Karl">Icelandic (M) - Karl</Option>
+                    <Option value="Carla">Italian (F) - Carla</Option>
+                    <Option value="Giorgio">Italian (M) - Giorgio</Option>
+                    <Option value="Takumi">Japanese (M) - Takumi</Option>
+                    <Option value="Mizuki">Japanese (F) - Mizuki</Option>
+                    <Option value="Seoyeon">Korean (F) - Seoyeon</Option>
+                    <Option value="Liv">Norwegian (F) - Liv</Option>
+                    <Option value="Ewa">Polish (F) - Ewa</Option>
+                    <Option value="Maja">Polish (F) - Maja</Option>
+                    <Option value="Jacek">Polish (M) - Jacek</Option>
+                    <Option value="Jan">Polish (M) - Jan</Option>
+                    <Option value="Vitoria">Portugese, Brazilian (F) - Vitória</Option>
+                    <Option value="Ricardo">Portugese, Brazilian (M) - Ricardo</Option>
+                    <Option value="Ines">Portugese, European (F) - Inês</Option>
+                    <Option value="Cristiano">Portugese, European (M) - Cristiano</Option>
+                    <Option value="Carmen">Romanian (F) - Carmen</Option>
+                    <Option value="Tatyana">Russian (F) - Tatyana</Option>
+                    <Option value="Maxim">Russian (M) - Maxim</Option>
+                    <Option value="Conchita">Spanish, European (F) - Conchita</Option>
+                    <Option value="Enrique">Spanish, European (M) - Enrique</Option>
+                    <Option value="Penélope">Spanish, US (F) - Penélope</Option>
+                    <Option value="Miguel">Spanish, US (M) - Miguel</Option>
+                    <Option value="Astrid">Swedish (F) - Astrid</Option>
+                    <Option value="Filiz">Turkish (F) - Filiz</Option>
+                    <Option value="Gwyneth">Welsh (F) - Gwyneth</Option>
+
+
+
+                </List>
+
+            </Field>
+
+
+            <Field id="blanks1" type="label" fontColor="darkgray" fontSize="large" readonly="True">
+                <Label>:
+
+
+
+
+                </Label>
+
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+
+    <Action id="YesNoQuestionSeparator" uiPath="DeviceActions"/>
+
+    <Action id="YesNoQuestion" uiPath="DeviceActions">
+        <Name>Ask a Yes/No Question</Name>
+        <CallbackMethod>yes_no_question</CallbackMethod>
+        <ConfigUI>
+
+            <Field id="label60" type="label" fontColor="black" fontSize="large" alignWithControl="false">
+                <Label>Configure your device to ask a Yes/No Question</Label>
+            </Field>
+            <Field id="simpleSeparator60" type="separator" alignWithControl="false"></Field>
+
+            <Field id="whichDevice" type="menu">
+                <Label>Select a Device:</Label>
+                <List class="indigo.devices" filter="self.VoiceMonkeyDevice"/>
+            </Field>
+
+            <Field id="QuestionSeperator1" type="separator" alignWithControl="false"></Field>
+            <Field id="QuestionToAsk" type="textfield">
+                <Label>A Yes or No Question:
+
+
+
+                </Label>
+            </Field>
+
+            <Field id="QuestionSeperator2" type="label" fontSize="small" fontColor="black" alignWithControl="true">
+                <Label>(Use Option+Return to move the cursor to the next line)</Label>
+            </Field>
+
+            <Field id="label61" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Your device will attempt to speak whatever you type in this field.</Label>
+            </Field>
+            <Field id="label62" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>SSML tags are supported only for the initial question and not the prompts</Label>
+            </Field>
+
+
+            <Field id="simpleSeparator61" type="separator"></Field>
+
+            <Field id="instruct1" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>To skip the execution of any Action Group, leave the selection at</Label>
+            </Field>
+
+            <Field id="instruct2" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>If you want to skip the execution of any Action Group, either leave the selection at '- select an item -', or manually select '- select an action group -'.</Label>
+            </Field>
+
+            <Field id="instruct3" type="separator"></Field>
+
+            <Field id="executeWhenYes" type="menu">
+                <Label>If the Response is Yes:</Label>
+                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+            </Field>
+
+            <Field id="label63" type="label" fontColor="blue" fontSize="medium" alignWithControl="true">
+                <Label>Select the Action Group to execute when the response to the Yes/No question is 'Yes'.</Label>
+            </Field>
+
+
+            <Field id="simpleSeparator62" type="separator"></Field>
+
+            <Field id="executeWhenNo" type="menu">
+                <Label>If the Response is No:</Label>
+                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+            </Field>
+
+            <Field id="label64" type="label" fontColor="blue" fontSize="medium" alignWithControl="true">
+                <Label>Select the Action Group to execute when the response to the Yes/No question is 'No'.</Label>
+            </Field>
+
+            <Field id="RepeatSeparator1" type="separator"></Field>
+
+            <Field id="RepeatQuestion" type="checkbox" defaultValue="false">
+                <Label>Repeat the question?:</Label>
+            </Field>
+
+            <Field id="cycles" type="textfield" visibleBindingId="RepeatQuestion" visibleBindingValue="true" defaultValue="2">
+                <Label>Times to repeat:</Label>
+            </Field>
+            <Field id="label2" type="label" fontColor="blue" fontSize="small" alignWithControl="true"
+                visibleBindingId="RepeatQuestion" visibleBindingValue="true">
+                <Label>Enter the number of times to repeat the question.</Label>
+            </Field>
+
+
+            <Field id="seconds" type="textfield" visibleBindingId="RepeatQuestion" visibleBindingValue="true" defaultValue="35">
+                <Label>Interval (secs)</Label>
+            </Field>
+            <Field id="label3" type="label" fontColor="blue" fontSize="small" alignWithControl="true" visibleBindingId="RepeatQuestion" visibleBindingValue="true">
+                <Label>Enter the number of seconds to wait before repeating the question</Label>
+            </Field>
+
+            <Field id="StopWhenYes" type="checkbox" visibleBindingId="RepeatQuestion" visibleBindingValue="true" defaultValue="true">
+                <Label>When response is 'Yes'</Label>
+                <Description>stop repeating</Description>
+
+
+            </Field>
+
+            <Field id="StopWhenNo" type="checkbox" visibleBindingId="RepeatQuestion" visibleBindingValue="true" defaultValue="false">
+                <Label>When response is 'No'</Label>
+                <Description>stop repeating</Description>
+
+            </Field>
+
+            <Field id="NoResponseSeparator1" type="separator"></Field>
+
+            <Field id="executeNoResponse" type="checkbox" defaultValue="false">
+                <Label>When 'No response'</Label>
+                <Description>Execute an Action Group?</Description>
+            </Field>
+
+            <Field id="noResponseActionGroup" type="menu" visibleBindingId="executeNoResponse" visibleBindingValue="true" defaultValue="-=( Do Not Execute )=-">
+                <Label>Action Group:</Label>
+                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+            </Field>
+
+
+
+            <Field id="label56" type="label" fontColor="blue" fontSize="small" alignWithControl="true" visibleBindingId="RepeatQuestion" visibleBindingValue="false">
+                <Label>The selected Action Group will be executed if a response of 'Yes' or 'No' is not received after the question is asked.</Label>
+            </Field>
+
+            <Field id="label57" type="label" fontColor="blue" fontSize="small" alignWithControl="true" visibleBindingId="RepeatQuestion" visibleBindingValue="true">
+                <Label>When a question repeats, this Action Group will execute if the 'Yes' or 'No' response that stops the repeat cycle, is not received after the question is repeated a final time.</Label>
+            </Field>
+
+            <Field id="instructSeparator1" type="separator"></Field>
+
+            <Field id="label5" type="label" fontColor="darkgray" fontSize="large" readonly="True">
+                <Label>:
+
+
+
+
+
+
+
+
+
+
+                </Label>
+
+            </Field>
+
+        </ConfigUI>
+
+    </Action>
+
+    <Action id="PlaySoundsSeparator" uiPath="DeviceActions"/>
+
+    <Action id="PlaySound" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Play a sound</Name>
+        <CallbackMethod>play_sound</CallbackMethod>
+
+        <ConfigUI>
+            ￼<Field type="menu" id="soundName" defaultValue="Air Horn 1">
+                <Label>Popup Menu:</Label>
+                <List>
+
+                    <Option value="Air Horn 1">Air Horn 1</Option>
+                    <Option value="Boing 1">Boing 1</Option>
+                    <Option value="Bell 1">Bell 1</Option>
+                    <Option value="Bell 2">Bell 2</Option>
+                    <Option value="Bell 3">Bell 3</Option>
+                    <Option value="Buzzer 1">Buzzer 1</Option>
+                    <Option value="Buzzer 2">Buzzer 2</Option>
+                    <Option value="Chimes">Chimes</Option>
+                    <Option value="Ding 1">Ding 1</Option>
+                    <Option value="Ding 2">Ding 2</Option>
+                    <Option value="Doorbell 1">Doorbell 1</Option>
+                    <Option value="Doorbell 2">Doorbell 2</Option>
+                    <Option value="Electronic Beep 1">Electronic Beep 1</Option>
+                    <Option value="Electronic Beep 2">Electronic Beep 2</Option>
+                    <Option value="Electronic Beep 3">Electronic Beep 3</Option>
+                    <Option value="Intro 1">Intro 1</Option>
+                    <Option value="Siren 1">Siren 1</Option>
+                    <Option value="Siren 2">Siren 2</Option>
+                    <Option value="Tone 1">Tone 1</Option>
+                    <Option value="Tone 2">Tone 2</Option>
+                    <Option value="Tone 3">Tone 3</Option>
+                    <Option value="Woosh">Woosh</Option>
+
+                </List>
+                <!-- <CallbackMethod>menuChanged</CallbackMethod> -->
+            </Field>
+        </ConfigUI>
+    </Action>    
+
+
+    <Action id="PlayAudioFileUrl" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Play a Audio File</Name>
+        <CallbackMethod>play_audio_file_url</CallbackMethod>
+
+        <ConfigUI>
+            <SupportURL>https://voicemonkey.io/docs</SupportURL>
+            <Field id="label37" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>Play an audio file on your device</Label>
+            </Field>
+            <Field id="simpleSeparator20" type="separator"></Field>
+
+            <Field id="audioFileUrl" type="textfield">
+                <Label>Audio File URL:
+
+
+                </Label>                
+            </Field>
+
+            <Field id="fullURLinstruct1" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>Enter the full URL of an audio file to play on the device.</Label>
+            </Field>
+
+            <Field id="fullURLinstruct2" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>The URL entered must be publicly accessible, by anyone with the link, and begin with 'https://'</Label>
+            </Field>
+
+            <Field id="simpleSeparator1" type="separator"></Field>
+            
+            <Field id="label15" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access https://voicemonkey.io/docs for documenation on supported file types</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+
+    <Action id="PlayBackgroundAudioFile" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Play a Background Audio File</Name>
+        <CallbackMethod>play_background_audio_file</CallbackMethod>
+
+        <ConfigUI>
+            <SupportURL>https://voicemonkey.io/docs</SupportURL>
+
+            <Field id="label47" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Play an audio file in the background whilst your device speaks</Label>
+            </Field>
+            <Field id="simpleSeparator2" type="separator"></Field>
+
+            <Field id="label41" type="label" fontColor="blue" fontSize="medium" alignWithControl="true">
+                <Label>Speech Synthesis Markup Language (SSML) tags are supported</Label>
+            </Field>
+
+            <Field id="TextToSpeech" type="textfield" alignWithControl="false">
+                <Label>:
+
+
+
+                </Label>
+            </Field>
+
+            <Field id="messageNote11" type="label" fontSize="small" fontColor="black" alignWithControl="true">
+                <Label>(Use Option+Return to move the cursor to the next line)</Label>
+            </Field>
+
+            <Field id="label40" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Your device will attempt to speak whatever you type in this field.</Label>
+            </Field>
+            
+            <Field id="messageNote12" type="label" fontSize="small" fontColor="blue" alignWithControl="true">
+                <Label>Variable and device state substituation is enabled for this field. Use the format</Label>
+            </Field>
+            <Field id="messageNote13" type="label" fontSize="small" fontColor="blue" alignWithControl="true">
+                <Label>%%v:12345%% for variables and %%d:12345:someStateId%% for device states.</Label>
+            </Field>
+
+
+
+            <Field id="simpleSeparator8" type="separator"></Field>
+
+            <Field id="messageNote14" type="label" fontSize="medium" fontColor="black" alignWithControl="false">
+                <Label>Audio File URL:</Label>
+            </Field>
+
+
+            <Field id="backgroundAudioFileUrl" type="textfield">
+                <Label>:
+
+
+                </Label>                
+            </Field>
+
+            <Field id="fullURLinstruct3" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>Enter the full URL of an audio file to play on the device.</Label>
+            </Field>
+
+
+            <Field id="fullURLinstruct4" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>The URL entered must be publicly accessible, by anyone with the link, and begin with 'https://'</Label>
+            </Field>
+
+            <Field id="simpleSeparator1" type="separator"></Field>
+            
+            <Field id="label55" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access https://voicemonkey.io/docs for documenation on supported file types</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+
+    <Action id="TypedRequest" deviceFilter="self.VoiceMonkeyDevice">
+        <Name>Type in a Request</Name>
+        <CallbackMethod>typed_request</CallbackMethod>
+
+        <ConfigUI>
+            <Field id="label80" type="label" fontColor="black" fontSize="large" alignWithControl="false">
+                <Label>Interact with your device by typing in a request</Label>
+            </Field>
+            <Field id="simpleSeparator80" type="separator"></Field>
+            <Field id="RequestOfDevice" type="textfield">
+                <Label>:
+
+
+
+                </Label>
+            </Field>
+
+            <Field id="EntryInfo" type="label" fontSize="small" fontColor="black" alignWithControl="true">
+                <Label>(Use Option+Return to move the cursor to the next line)</Label>
+            </Field>
+
+            <Field id="label81" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Type in anything you would otherwise say to Alexa.</Label>
+            </Field>
+
+
+        </ConfigUI>
+    </Action>
+
+    <Action id="AlexaSpeak" uiPath="hidden">
+        <Name>Speak text</Name>
+        <CallbackMethod>alexa_speak</CallbackMethod>
+    </Action>    
+
+    <Action id="AlexaRoutine" deviceFilter="self.VoiceMonkeyDevice">
+        <Name>Run a Alexa Routine by Name</Name>
+        <CallbackMethod>alexa_routine</CallbackMethod>
+
+        <ConfigUI>
+
+            <SupportURL>https://github.com/thorsten-gehrig/alexa-remote-control</SupportURL>
+
+            <Field id="simpleSeparator70" type="separator"></Field>
+
+            <Field id="monkey_id" type="textfield">
+                <Label>Routine Name:</Label>
+            </Field>
+
+            <Field id="label71" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label>Enter the name exactly as it is shown in the Alexa App</Label>
+            </Field>
+
+            <Field id="simpleSeparator71" type="separator"></Field>
+
+            <Field id="label733" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>Seeing 'ERROR: no such utterance' in the log means that the name entered was not found.</Label>
+            </Field>
+
+            <Field id="simpleSeparator72" type="separator"></Field>
+            <Field id="label73" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access https://github.com/thorsten-gehrig/alexa-remote-control for more information on the module used</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>  
+
+
+    <Action id="PassArgs">
+        <Name>Pass command line arguments</Name>
+        <CallbackMethod>pass_cmd_line_args</CallbackMethod>
+
+        <ConfigUI>
+
+            <SupportURL>https://github.com/thorsten-gehrig/alexa-remote-control</SupportURL>
+
+            <Field id="commandSeperator1" type="separator"></Field>
+
+            <Field id="arguments" type="textfield">
+                <Label>Type in your arguments:</Label>
+            </Field>
+
+            <Field id="commandSeperator2" type="separator"></Field>
+
+            <Field id="commandLabel1" type="label" fontColor="black" fontSize="small" alignWithControl="false">
+                <Label>i.e. [-d {device}|ALL] -e {pause|play|next|prev|fwd|rwd|shuffle|repeat|vol:{0-100}}</Label>
+            </Field>
+
+            <Field id="commandSeperator4" type="separator"></Field>
+            <Field id="label73" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access the Git Repository https://github.com/thorsten-gehrig/alexa-remote-control for a complete list of arguments</Label>
+            </Field>
+
+            <Field id="commandSeperator3" type="separator"></Field>
+            <Field id="label72" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Displaying or utilizing output, is not currently supported.</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+
+    <Action id="PassDeviceArg" deviceFilter="self.VoiceMonkeyDevice">
+        <Name>pass -d device |arg|</Name>
+        <CallbackMethod>pass_device_arg</CallbackMethod>
+
+        <ConfigUI>
+
+            <SupportURL>https://github.com/thorsten-gehrig/alexa-remote-control</SupportURL>
+
+            <Field id="commandSeperator1" type="separator"></Field>
+
+            <Field id="arguments" type="textfield">
+                <Label>Type in your arguments:</Label>
+            </Field>
+
+            <Field id="commandLabel1" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
+                <Label> -d {device} is passed for you</Label>
+            </Field>
+            <Field id="commandSeperator2" type="separator"></Field>
+
+            <Field id="label73" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>Click "?" to access the Git Repository https://github.com/thorsten-gehrig/alexa-remote-control for a complete list of arguments</Label>
+            </Field>
+
+        </ConfigUI>
+    </Action>    
+
+
+</Actions>

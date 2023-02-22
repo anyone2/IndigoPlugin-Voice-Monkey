@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<Devices>
+    <!-- This device illustrates how a plugin can inherit Indigo's relay
+    device behavior including on/off states, relay actions (on/off/toggle),
+    and will support Indigo and Indigo Touch's native UI for relay type
+    devices.
+    -->
+
+    <Device type="relay" id="VoiceMonkeyDevice">
+    <Name>Voice Monkey Device</Name>
+    <ConfigUI>
+        <SupportURL>https://app.voicemonkey.io/dashboard</SupportURL>
+        
+        <Field id="monkey_id" type="textfield" defaultValue="">
+            <Label>Voice Monkey device name:</Label>
+        </Field>
+
+        <Field id="yes_preset_id" type="textfield" defaultValue="">
+            <Label>Yes Preset ID:</Label>
+        </Field>
+
+        <Field id="no_preset_id" type="textfield" defaultValue="">
+            <Label>No Preset ID:</Label>
+        </Field>
+        <Field id="label1" type="label" fontColor="blue" fontSize="small">
+            <Label>"To complete this screen, you must first set up a Voice Monkey smart speaker device. Click the '?' button to access https://voicemonkey.io/. Once there, gather the necessary information to fill in the above fields. Leave the Preset ID fields blank, unless you are configuring the 'Yes/No Question' functionality."</Label>
+        </Field>
+
+        <Field id="simpleSeparator1" type="separator"></Field>
+        
+        <Field id="useAltName" type="checkbox" defaultValue="false">
+            <Label>Use an alternate device name?</Label>
+            <Description>(Optional)</Description>
+        </Field>
+
+        <Field id="discoveredDevice" type="menu" visibleBindingId="useAltName" visibleBindingValue="true">
+            <Label>Map to a discovered device</Label>
+            <List class="self" filter="stuff" method="myListGenerator"/>
+        </Field>
+
+
+        <Field id="useCustomName" type="checkbox" defaultValue="false" visibleBindingId="useAltName" visibleBindingValue="true">
+            <Label>or use a custom name?</Label>
+            <Description>(Optional)</Description>
+        </Field>
+
+        <Field id="AltDeviceName" type="textfield" visibleBindingId="useCustomName" visibleBindingValue="true">
+            <Label>Enter alternate device name:</Label>
+        </Field>
+
+        <Field id="createSomeSpace1" type="label" fontColor="darkgray" fontSize="large" readonly="True">
+            <Label>:
+
+
+
+            </Label>
+
+        </Field>
+
+    </ConfigUI>
+    <States>
+
+        <State id="useAltName">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+
+
+        <State id="useDeviceName">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+        
+        <State id="LastQuestionEpoch">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+
+        <State id="responseNoPresetId">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+
+        <State id="responseYesPresetId">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+
+        <State id="monkeyId">
+            <ValueType>String</ValueType>
+            <TriggerLabel>Empty</TriggerLabel>
+            <ControlPageLabel>Empty</ControlPageLabel>
+        </State>
+
+
+    </States>
+</Device>
+
+</Devices>
