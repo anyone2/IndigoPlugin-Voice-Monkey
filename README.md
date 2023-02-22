@@ -2,6 +2,7 @@
 
 This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automation platform and allows you to control your Alexa devices from within Indigo. It works with the Voice Monkey Amazon Alexa skill which has the ability to perform text-to-speech, play preset sounds, and execute Alexa routines on an Alexa Smart device such as an Echo or Echo Dot.
 
+
 ## Supported Features:
 
 - Trigger an Alexa Routine
@@ -30,7 +31,7 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 
 ## Voice Monkey Skill Setup Instructions
 
-Follow the instructions detailed on the [https://voicemonkey.io/start](https://voicemonkey.io/start):
+Follow the instructions detailed here [https://voicemonkey.io/start](https://voicemonkey.io/start):
 
 1. Enable the Voice Monkey Skill
 2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
@@ -42,12 +43,16 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Indigo Plugin Installlation Instructions
 
-Download the plugin, after the plugin starts, add your Voice Monkey Access and Secret Tokens under Plugins -> Voice Monkey -> Configure...
+1. Download the plugin
+2. After the plugin starts
+    - Add your Voice Monkey Access and Secret Tokens 
+        - under Plugins -> Voice Monkey -> Configure...
 
 
 ## Triggering a Alexa Routine
 
 ( Describe how a monkey would be created to do this )
+
 
 ## Text-To-Speech
 
@@ -61,6 +66,7 @@ Download the plugin, after the plugin starts, add your Voice Monkey Access and S
     - Click the checkbox, to change the voice if you you want
 
 ( Describe how a monkey would be created to do this )
+
 
 ## Ask a Prompted Yes/No Question (a Pro feature)
 
@@ -168,6 +174,7 @@ To test your installation and configuration, create an Action Group. Select Voic
 
 - Type in some command that can be executed and heard on a nearby device.
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
+
 
 ## Advanced Scripting
 
