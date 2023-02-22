@@ -92,6 +92,8 @@ The full path is **'/Library/Application Support/Perceptive Automation/Python3-i
 
     import voice_monkey 
 
+    # indigo.devices[651183378] # "Loft Echo"
+
     voice_monkey.routine(monkeyId='routine-trigger-one', deviceId=651183378)
 
     voice_monkey.play_sound(soundName=the_sound, deviceId=651183378)
@@ -142,7 +144,7 @@ The configuration and installation of alexa_remote_control is **optional**, the 
 
 ## Additional Indigo Plugin Installlation Instructions
 
-After successfully configuring **alexa_remote_control**, which you can test by issuing any of the available commands from the MacOS command line, there are only a few additional steps.
+After configuring **alexa_remote_control**, which you can test using available commands from the MacOS command line, only a few more steps are needed.
 
 - Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
 
@@ -154,7 +156,7 @@ The full path is **'/Library/Application Support/Perceptive Automation/Python3-i
 In the Indigo log, the plugin "should" now indicate the **alexa_remote_control** module was imported.
 
     Starting plugin "Voice Monkey 2022.1.0" (pid 25946)
-    Voice Monkey                    **alexa_remote_control was imported**
+    Voice Monkey                    alexa_remote_control was imported
     Started plugin "Voice Monkey 2022.1.0"
     Voice Monkey                    There are no pending Yes/No Questions
 
@@ -172,6 +174,8 @@ To test your installation and configuration, create an Action Group. Select Voic
 If everything is working up to this point, you will be able to leverage the Plugin to call alexa_remote_control functions
 
     import alexa_remote_control
+
+    # indigo.devices[651183378] # "Loft Echo"
 
     ask_alexa_this = 'How many days until christmas?' 
     alexa_remote_control.ask_alexa(ask_alexa_this, "Loft Echo")
