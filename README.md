@@ -52,31 +52,31 @@ Download the plugin, after the plugin starts, add your Voice Monkey Access and S
 ## Text-To-Speech
 
 - Create an Action Group
-- Select Type: Device Actions
-- then Voice Monkey Controls -> Text to Speech
-- Select the previously configured device
+- Type: Device Actions
+- Voice Monkey Controls -> Text to Speech
+- Select a previously configured Voice Monkey device
 
-- In the text box, type what you want the device to attempt to speak. 
+- In the text box, type what you want the device to attempt to speak
 
-    - Click the checkbox, to change the language if you you want
+    - Click the checkbox, to change the voice if you you want
 
 ( Describe how a monkey would be created to do this )
 
 ## Ask a Prompted Yes/No Question (a Pro feature)
 
-( Describe how a monkey would be created to do this )
+Get the basic features working before you attempt to set this up. 
 
-Get the basic features working before you attempt to set this up. This process involves multiple steps and it is important to know, that Text-To-Speech at a minimum is working.
+This process involves multiple steps and it is important to know, that Text-To-Speech at a minimum is working.
 
-This feature requires that you enable the Indigo Alexa Plugin.
+**Ensure that the Indigo Alexa Plugin is enabled.**
 
-- Decide which device you have created will ask the question. 
+- Decide which previously configured Voice Monkey device will ask the question
 - Within the Indigo Alexa Plugin
     - Plugins -> Alexa -> Manage Alexa Device Publications...
-    - Select the device that you want to be able to ask Yes or No questions
+    - Select the Voice Monkey device that you want to ask Yes or No questions
     - Click the checkbox 'Publish device'
     - Select as the Type: 'Switch'
-    - click 'Save'
+    - **click 'Save'**
     - click 'Close'
 
 (Describe the required configuration on the Voice Monkey Website)
@@ -84,11 +84,11 @@ This feature requires that you enable the Indigo Alexa Plugin.
 
 ## Basic Scripting
 
- If you place the file named 'voice_monkey.py' in your Python3-Includes folder,
+Place the file named 'voice_monkey.py' in your Python3-Includes folder.
 
  the full is path **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
- you can leverage the Plugin to call functions for Text-To-Speech, Triggering Routines, playing sounds or asking Yes or No questions.
+ The plugin allows you to call functions for Text-To-Speech, Triggering Routines, playing sounds or asking Yes or No questions.
 
     import voice_monkey 
 
@@ -132,7 +132,7 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 
 - Perform Text-To-Speech
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
-- Execute an Alexa Routine (By the name shown in the Alexa App)
+- Trigger an Alexa Routine (by the name shown in the Alexa App)
 - Type a Request to Alexa (Type in **anything** you would otherwise say to Alexa)
 - Pass commands from Indigo, directly to alexa_remote_control
     - change the volume
@@ -143,7 +143,7 @@ The configuration and installation of alexa_remote_control is optional, the Voic
 
 ## Additional Indigo Plugin Installlation Instructions
 
-After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands from the command line, there are only a few additional steps.
+After successfully configuring alexa_remote_control, which you can test by issuing any of the available commands from the MacOS command line, there are only a few additional steps.
 
 - Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
 
@@ -163,9 +163,9 @@ In the Indigo log, the plugin "should" now indicate the alexa_remote_control mod
 
 - Click the checkbox for 'Use alexa-remote-control'
 
-Now test to ensure it works. Create an Action Group, select Voice Monkey Actions and then select 'Pass command line arguments'
+Now test to ensure it works by creating an Action Group. Select Voice Monkey Actions and then select 'Pass command line arguments'
 
-- Type in some command that can be executed by a device near by. 
+- Type in some command that can be executed and heard on a device near by. 
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
 
 ## Advanced Scripting
@@ -181,6 +181,9 @@ If everything is working up to this point, you will be able to leverage the Plug
     alexa_remote_control.alexa_speak(say_this, "Loft Echo", 'Aditi')
 
     alexa_remote_control.alexa_play_sound('Bell 2', 'Loft Echo')
+
+    alexa_remote_control.pass_cmd_line_args("-d 'Loft Echo' -e speak:'Hello world!'")
+
 
 
 
