@@ -198,6 +198,9 @@ If everything is working up to this point, you will be able to leverage the Plug
 
     alexa_remote_control.pass_cmd_line_args("-d 'Loft Echo' -e speak:'Hello world!'")
 
+    routine_name = "Loft: Morning Routine"
+    alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
+
 
 
 
