@@ -9,7 +9,7 @@
     <MenuItem id="menu10">
         <Name>Manage Yes/No Questions...</Name>
         <ConfigUI>
-            <Field id="questions" type="list">
+            <Field id="questions" type="list" rows="8">
                 <List class="self" filter="" method="questionList" dynamicReload="true"/> 
             </Field>
             <Field id="cancelQuestion" type="button"> 

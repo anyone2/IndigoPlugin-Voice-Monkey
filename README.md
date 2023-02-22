@@ -113,7 +113,6 @@ The full path is **'/Library/Application Support/Perceptive Automation/Python3-i
     voice_monkey.play_audio(audioFileUrl=dogs_barking, deviceId=651183378)
 
     say_this = ('I am not sure why you would want to talk over dogs barking. <break time="5s"/>But you could if you really wanted to but again, I am not really sure why you would do this.<break time="7s"/>')
-
     dogs_barking = 'https://dl.dropboxusercontent.com/s/dqk73c2cduxjg6k/one_dog_barking_audacity.mp3?dl=1'
     voice_monkey.play_background_audio(
             text=say_this, audioFileUrl=dogs_barking, deviceId=651183378)
@@ -135,7 +134,7 @@ For more information and installation instructions see the following page:
 
 [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control)
 
-The configuration and installation of alexa_remote_control is **optional**, the Voice Monkey skill discussed above, will work without installing it.
+The configuration and installation of **alexa_remote_control** is **optional**, the Voice Monkey skill discussed above, will work without installing it.
 
 
 ## Supported Features: (with alexa_remote_control installed)
@@ -157,7 +156,7 @@ The configuration and installation of alexa_remote_control is **optional**, the 
 
 After configuring **alexa_remote_control**, which you can test using available commands from the MacOS command line, only a few more steps are needed.
 
-- Place the alexa_remote_control.sh file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the alexa_remote_control.py file included in this reposisitory in the Python3-Includes folder.
+- Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
 
 The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
