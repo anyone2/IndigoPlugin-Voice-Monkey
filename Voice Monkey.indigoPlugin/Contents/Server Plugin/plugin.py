@@ -19,9 +19,6 @@ try:
 except ImportError:
     WAS_IMPORTED = False
 
-# Note the "indigo" module is automatically imported and made available inside
-# our global name space by the host process.
-
 
 ###########################
 class actionDict():
@@ -174,21 +171,29 @@ class Plugin(indigo.PluginBase):
                             exit_when = ('Yes' if stop_when_yes 
                                          else 'No' if stop_when_no 
                                          else 'Yes or No')
-                            msg = (
+                            text = (
+                                f"{question_text}"
+                                )
+                            log_entry = (
                                 f"'{dev.name}' did not receive a "
                                 f"'{exit_when}' response after "
-                                f"repeating '{question_text}'.")
-                            self.logger.info(msg)
+                                f"repeating"
+                                )
+                            self.wrapLogging(text, log_entry)
+
                             indigo.actionGroup.execute(int(no_response))
                         else:
                             exit_when = ('Yes' if stop_when_yes 
                                          else 'No' if stop_when_no 
                                          else 'Yes or No')
-                            msg = (
+                            text = (
+                                f"{question_text}"
+                                )
+                            log_entry = (
                                 f"'{dev.name}' did not receive a "
-                                f"'{exit_when}' response after "
-                                f"repeating '{question_text}'.")
-                            self.logger.info(msg)
+                                f"'{exit_when}' response after repeating"
+                                )
+                            self.wrapLogging(text, log_entry)
                     except ValueError:
                         self.logger.warn(
                             'The Action Group configured to '
@@ -196,10 +201,14 @@ class Plugin(indigo.PluginBase):
                             'is not received, can not be found.')
                     del self.unanswered[key]
             elif dev.states['LastQuestionEpoch'] == key:
-                self.logger.info(
+                text = (
+                    f"{question_text}"
+                    )
+                log_entry = (
                     f"'{dev.name}' did not receive a "
-                    f"'Yes' or 'No' response to '{question_text}'")
-
+                    f"'Yes' or 'No' response to"
+                    )
+                self.wrapLogging(text, log_entry)
         else:
             try:
                 del self.unanswered[key]
@@ -210,9 +219,14 @@ class Plugin(indigo.PluginBase):
                         " action group.")
                     indigo.actionGroup.execute(int(no_response))
                 elif dev.states['LastQuestionEpoch'] == key:
-                    self.logger.info(
+                    text = (
+                        f"{question_text}"
+                        )
+                    log_entry = (
                         f"'{dev.name}' did not receive a "
-                        f"'Yes' or 'No' response to '{question_text}'")
+                        f"'Yes' or 'No' response to"
+                        )
+                    self.wrapLogging(text, log_entry)
             except ValueError:
                 self.logger.warn(
                     'The Action Group configured to execute '
@@ -1175,8 +1189,10 @@ class Plugin(indigo.PluginBase):
                     device_name = "Unknown"
 
                 del self.unanswered[d]
-                indigo.server.log(f'The question "{question}" for the '
-                                  f'"{device_name}" was canceled.')
+                log_entry = (f"'{device_name}' pending question cancelled")
+                text = (f"{question}") 
+                self.wrapLogging(text, log_entry)
+
             except KeyError:
                 self.logger.error(
                   f'The question key "{d}", no longer exists. ')
