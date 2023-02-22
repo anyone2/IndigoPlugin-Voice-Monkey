@@ -49,6 +49,11 @@ By following these steps, you will be able to generate a URL, confirm that it is
         - under Plugins -> Voice Monkey -> Configure...
 
 
+## Creating a Device
+
+( Describe how a device is created and how the device names are used )
+
+
 ## Triggering a Alexa Routine
 
 ( Describe how a monkey would be created to do this )
@@ -72,7 +77,7 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 Get the basic features working before you attempt to set this up. 
 
-This process involves multiple steps and it is important to know, that Text-To-Speech at a minimum is working.
+This process has multiple steps, and it's essential to ensure that Text-To-Speech is functioning at a minimum.
 
 **Ensure that the Indigo Alexa Plugin is enabled.**
 
