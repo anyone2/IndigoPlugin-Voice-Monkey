@@ -105,6 +105,8 @@ The plugin enables Text-To-Speech functions, routine triggering, sound playback,
 
     # indigo.devices[651183378] # "Loft Echo"
 
+    indigo.device.beep(651183378)
+
     voice_monkey.routine(monkeyId='routine-trigger-one', deviceId=651183378)
 
     voice_monkey.play_sound(soundName=the_sound, deviceId=651183378)
