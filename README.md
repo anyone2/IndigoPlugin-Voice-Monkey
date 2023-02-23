@@ -99,7 +99,7 @@ Place the file named 'voice_monkey.py' in your Python3-Includes folder.
 
 The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
- The plugin allows you to call functions for Text-To-Speech, Triggering Routines, playing sounds or asking Yes or No questions.
+The plugin enables Text-To-Speech functions, routine triggering, sound playback, and Yes/No questioning.
 
     import voice_monkey 
 
