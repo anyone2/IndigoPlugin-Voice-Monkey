@@ -96,7 +96,7 @@
 
 # 18) Create an Action Group in Indigo
 
-![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/18-Indigo%20-%20Action%20Group%20Creation.jpg)
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Trigger/18-Indigo%20-%20Action%20Group%20Creation.jpg)
 
 
 # 19) Once you execute the Action Group, the log will look similiar to this 
