@@ -18,7 +18,7 @@
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/02-VM%20Add%20a%20Trigger.jpg)
 ---
 
-# 4) The trigger will be shown in the list. Click 
+# 4) The trigger will be shown in the list.  
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/03-VM%20Trigger%20Added.jpg)
 ---
 
@@ -84,7 +84,7 @@
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/15-Alexa%20app%20-%20Fun%20Fact%20-%20confirmation.jpeg)
 ---
 
-# 16) Choose a device for the fun pact to played on
+# 16) Choose a device for the fun fact to played on
 
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/16-Alexa%20app%20-%20Choose%20Device.jpeg)
@@ -99,7 +99,7 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Trigger/18-Indigo%20-%20Action%20Group%20Creation.jpg)
 
 
-# 19) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the associated Alexa device
+# 19) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the device you selected in the Alexa Routine in step 16
 
 	Feb 24, 2023 at 7:29:52 AM
 		Action Group                    Triggering - 'Routine Trigger One'
