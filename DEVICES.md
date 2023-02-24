@@ -115,8 +115,9 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
 
 ---
-# 18) In Indigo, create a Voice Monkey device, the name should be the same as configured in Voice Monkey, all the way back at step 3. 'Loft Tech Echo' in this example
-# leave the Preset IDs blank, unless you are you have skipped a head and configured that
+# 18) In Indigo, create a Voice Monkey device
+# Use the name configured in Voice Monkey, 'Loft Tech Echo' in this example
+# leave the Preset IDs blank, unless you are you have skipped ahead and set that up already
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/18-Indigo%20-%20Create%20a%20Device.jpeg)
 
 ---
