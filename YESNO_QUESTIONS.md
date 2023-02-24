@@ -127,7 +127,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/32-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
-# 30) Ensure both 'Power' and 'On' are checked
+# 30) Ensure both 'Power' and 'On' are checked, tap next
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/33-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20On.jpeg)
 
@@ -158,7 +158,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/38-Alexa%20app%20-%20Choose%20Answered%20No.jpeg)
 
-# 36) Confirmation, click save
+# 37) You should see a confirmation, click 'Save'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/39-Alexa%20app%20-%20Confirmation%20of%20Answer%20No.jpeg)
 
@@ -178,7 +178,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/43-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
-# 41) Ensure 'Power' is checked and 'Off, then tap 'Next'
+# 41) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/44-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20Off.jpeg)
 
