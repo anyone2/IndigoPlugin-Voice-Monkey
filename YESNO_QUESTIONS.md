@@ -11,7 +11,7 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/02-VM%20Routine%20Triggers.jpg)
 
 # 3) Type in a Trigger/Routine name
-# Create two Triggers, using a Voice Monkey Device Name appened with 'Answered Yes' and 'Answered No'
+# Create two Triggers, using a Voice Monkey Device Name appended with 'Answered Yes' and 'Answered No'
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/03-VM%20Add%20a%20Trigger.jpg)
 
 # 4) The Create Triggers now show in the list
