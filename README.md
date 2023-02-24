@@ -51,13 +51,13 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Creating a Device
 
-[alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
+[Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
 ## Triggering a Alexa Routine
 
 ( Describe how to create a Voice Monkey trigger/routine )
-[alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
+[Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 ## Text-To-Speech
 
@@ -81,7 +81,7 @@ This process has multiple steps (44 to be exact), and it's essential to ensure t
 
 It is required for this capability to work.
 
-![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
+[Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
 ## Basic Scripting
