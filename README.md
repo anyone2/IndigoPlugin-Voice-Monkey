@@ -51,7 +51,7 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Creating a Device
 
-( Describe how a device is created and how the device names are used )
+![( Describe how a device is created and how the device names are used )](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
 ## Triggering a Alexa Routine
