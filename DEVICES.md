@@ -30,7 +30,7 @@
 
 ---
 
-# If you check on the Voice Monkey site, the 'Loft Test Echo', is listed
+# Under Manage Voice Monkey devices, the 'Loft Test Echo', is listed
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
 
