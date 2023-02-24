@@ -51,13 +51,13 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Creating a Device
 
-![( Describe how a device is created and how the device names are used )](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
+![( Describe how a device is created )](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
 ## Triggering a Alexa Routine
 
-( Describe how a monkey would be created to do this )
-
+( Describe how to create a Voice Monkey trigger/routine )
+![( Describe how a device is created )](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 ## Text-To-Speech
 
@@ -70,27 +70,18 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
     - Click the checkbox, to change the voice if you you want
 
-( Describe how a monkey would be created to do this )
-
 
 ## Ask a Prompted Yes/No Question (a Pro feature)
 
 Get the basic features working before you attempt to set this up. 
 
-This process has multiple steps, and it's essential to ensure that Text-To-Speech is functioning at a minimum.
+This process has multiple steps (44 to be exact), and it's essential to ensure that Text-To-Speech is functioning at a minimum. 
 
 **Ensure that the Indigo Alexa Plugin is enabled.**
 
-- Decide which previously configured Voice Monkey device will ask the question
-- Within the Indigo Alexa Plugin
-    - Plugins -> Alexa -> Manage Alexa Device Publications...
-    - Select the Voice Monkey device that you want to ask Yes or No questions
-    - Click the checkbox 'Publish device'
-    - Select as the Type: 'Switch'
-    - **click 'Save'**
-    - click 'Close'
+It is required for this capability to work.
 
-(Describe the required configuration on the Voice Monkey Website)
+![( (Describe the required to get this working )](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
 ## Basic Scripting
@@ -158,9 +149,15 @@ The configuration and installation of **alexa_remote_control** is **optional**, 
 
 After configuring **alexa_remote_control**, which you can test using available commands from the MacOS command line, only a few more steps are needed.
 
-- Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, and the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
+- Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, in the **'/Library/Application Support/Perceptive Automation/Script'** folder.
+
+Please the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
 
 The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
+
+## IMPORTANT: Do not move either of these files until after you get alexa_remote_control.sh working.
+
+After you placed the files in the folders shown above:
 
 - In Indigo, under Plugins -> Reload Libraries and Attachments
 - In Indigo, under Plugins -> Voice Monkey -> Reload
@@ -181,6 +178,7 @@ To test your installation and configuration, create an Action Group. Select Voic
 - Type in some command that can be executed and heard on a nearby device.
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
 
+# IMPORTANT: This should also work from the macOS command line.
 
 ## Advanced Scripting
 
