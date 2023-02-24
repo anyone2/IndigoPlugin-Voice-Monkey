@@ -177,7 +177,7 @@
 
 ---
 
-# 29) Tap the device that was you published with the Alexa Plugin at step 16
+# 29) Tap the device that you published with the Alexa Plugin at step 16
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/32-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 

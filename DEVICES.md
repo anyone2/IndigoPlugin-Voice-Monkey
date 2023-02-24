@@ -121,3 +121,10 @@
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/18-Indigo%20-%20Create%20a%20Device.jpeg)
 
 
+# 19) Select the device and click 'Status'
+# You should hear the device and see output in the log
+
+	Feb 24, 2023 at 4:54:43 AM
+   		Voice Monkey                    sent "Loft Test Echo" status request
+   		Voice Monkey                    Loft Test Echo : Text-to-Speech : Alexa - Default
+	"This device, Loft Test Echo, is using the Voice Monkey API for Text-to-Speech. A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
