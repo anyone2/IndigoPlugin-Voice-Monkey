@@ -154,45 +154,43 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/31-Alexa%20app%20-%20Select%20Switches.jpeg)
 
 
-# 36) Tap the device that was you published with the Alexa Plugin at step 16
-▪ Remeber we are selecting the 'Answer No' this time
+# 36) Tap the 'Answer No' device this time
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/38-Alexa%20app%20-%20Choose%20Answered%20No.jpeg)
 
-# 36) Tap the device that was you published with the Alexa Plugin at step 16
-▪ Remeber we are selecting the 'Answer No' this time
+# 36) Confirmation, click save
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/39-Alexa%20app%20-%20Confirmation%20of%20Answer%20No.jpeg)
 
-# 37)
+# 37) Tap, 'Add action'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/40-Alexa%20app%20-%20click%20Add%20action.jpeg)
 
-# 38)
+# 38) Tap Smart Home
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/41-Alexa%20app%20-%20tap%20Smart%20Home.jpeg)
 
-# 39)
+# 39) Select 'Switches'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/42-Alexa%20app%20-%20Select%20Switches.jpeg)
 
-# 40)
+# 40) Tap the device that was you published with the Alexa Plugin at step 16 & 29
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/43-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
-# 41)
+# 41) Ensure 'Power' is checked and 'Off, then tap 'Next'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/44-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20Off.jpeg)
 
-# 42)
+# 42) tap 'Save'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/45-Alexa%20app%20-%20Click%20Save.jpeg)
 
-# 43)
+# 43) Create an Action Group in Indigo
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/46-Indigo%20-%20Action%20Group%20Creation.jpg)
 
-# 44)
+# 44) Once you execute the Action Group, the log will look similiar to this 
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/47-Succesful%20Test.jpg)
 
