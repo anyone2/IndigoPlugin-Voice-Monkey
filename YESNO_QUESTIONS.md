@@ -74,7 +74,7 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/16-Indigo%20-%20Alexa%20Plugin%20-%20Add%20Loft%20Test%20Echo.jpg)
 
 # 17) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
-▪ The device you published should be found
+# The device you published should be found
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/17-Indigo%20-%20Alexa%20Plugin%20-%20Discovery%20Devices%20Result.jpg)
 
 
@@ -137,7 +137,7 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/34-Alexa%20app%20-%20Click%20Save.jpeg)
 
 # 32) Tap the " + ", to create a New Routine
-▪ Now, create another Routine for when the answer is 'No'
+# Now, create another Routine for when the 'Answered No'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/35-Alexa%20app%20-%20click%20plus%20'+'%20sign%20copy.jpeg)
 
