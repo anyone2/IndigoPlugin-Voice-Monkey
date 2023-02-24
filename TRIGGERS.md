@@ -99,7 +99,7 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Trigger/18-Indigo%20-%20Action%20Group%20Creation.jpg)
 
 
-# 19) Once you execute the Action Group, the log will look similiar to this 
+# 19) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the associated Alexa device
 
 	Feb 24, 2023 at 7:29:52 AM
 		Action Group                    Triggering - 'Routine Trigger One'
