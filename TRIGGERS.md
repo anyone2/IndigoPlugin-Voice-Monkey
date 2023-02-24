@@ -14,7 +14,7 @@
 ---
 
 # 3) Type in a Trigger/Routine name
-▪ If this is your first trigger, use the suggested name of 'Routine Trigger One'
+# If this is your first trigger, use the suggested name of 'Routine Trigger One'
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/02-VM%20Add%20a%20Trigger.jpg)
 ---
 
@@ -24,7 +24,7 @@
 
 
 # 5) Open the Alexa App, the new routine/trigger is shown 
-▪ The Trigger/Routine you just added should be shown
+# The Trigger/Routine you just added should be shown
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/04-Alexa%20app%20-%20Routine%20Trigger%20One%20connected.jpeg)
 ---
