@@ -52,12 +52,12 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/12-Indigo%20-%20Create%20a%20Device.jpg)
 
 # 13) In Indigo, name the device. 
-# If you know what the name of the device is, in the Alexa app use that here. If not, give a any name
+# If you know what the name of the device is, in the Alexa app use that here. If not, give it any meaningful name
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/13-Indigo%20-%20Name%20the%20device.jpg)
 
 # 14) Select the device and click 'Status'
-▪ You should hear the device and see output in the log
+# You should hear the device and see output in the log
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/14-Indigo%20-%20Device%20shown%20-%20Click%20Status.jpg)
 
