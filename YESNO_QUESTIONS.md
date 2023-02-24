@@ -1,7 +1,7 @@
 
 # How to setup Yes or No Questions
 
-## A 44 step guide with screenshots
+## a 44 step guide with screenshots
 
 # 1) Log into the Voice Monkey site - Click Manage Devices
 
