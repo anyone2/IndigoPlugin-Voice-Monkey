@@ -114,4 +114,10 @@
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/17-Voice%20Monkey%20Website.jpeg)
 
+---
+
+# 18) In Indigo, create a Voice Monkey device and then paste in the name
+# leave the Preset IDs blank, unless you are you have skipped a head and configured that
+![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/18-Indigo%20-%20Create%20a%20Device.jpeg)
+
 
