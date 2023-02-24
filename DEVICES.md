@@ -110,13 +110,16 @@
 
 ---
 
+# Under Manage Voice Monkey devices, the 'Loft Test Echo', is listed
+
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
+
+---
 # 18) In Indigo, create a Voice Monkey device, the name should be the same as configured in Voice Monkey, all the way back at step 3. 'Loft Tech Echo' in this example
 # leave the Preset IDs blank, unless you are you have skipped a head and configured that
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/18-Indigo%20-%20Create%20a%20Device.jpeg)
 
-# Under Manage Voice Monkey devices, the 'Loft Test Echo', is listed
-
-![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
+---
 
 # 19) Select the device and click 'Status'
 # You should hear the device and see output in the log
