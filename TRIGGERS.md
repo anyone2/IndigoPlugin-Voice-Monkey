@@ -93,3 +93,14 @@
 # 17) Click Save
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/17-Alexa%20app%20-%20Tap%20Save.jpeg)
+
+# 18) Create an Action Group in Indigo
+
+![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Trigger/18-Indigo%20-%20Action%20Group%20Creation.jpg)
+
+
+# 19) Once you execute the Action Group, the log will look similiar to this 
+
+	Feb 24, 2023 at 7:29:52 AM
+		Action Group                    Triggering - 'Routine Trigger One'
+		Voice Monkey                    Trigger a Routine : "Routine Trigger One"
