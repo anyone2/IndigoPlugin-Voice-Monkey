@@ -122,7 +122,7 @@
 
 ---
 
-# 19) Select the device and click 'Status'
+# 19) Select the device and click 'Send Status Request'
 # You should hear the device and see output in the log
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/19-Indigo%20-%20Device%20shown%20-%20Click%20Status.jpg)
