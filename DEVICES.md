@@ -124,6 +124,8 @@
 # 19) Select the device and click 'Status'
 # You should hear the device and see output in the log
 
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/19-Indigo%20-%20Device%20shown%20-%20Click%20Status.jpg)
+
 	Feb 24, 2023 at 4:54:43 AM
    		Voice Monkey                    sent "Loft Test Echo" status request
    		Voice Monkey                    Loft Test Echo : Text-to-Speech : Alexa - Default
