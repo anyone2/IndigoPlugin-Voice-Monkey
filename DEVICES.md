@@ -30,7 +30,7 @@
 
 ---
 
-# 5) Open the Alexa App, the new device is shown 
+# 5) Open the Alexa App
 # The device you just added should be shown
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/05-Alexa%20app%20-%20Loft%20Test%20Echo%20connected.jpeg)
