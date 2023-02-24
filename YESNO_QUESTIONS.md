@@ -66,10 +66,10 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/15-Indigo%20-%20Alexa%20Plugin%20-%20Managed%20Publications.jpg)
 
 # 16) Select the device you created in Indigo in step 13
-▪ tick the checkbox 'Publish device'
-▪ select 'Switch' as the Type
-▪ click Save   <--------
-▪ click close
+# tick the checkbox 'Publish device'
+# select 'Switch' as the Type
+# click Save   <--------
+# click close
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/16-Indigo%20-%20Alexa%20Plugin%20-%20Add%20Loft%20Test%20Echo.jpg)
 
