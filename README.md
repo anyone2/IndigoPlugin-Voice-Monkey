@@ -51,13 +51,13 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Creating a Device
 
-![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
+[alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
 ## Triggering a Alexa Routine
 
 ( Describe how to create a Voice Monkey trigger/routine )
-![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
+[alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 ## Text-To-Speech
 
