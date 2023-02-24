@@ -1,6 +1,6 @@
 # How to create your first Voice Monkey routine/trigger
 
-## A 17 step guide with screenshots
+## A 19 step guide with screenshots
 
 # 1) Log into the Voice Monkey site - Click Manage Devices
 
