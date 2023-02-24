@@ -30,6 +30,12 @@
 
 ---
 
+# If you check on the Voice Monkey site, the 'Loft Test Echo', is listed
+
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
+
+---
+
 # 5) Open the Alexa App, the new device is shown 
 ▪ The device you just added should be shown
 
