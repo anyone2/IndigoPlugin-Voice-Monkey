@@ -24,14 +24,14 @@
 ---
 
 # 4) You should see the underlined message on this screen
-▪ The instructions shown are what is displayed in the next few screenshots
+# The instructions shown are what is displayed in the next few screenshots
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/04-Voice%20Monkey%20Website.jpeg)
 
 ---
 
 # 5) Open the Alexa App, the new device is shown 
-▪ The device you just added should be shown
+# The device you just added should be shown
 
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/05-Alexa%20app%20-%20Loft%20Test%20Echo%20connected.jpeg)
 
