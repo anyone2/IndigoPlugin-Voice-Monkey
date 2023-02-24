@@ -38,7 +38,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/09-VM%20Playground%20-%20Name%20and%20Save%20-%20Loft%20Test%20Echo%20Answered%20No%20Preset.jpg)
 
-# 10) The Presets now show in the list. Make not of the Yes Preset, 15 and No preset 16
+# 10) The Presets now show in the list. Make note of the Yes Preset and No Presets, 15 and 16
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/10-VM%20Playground%20-%20Preset%20shown%20in%20list.jpg)
 
@@ -46,12 +46,12 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
 
-# 12) In Indigo, create a Voice Monkey device
+# 12) In Indigo, create a Voice Monkey device, paste in the name from step 11
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/12-Indigo%20-%20Create%20a%20Device.jpg)
 
 # 13) In Indigo, name the device. 
-▪ If you know what the name of the device it is synced with is in the Alexa App, give it the same name. If not, choice any name.
+▪ If you know what the name of the device is, in the Alexa app use that here. If not, give a any name
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/13-Indigo%20-%20Name%20the%20device.jpg)
 
@@ -60,7 +60,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/14-Indigo%20-%20Device%20shown%20-%20Click%20Status.jpg)
 
-# 15) In the Alexa Plugin, select Manage Alexa Device Publications...
+# 15) In the Alexa Plugin, select 'Manage Alexa Device Publications...''
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/15-Indigo%20-%20Alexa%20Plugin%20-%20Managed%20Publications.jpg)
 
@@ -87,7 +87,7 @@
 ![alt text](https://github.com/anyone2/another-test/blob/main/screenshots/Create%20a%20Device/06-Alexa%20app%20-%20select%20'More'.jpeg)
 
 
-# 20) Select Routines
+# 20) Tap Routines
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/23-Alexa%20app%20-%20select%20'Routines'.jpeg)
 
@@ -103,11 +103,11 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/26-Alexa%20app%20-%20now%20click%20-%20Smart%20Home.jpeg)
 
-# 24) One at a time, select the triggers you created earlier, start with 'Yes'
+# 24) One at a time, select the triggers you created earlier, start with 'Answered Yes'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/27-Alexa%20app%20-%20Choose%20Answered%20Yes.jpeg)
 
-# 25) A confirmation is shown, click Save
+# 25) A confirmation is shown, taps 'Save'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/28-Alexa%20app%20-%20Confirmation.jpeg)
 
@@ -115,7 +115,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/29-Alexa%20app%20-%20click%20Add%20action.jpeg)
 
-# 27) Tap Smart Home
+# 27) Tap 'Smart Home'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/30-Alexa%20app%20-%20tap%20Smart%20Home.jpeg)
 
@@ -127,7 +127,7 @@
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/32-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
-# 30) Ensure 'Power' is checked and 'On'
+# 30) Ensure both 'Power' and 'On' are checked
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/33-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20On.jpeg)
 
