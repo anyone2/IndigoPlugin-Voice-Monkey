@@ -104,14 +104,44 @@
 
 ---
 
-# 17) The device will give a verbally confirmation
+# 16a) Click 'Save' in the upper right
 
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16a-Alexa%20App%20-%20Click%20Save.jpeg)
+
+---
+
+# 16b) The Routine will now be displayed in the Routines List
+
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16b-Alexa%20App%20-%20Now%20Listed%20in%20Routines.jpeg)
+
+---
+
+# 16c) Go back to the Voice Monkey Site and click 'Sync device'
+
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16c-Voice%20Monkey%20Website%20-%20Click%20Sync%20Device.jpeg)
+
+---
+# 17) The device should say; "New device added, congratulations"
+# If you hear the message, click 'Yes'
+# If you do not, click 'No' and review these steps...you may have missed one
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17-Voice%20Monkey%20Website.jpeg)
 
 ---
 
-# Under Manage Voice Monkey devices, the 'Loft Test Echo', is listed
+# 17a) If you clicked 'Yes', well done! Click 'View devices'
 
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17a-Voice%20Monkey%20Website%20-%20Click%20View%20devices.jpeg)
+
+---
+
+# 17b) THe device you just added will be shown on the list
+
+<!-- ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17b-Voice%20Monkey%20Website%20-%20Device%20List.jpeg)
+
+---
+
+# Under Manage Voice Monkey devices, the 'Loft Test Echo', is listed
+ -->
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
 
 ---
