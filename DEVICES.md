@@ -1,6 +1,6 @@
 # How to create your first Voice Monkey device
 
-## A 19 step guide with screenshots
+## A 25 step guide with screenshots
 
 # 1) Log into the Voice Monkey site - Click Manage Devices
 
@@ -104,37 +104,37 @@
 
 ---
 
-# 16a) Click 'Save' in the upper right
+# 17) Click 'Save' in the upper right
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16a-Alexa%20App%20-%20Click%20Save.jpeg)
 
 ---
 
-# 16b) The Routine will now be displayed in the Routines List
+# 18) The Routine will now be displayed in the Routines List
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16b-Alexa%20App%20-%20Now%20Listed%20in%20Routines.jpeg)
 
 ---
 
-# 16c) Go back to the Voice Monkey Site and click 'Sync device'
+# 19) Go back to the Voice Monkey Site and click 'Sync device'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/16c-Voice%20Monkey%20Website%20-%20Click%20Sync%20Device.jpeg)
 
 ---
-# 17) The device should say; "New device added, congratulations"
-# If you hear the message, click 'Yes'
-# If you do not, click 'No' and review these steps...you may have missed one
+# 20) The device should say; "New device added, congratulations"
+# If you hear this message, click 'Yes'
+# If you do not hear this message, click 'No' and review these steps...you may have missed one
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17-Voice%20Monkey%20Website.jpeg)
 
 ---
 
-# 17a) If you clicked 'Yes', well done! Click 'View devices'
+# 21) If you clicked 'Yes', well done! Now click 'View devices'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17a-Voice%20Monkey%20Website%20-%20Click%20View%20devices.jpeg)
 
 ---
 
-# 17b) THe device you just added will be shown on the list
+# 22) The device you just added will be shown in the list
 
 <!-- ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/17b-Voice%20Monkey%20Website%20-%20Device%20List.jpeg)
 
@@ -145,14 +145,14 @@
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/11-VM%20-%20Manage%20Monkeys.jpg)
 
 ---
-# 18) In Indigo, create a Voice Monkey device
-# Use the name configured in Voice Monkey, 'Loft Tech Echo' in this example
+# 23) In Indigo, create a Voice Monkey device
+# Use the name configured in the previous step, 'Loft Tech Echo' in this example
 # leave the Preset IDs blank, unless you are you have skipped ahead and set that up already
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/18-Indigo%20-%20Create%20a%20Device.jpeg)
 
 ---
 
-# 19) Select the device and click 'Send Status Request'
+# 24) Select the device and click 'Send Status Request'
 # You should hear the device and see output in the log
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/19-Indigo%20-%20Device%20shown%20-%20Click%20Status.jpg)
@@ -161,3 +161,6 @@
    		Voice Monkey                    sent "Loft Test Echo" status request
    		Voice Monkey                    Loft Test Echo : Text-to-Speech : Alexa - Default
 	"This device, Loft Test Echo, is using the Voice Monkey API for Text-to-Speech. A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
+
+
+# 25) Congrats, you have a functioning device!!!
