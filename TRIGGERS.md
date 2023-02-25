@@ -23,7 +23,7 @@
 ---
 
 
-# 5) Open the Alexa App, the new routine/trigger is shown 
+# 5) Open the Alexa App,  
 # The Trigger/Routine you just added should be shown
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Trigger/04-Alexa%20app%20-%20Routine%20Trigger%20One%20connected.jpeg)
