@@ -57,7 +57,7 @@ Add the values of the Presets in the Preset ID No and Prest ID Yes fields
 
 
 ## 16) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
-## The Alexa device should say it discovered the Voice Monkey device
+## The Alexa device should say it discovered the Voice Monkey device, 'Office Echo'
 
 # In the Alexa App
 
