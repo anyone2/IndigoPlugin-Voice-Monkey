@@ -1,6 +1,6 @@
-## Creating Voice Monkey device
+## Creating a Voice Monkey Device
 
-## A 25 step guide without screenshots
+## A 28 step guide without screenshots
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
@@ -8,15 +8,16 @@
 
 ## 3) Click 'Add a device'
 
-## 4) Type in a device name
+## 4) Create a device name
 
 If the device you want to speak and play sounds is named 'Office Echo', 
-name the device 'Office Echo Monkey'
+use the name 'Office Echo Monkey'
 
-# Create a Routine in the Alexa App
+# In the Alexa App
+
+## The device you just created, is shown under 'Activity'
 
 ## 4) Open the Alexa App
-## The device you just created, is shown under 'Activity'
 
 ## 6) Tap 'More', at the bottom of the screen
 
@@ -85,5 +86,4 @@ Any name is acceptable but using the same name is preferrable at this step.
     "This device, Office Echo, is using the Voice Monkey API for Text-to-Speech. A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
 
 
-## 28) Done
-
+## You are done
