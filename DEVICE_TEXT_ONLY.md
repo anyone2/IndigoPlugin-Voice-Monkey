@@ -15,7 +15,7 @@ use the name 'Office Echo Monkey'
 
 # In the Alexa App
 
-## The device you just created, is shown under 'Activity'
+## The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 5) Tap 'More', at the bottom of the screen
 
@@ -27,7 +27,7 @@ use the name 'Office Echo Monkey'
 
 ## 10) Tap Smart Home
 
-## 11) Find and Tap on the name of the device you created at step 4
+## 11) Find and then Tap on the name of the device you created at step 4, 'Office Echo Monkey'
 
 ## 12) Tap, 'Add action'
 
