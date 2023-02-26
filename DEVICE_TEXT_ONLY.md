@@ -49,15 +49,16 @@ This the name of the Echo device that you want to have the ability to speak and 
 
 ## 19) Click 'Save' in the upper right
 
-The Routine will now be displayed in the Routines List
+The routine you created is now displayed in the Routines List
 
 # On the Voice Monkey Site
 
 ## 21) Click 'Sync device'
 
-## 22) The device should say; "New device added, congratulations"
-## If you hear this message, click 'Yes'
-## If you do not hear this message, click 'No' and review these steps...you may have missed one
+## 22) The device should say; "New device added, congratulations", 'Echo Device'
+
+If you hear this message, click 'Yes'
+If you do not hear this message, click 'No' and review these steps...you may have missed one
 
 ## 23) If you clicked 'Yes', now click 'View devices'
 
