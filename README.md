@@ -55,8 +55,8 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
-    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
-    
+    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=indigo-trigger-example
+
 ## Creating a Device
 
 
@@ -65,10 +65,7 @@ By following these steps, you will be able to generate a URL, confirm that it is
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
-## Text-To-Speech 
-## Play a Sound 
-## Play a Audio File 
-## Play a Background Audio File
+## Text-To-Speech, Play a Sound, Play a Audio File, Play a Background Audio File
 
 No additional setup is required to gain this ability after a Voice Monkey device is created as detailed in the guides above.
 
