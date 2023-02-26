@@ -77,6 +77,8 @@ Select:
 - Voice Monkey Controls -> Play a Audio File
 - Voice Monkey Controls -> Play a Background Audio File
 
+Then:
+
 - Select a previously configured Voice Monkey device
 - Then populate the screen which displays
 
