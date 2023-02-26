@@ -78,6 +78,9 @@ Then:
 - Select a previously configured Voice Monkey device
 - Populate the 'configure...' window
 
+Text to Speech:    
+    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=family-room-echo-monkey&announcement=Hello%20world
+
 
 ## Ask a Prompted Yes/No Question
 
