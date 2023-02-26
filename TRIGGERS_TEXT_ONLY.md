@@ -1,6 +1,6 @@
 # Creating a Voice Monkey Trigger
 
-## A 19 step guide with screenshots
+## A 19 step guide of how to execute a Alexa Routine which plays a fun fact
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
