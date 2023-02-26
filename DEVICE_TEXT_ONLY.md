@@ -1,6 +1,6 @@
-## How to create your first Voice Monkey device
+## Creating Voice Monkey device
 
-## A 25 step guide with screenshots
+## A 25 step guide without screenshots
 
 ##  1) Log into the Voice Monkey site - Click 'Manage Devices'
 
