@@ -92,7 +92,7 @@ It is required for this capability to work.
 
 ---
 
-URL examples:
+These URL examples can be used for testing from your browser, just insert your tokens.
 
 Text to Speech: 
 
