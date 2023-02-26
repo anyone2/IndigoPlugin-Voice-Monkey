@@ -51,7 +51,9 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Creating a Device
 
+
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICE_TEXT_ONLY.md)
+
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
