@@ -40,7 +40,7 @@ The trigger you just created, is shown under 'Activity', 'Routine Trigger One'
 
 ## 16) Tap, 'Choose Device'
 
-This can be any device listed but pick a nearby Echo device, that can hear, when it plays a 'fun fact'
+Select a nearby Echo device, that will play a 'fun fact'
 
 ## 17) Click Save in the upper right
 
