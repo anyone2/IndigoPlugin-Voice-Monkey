@@ -2,7 +2,7 @@
 
 ## A 19 step guide on how create and then trigger a Alexa Routine which provides a fun fact
 
-Playing a fun fact is meant to be a simple example. You can create a routine do anything you would like.
+Playing a fun fact is purposely a simple example. Please fill free to create any routine you would like to create at step 13.
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
