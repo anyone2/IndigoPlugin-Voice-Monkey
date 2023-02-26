@@ -8,9 +8,9 @@
 
 ## 3) Click 'Add a device'
 
-## 4) Create a device name
+## 4) Create a device name, then click 'Next'
 
-If the name of your Echo device that you want to speak and play sounds is 'Office Echo',
+If the name the Echo device that you want to speak and play sounds is 'Office Echo',
 use the name 'Office Echo Monkey'
 
 # In the Alexa App
@@ -43,7 +43,7 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 18) Select your Alexa device, 'Office Echo'
 
-This the name of your device that you want to speak and play sounds
+This the name of the Echo device that you want to have the ability to speak and play sounds
 
 ## 19) Click 'Save' in the upper right
 
