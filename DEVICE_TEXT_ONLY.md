@@ -62,7 +62,7 @@ If you did not hear this message after a about a minute, click 'No' and review t
 
 ## 23) If heard the message and clicked 'Yes', now click 'View devices'
 
-## 24) The device you just added is shown in the list, 'Office Echo Monkey'
+## 24) The device you added is shown in the list, 'Office Echo Monkey'
 
 # In Indigo
 
@@ -84,7 +84,8 @@ Any name is acceptable but using the same name is preferrable at this step.
     Feb 26, 2023 at 2:31:43 PM
         Voice Monkey                    sent "Office Echo" status request
         Voice Monkey                    Office Echo : Text-to-Speech : Alexa - Default
-    "This device, Office Echo, is using the Voice Monkey API for Text-to-Speech. A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
+    "This device, Office Echo, is using the Voice Monkey API for Text-to-Speech. 
+    A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
 
 
 ## You are done
