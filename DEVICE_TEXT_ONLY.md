@@ -64,14 +64,19 @@ name the device 'Office Echo Monkey'
 
 ## 25) Create a Voice Monkey device
 
-## 26) In the 'Voice Monkey device name' field, type name you created at step 4, click save
+## 26) In the 'Voice Monkey device name' field, type the name you created at step 4, click save
 
 i.e. 'Office Echo Monkey'
 
 The Preset ID fields can be left blank
 
-## 27) Select the device and click 'Send Status Request'
-## The device should begin speaking and your log will be updated
+## 27) Give the device the same name you chose at step 18, 'Office Echo'
+
+Any name is acceptable but using the same name is preferrable at this step.
+
+## 28) Select the device and click 'Send Status Request'
+
+## The device will begin speaking and your log will be updated
 
 
     Feb 26, 2023 at 2:31:43 PM
