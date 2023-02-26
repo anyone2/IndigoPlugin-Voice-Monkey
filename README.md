@@ -191,6 +191,7 @@ To test your installation and configuration, create an Action Group. Select Voic
 - Type in some command that can be executed and heard on a nearby device.
     - for example, -d 'Family Room Echo' -e speak:'Hello world!'
 
+IMPORTANT: This command should also work from the macOS command line.
 
 
 ## Advanced Scripting
