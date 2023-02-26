@@ -1,6 +1,6 @@
 ## Creating a Voice Monkey Device
 
-## A 26 step guide without screenshots
+## A 27 step guide without screenshots
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
@@ -29,7 +29,7 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 9) Tap Smart Home
 
-## 10) Find and then Tap on the name of the device you created at step 4, 'Office Echo Monkey'
+## 10) Find and then tap on the name of the device you created at step 4, 'Office Echo Monkey'
 
 ## 11) Tap, 'Add action'
 
@@ -37,9 +37,9 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 13) Select 'Your Skills'
 
-## 14) Find and Tap on 'Voice Monkey - Smart Home + Routine...'
+## 14) Find and tap on 'Voice Monkey - Smart Home + Routine...'
 
-## 15) You should see a confirmation, Click Next
+## 15) A confirmation screen displays, Click Next
 
 ## 16) Tap, 'Choose Device'
 
@@ -55,12 +55,12 @@ The routine you created is now displayed in the Routines List
 
 ## 19) Click 'Sync device'
 
-## 20) Your device from step 18, will say; "New device added, congratulations"
+## 20) Your device from step 17, will say; "New device added, congratulations"
 
 If you hear this message, click 'Yes'
 If you did not hear this message after a about a minute, click 'No' and review these steps...you may have missed one
 
-## 21) You were able to click 'Yes', now click 'View devices'
+## 21) If you were able to click 'Yes', now click 'View devices'
 
 ## 22) The device you added is shown in the list, 'Office Echo Monkey'
 
@@ -78,11 +78,13 @@ Model: Voice Monkey Device
 
 The Preset ID fields can be left blank
 
-## 25) Give the device the same name you chose at step 18, 'Office Echo'
+## 25) Give the device the same name you chose at step 17, 'Office Echo'
 
 Any name is acceptable but using the same name is preferrable at this step.
 
-## 26) Select the device and click 'Send Status Request'
+## 26) Close the window
+
+## 27) Select the device and then click 'Send Status Request'
 
 ## The device will begin speaking and your log will be updated
 
