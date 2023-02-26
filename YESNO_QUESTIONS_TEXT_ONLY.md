@@ -85,7 +85,7 @@ Start with 'Answered Yes' then 'Answered No'
 
 ## 28) Select 'Switches'
 
-## 29) Tap the device that you published with the Alexa Plugin at step 15
+## 29) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
 
 ## 30) Ensure both 'Power' and 'On' are checked, tap next
 
@@ -111,7 +111,7 @@ Now, create another Routine for 'Answered No'
 
 ## 39) Select 'Switches'
 
-## 40) Tap the device that was you published with the Alexa Plugin at step 15
+## 40) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
 
 ## 41) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
 
@@ -123,8 +123,8 @@ Now, create another Routine for 'Answered No'
 
 ## 44) Select the device from step 15
 
-
 ## 45) Click Yes/No Speech
 
+## Answer the question and listen to the response
 
 ## Success!!
