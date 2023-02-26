@@ -62,7 +62,7 @@ If you did not hear this message after a about a minute, click 'No' and review t
 
 ## 23) If heard the message and clicked 'Yes', now click 'View devices'
 
-## 24) The device you just added will be shown in the list, 'Office Echo Monkey'
+## 24) The device you just added is shown in the list, 'Office Echo Monkey'
 
 # In Indigo
 
