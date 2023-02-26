@@ -59,6 +59,8 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 ## Triggering a Alexa Routine
 
+[Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS_TEXT_ONLY.md)
+
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 ## Text-To-Speech
