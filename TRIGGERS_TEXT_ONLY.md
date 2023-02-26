@@ -1,4 +1,4 @@
-# How to create your first Voice Monkey routine/trigger
+# Creating a Voice Monkey Trigger
 
 ## A 19 step guide with screenshots
 
@@ -40,7 +40,7 @@ The trigger you just created, is shown under 'Activity', 'Routine Trigger One'
 
 ## 16) Choose a device for the fun fact to played on
 
-This can be any device listed
+This can be any device listed but pick a nearby Echo device
 
 ## 17) Click Save in the upper right
 
@@ -54,9 +54,11 @@ Action Groups -> New
 
 Type: Device Actions -> Voice Monkey Controls -> Trigger a Routine
 
-## 19) In the field, 'Preset Monkey ID', type the trigger name, 'Routine Trigger One', then click 'Save'
+## 19) In the field, 'Preset Monkey ID', type the trigger name, created at step 4, 'Routine Trigger One', then click 'Save'
 
-## 19) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the Echo device you selected at step 16
+This window, 'Configure Trigger a Routine' should indicate that Trigger can be found on the Voice Monkey website under Routine Triggers. It will be reworded in a future release.
+
+## 20) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the Echo device you selected at step 16
 
 	Feb 26, 2023 at 4:12:52 PM
 		Action Group                    Triggering - 'Routine Trigger One'
