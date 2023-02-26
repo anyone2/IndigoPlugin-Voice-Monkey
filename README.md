@@ -150,7 +150,7 @@ After configuring **alexa_remote_control**, which you can test using available c
 
 - Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, in the **'/Library/Application Support/Perceptive Automation/Script'** folder.
 
-Please the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
+Place the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
 
 The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
 
