@@ -3,7 +3,7 @@
 
 ## a 43 step guide without screenshots
 
-## 1) Log into the Voice Monkey site [https://voicemonkey.io/start](https://voicemonkey.io/start) 
+## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
 ## Click Manage Devices
 
