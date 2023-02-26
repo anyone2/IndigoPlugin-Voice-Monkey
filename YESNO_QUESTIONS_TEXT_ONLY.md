@@ -59,26 +59,27 @@ Add the values of the Presets in the Preset ID No and Prest ID Yes fields
 ## 16) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
 ## The Alexa device should say it discovered the Voice Monkey device
 
-## 18) Open the Alexa App to Create a New Routine
+# In the Alexa App
 
-## 19) Tap 'More', at the bottom of the screen
+# You need to create two Routines
 
-## 20) Tap Routines
+## 17) Tap 'More', at the bottom of the screen
 
-## 21) Tap the " + ", to create a New Routine
+## 18) Tap Routines
 
-## 22) On the New Routine screen, tap 'When this happens'
+## 19) Tap the " + ", to create a New Routine
 
-## 23) Tap Smart Home
+## 20) On the New Routine screen, tap 'When this happens'
 
+## 21) Tap Smart Home
 
-## 24) One at a time, select the triggers you created earlier
+## 22) One at a time, select the triggers you created earlier
 
 Start with 'Answered Yes' then 'Answered No'
 
-## 25) A confirmation is shown, taps 'Save'
+## 23) A confirmation is shown, taps 'Save'
 
-## 26) Tap, 'Add action'
+## 24) Tap, 'Add action'
 
 ## 27) Tap 'Smart Home'
 
