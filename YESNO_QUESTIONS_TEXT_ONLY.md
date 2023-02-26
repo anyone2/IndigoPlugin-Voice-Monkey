@@ -4,10 +4,10 @@
 ## a 44 step guide without screenshots
 
 ## 1) Log into the Voice Monkey site
+## Click Manage Devices
 
 [https://voicemonkey.io/start](https://voicemonkey.io/start) 
 
-## Click Manage Devices
 
 ## 2) Click Add triggers
 
