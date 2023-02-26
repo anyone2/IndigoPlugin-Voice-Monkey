@@ -2,7 +2,7 @@
 
 ## A 19 step guide on how create and then trigger a Alexa Routine which provides a fun fact
 
-Playing a fun fact is purposely a simple example. Please fill free to create any routine you would like to create at step 13.
+Playing a fun fact is purposely a simple example. Please fill free to create any routine you would like to create at step 13 - 15.
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
@@ -10,7 +10,7 @@ Playing a fun fact is purposely a simple example. Please fill free to create any
 
 ## 3) Click 'Add a trigger'
 
-## 4) Type in a Trigger/Routine name
+## 4) Type in a Trigger/Routine name, then click 'Next'
 
 If this is your first trigger, use the suggested name of 'Routine Trigger One', or create your own name
 
@@ -60,7 +60,9 @@ Type: Device Actions -> Voice Monkey Controls -> Trigger a Routine
 
 This window, 'Configure Trigger a Routine' should indicate that Trigger can be found on the Voice Monkey website under Routine Triggers. It will be reworded in a future release.
 
-## 20) Name the Action Group, then click Ok
+## 20) Name the Action Group, 'Triggering - Routine Trigger One', then click Ok
+
+Give it any name you want
 
 ## 21) Highlight the Action Group you just created, and click Execute All
 
