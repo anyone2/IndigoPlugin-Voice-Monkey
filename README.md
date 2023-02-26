@@ -80,8 +80,6 @@ By following these steps, you will be able to generate a URL, confirm that it is
 
 Get the basic features working before you attempt to set this up. 
 
-This process has multiple steps (44 to be exact), and it's essential to ensure that Text-To-Speech is functioning at a minimum. 
-
 **Ensure that the Indigo Alexa Plugin is enabled.**
 
 It is required for this capability to work.
