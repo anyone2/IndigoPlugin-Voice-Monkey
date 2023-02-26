@@ -56,6 +56,7 @@ Below is an example URL showing how a trigger named 'Routine Trigger One' can be
 
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
+
 ---
 
 ## Creating a Device
