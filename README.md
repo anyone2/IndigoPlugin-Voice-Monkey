@@ -78,7 +78,21 @@ Then:
 - Select a previously configured Voice Monkey device
 - Populate the 'configure...' window
 
+
+## Ask a Prompted Yes/No Question
+
+Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
+
+**Enable the Indigo Alexa Plugin**
+It is required for this capability to work.
+
+[Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
+
+[Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
+
 ---
+
+URL examples:
 
 Text to Speech: 
 
@@ -97,17 +111,8 @@ Play a Background Audio File:
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=loft-echo-monkey&announcement=I%20am%20not%20sure%20why%20you%20would%20want%20to%20talk%20over%20dogs%20barking.%20But%20you%20could%20if%20you%20really%20really%20wanted%20to%20but%20again%2C%20I%20am%20not%20really%20sure%20why%20you%20would%20do%20this.&bkg-audio=https%3A%2F%2Fdl.dropboxusercontent.com%2Fs%2Fdqk73c2cduxjg6k%2Fone_dog_barking_audacity.mp3%3Fdl%3D1
 
-## Ask a Prompted Yes/No Question
 
-Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
-
-**Enable the Indigo Alexa Plugin**
-It is required for this capability to work.
-
-[Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
-
-[Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
-
+---
 
 ## Basic Scripting
 
