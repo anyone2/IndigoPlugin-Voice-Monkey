@@ -51,7 +51,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
----
+
 URL example to execute from a web brower, simply replace the tokens with your own.
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=indigo-trigger-example
