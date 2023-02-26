@@ -9,11 +9,11 @@
 [https://voicemonkey.io/start](https://voicemonkey.io/start) 
 
 
-## 2) Click Add triggers
+## 2) Click Add a trigger
 
 ## 3) Create two Triggers, one at a time
 
-If the name of the device that you want to ask questions is 'Office Echo Monkey', create two triggers, one named 'Office Echo Answered Yes' and the other named 'Office Echo Answered No'
+If the name of the device that you to give the capability to ask questions is 'Office Echo Monkey', create two triggers, one named 'Office Echo Answered Yes' and the other named 'Office Echo Answered No'
 
 ## 4) The two Triggers now show in the list
 
