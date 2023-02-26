@@ -2,12 +2,16 @@
 
 ## A 25 step guide without screenshots
 
-##  1) Log into the Voice Monkey site - Click 'Manage Devices'
+## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
+## 2) Log into the Voice Monkey site - Click 'Manage Devices'
 
-##  2) Click 'Add a device'
+## 3) Click 'Add a device'
 
-##  3) Type in a device name
+## 4) Type in a device name
+
+If the device you want to speak and play sounds is named 'Office Echo', 
+name the device 'Office Echo Monkey'
 
 # Create a Routine in the Alexa App
 
