@@ -76,6 +76,7 @@ Model: Voice Monkey Device
 
 ## 24) In the 'Voice Monkey device name' field, type the device name, 'Office Echo Monkey', then click 'Save'
 
+This is the name you used at step 4 and reviewed at step 21 on the Voice Monkey Site
 The Preset ID fields can be left blank
 
 ## 25) Give the device the same name you chose at step 17, 'Office Echo'
