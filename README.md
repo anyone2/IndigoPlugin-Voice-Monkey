@@ -5,7 +5,7 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 
 ## Supported Features:
 
-- Trigger an Alexa Routine
+- Trigger a Alexa Routine
 - Perform Text-To-Speech
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
 - Play a URL audio file (Dogs barking, etc.)
