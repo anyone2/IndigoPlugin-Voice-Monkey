@@ -6,7 +6,7 @@
 ## 1) Log into the Voice Monkey site
 ## Click Manage Devices
 
-##[https://voicemonkey.io/start](https://voicemonkey.io/start) 
+## [https://voicemonkey.io/start](https://voicemonkey.io/start) 
 
 
 ## 2) Click Add a trigger
