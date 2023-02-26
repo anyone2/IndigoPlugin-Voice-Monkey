@@ -8,7 +8,7 @@
 
 ## 3) Click 'Add a device'
 
-## 4) Create a device name, then click 'Next'
+## 4) Enter a device name, then click 'Next'
 
 If the name the Echo device that you want to speak and play sounds is 'Office Echo',
 use the name 'Office Echo Monkey'
