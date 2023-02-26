@@ -76,7 +76,7 @@ Model: Voice Monkey Device
 
 ## 24) In the 'Voice Monkey device name' field, type the device name, 'Office Echo Monkey', then click 'Save'
 
-This is the device name you used at step 4 and reviewed at step 21 on the Voice Monkey Site
+This is the device name you used at step 4 and reviewed at step 22 on the Voice Monkey Site
 
 The Preset ID fields can be left blank
 
@@ -88,7 +88,7 @@ Any name is acceptable but using the same name is preferrable at this step.
 
 ## 27) Select the device and then click 'Send Status Request'
 
-## The device will begin speaking and your log will be updated
+## The device will begin speaking and your log will updated
 
 
     Feb 26, 2023 at 2:31:43 PM
