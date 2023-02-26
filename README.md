@@ -82,16 +82,15 @@ Select:
 
 Then:
 
-- Select a previously configured Voice Monkey device
-- Populate the 'configure...' window
+- Select a configured Voice Monkey device
+- Populate the 'configure...' window for your selection
 
 
 ## Ask a Prompted Yes/No Question
 
 Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 
-**Enable the Indigo Alexa Plugin**
-It is required for this capability to work.
+**Enable the Indigo Alexa Plugin**, it is required for this capability to work with the plugin.
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
 
