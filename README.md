@@ -80,12 +80,12 @@ Select:
 Then:
 
 - Select a previously configured Voice Monkey device
-- Then populate the screen which displays
+- Populate the 'configure...' window
 
 
 ## Ask a Prompted Yes/No Question
 
-Create a Voice Monkey Device, ensure that Text-To-Speech is functioning.
+Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 
 **Enable the Indigo Alexa Plugin**
 It is required for this capability to work.
