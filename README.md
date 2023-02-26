@@ -83,6 +83,8 @@ This process has multiple steps (44 to be exact), and it's essential to ensure t
 
 It is required for this capability to work.
 
+[Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
+
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
