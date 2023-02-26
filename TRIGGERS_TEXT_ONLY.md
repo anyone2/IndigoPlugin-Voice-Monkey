@@ -42,7 +42,7 @@ The trigger you just created, is shown under 'Activity', 'Routine Trigger One'
 
 ## 16) Tap, 'Choose Device'
 
-Select a nearby Echo device, that will play the 'fun fact'
+Select a nearby Echo device that will play the 'fun fact'
 
 ## 17) Click Save in the upper right
 
@@ -60,7 +60,11 @@ Type: Device Actions -> Voice Monkey Controls -> Trigger a Routine
 
 This window, 'Configure Trigger a Routine' should indicate that Trigger can be found on the Voice Monkey website under Routine Triggers. It will be reworded in a future release.
 
-## 20) Once you execute the Action Group, the log will look similiar to this and a Fun Fact should be played on the Echo device you selected at step 16
+## 20) Name the Action Group, then click Ok
+
+## 21) Highlight the Action Group you just created, and click Execute All
+
+The fun fact should play on the Echo selected at step 4.
 
 	Feb 26, 2023 at 4:12:52 PM
 		Action Group                    Triggering - 'Routine Trigger One'
