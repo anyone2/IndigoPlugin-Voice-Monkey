@@ -45,7 +45,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
         - under Plugins -> Voice Monkey -> Configure...
 
 
-## Triggering a Alexa Routine (a Free Feature)
+## Triggering a Alexa Routine (Unlimited Monkeys (virtual triggers))
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS_TEXT_ONLY.md)
 
