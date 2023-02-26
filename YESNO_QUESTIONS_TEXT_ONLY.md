@@ -23,14 +23,14 @@ If the name of the device that you to give the capability to ask questions is 'O
 
 ## 7) Give the Preset the same name and append 'Preset'
 
-So name it 'Office Echo Answered Yes Preset' 
+Name it 'Office Echo Answered Yes Preset' 
 
 ## 8) Select the 'Answered No' Trigger you created in step 3, then click Save as Preset
 
 
 ## 9) Give the Preset the same name but append 'Preset'
 
-So name it 'Office Echo Answered No Preset'
+Name it 'Office Echo Answered No Preset'
 
 ## 10) The Presets now show in the list. Make note of the Yes Preset and No Preset IDs.
 
@@ -88,7 +88,7 @@ Start with 'Answered Yes' then 'Answered No'
 
 ## 26) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 27) Ensure both 'Power' and 'On' are checked, tap next
+## 27) Ensure both 'Power' and **'ON'** are checked, tap next
 
 ## 28) Click 'Save'
 
@@ -114,7 +114,7 @@ Now, create another Routine for 'Answered No'
 
 ## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 39) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
+## 39) Ensure both 'Power' and **'OFF'** are checked, then tap 'Next'
 
 ## 40) tap 'Save'
 
@@ -126,6 +126,5 @@ Now, create another Routine for 'Answered No'
 
 ## 43) Click Yes/No Speech
 
-## Answer the question and listen to the response
+## Answer the question asked, then listen for the response.
 
-## Success!!
