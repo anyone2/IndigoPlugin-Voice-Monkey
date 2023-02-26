@@ -10,7 +10,7 @@
 
 ## 4) Type in a Trigger/Routine name
 
-If this is your first trigger, use the suggested name of 'Routine Trigger One', create your own name
+If this is your first trigger, use the suggested name of 'Routine Trigger One', or create your own name
 
 ## 5) The trigger will be shown in the list, 'Routine Trigger One'
 
