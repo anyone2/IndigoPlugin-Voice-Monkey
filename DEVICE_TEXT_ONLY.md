@@ -64,7 +64,9 @@ name the device 'Office Echo Monkey'
 
 ## 23) Create a Voice Monkey device
 
-## 24) In the 'Voice Monkey device name' field, type name you created at step 4, 'Office Echo Monkey'
+## 24) In the 'Voice Monkey device name' field, type name you created at step 4
+
+## 'Office Echo Monkey'
 
 ## The Preset IDs can be left blank
 
