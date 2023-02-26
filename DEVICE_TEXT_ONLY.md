@@ -88,7 +88,7 @@ Any name is acceptable but using the same name is preferrable at this step.
 
 ## 27) Select the device and then click 'Send Status Request'
 
-## The device will begin speaking and your log will updated
+## The device will begin speaking and your log will update
 
 
     Feb 26, 2023 at 2:31:43 PM
