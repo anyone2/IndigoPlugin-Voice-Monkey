@@ -42,7 +42,7 @@ The trigger you just created, is shown under 'Activity', 'Routine Trigger One'
 
 ## 16) Tap, 'Choose Device'
 
-Select a nearby Echo device, that will play a 'fun fact'
+Select a nearby Echo device, that will play the 'fun fact'
 
 ## 17) Click Save in the upper right
 
@@ -50,7 +50,7 @@ The routine you created is now displayed in the Routines List
 
 # In Indigo
 
-## 18) Create an Action Group in Indigo
+## 18) Create an Action Group
 
 Action Groups -> New
 

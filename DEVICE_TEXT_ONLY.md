@@ -29,7 +29,7 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 9) Tap Smart Home
 
-## 10) Find and then tap on the name of the device you created at step 4, 'Office Echo Monkey'
+## 10) Find and then tap on the name of the device you created at step 4, 'Office Echo Monkey', then Click Save
 
 ## 11) Tap, 'Add action'
 
