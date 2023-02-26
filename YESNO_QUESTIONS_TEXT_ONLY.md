@@ -1,5 +1,5 @@
 
-## How to setup Yes or No Questions
+## How to setup 'Ask a Yes or No Question'
 
 ## a 43 step guide without screenshots
 
