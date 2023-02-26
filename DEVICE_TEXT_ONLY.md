@@ -1,6 +1,6 @@
 ## Creating a Voice Monkey Device
 
-## A 28 step guide without screenshots
+## A 26 step guide without screenshots
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
@@ -27,46 +27,46 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 8) On the New Routine screen, tap 'When this happens'
 
-## 10) Tap Smart Home
+## 9) Tap Smart Home
 
-## 11) Find and then Tap on the name of the device you created at step 4, 'Office Echo Monkey'
+## 10) Find and then Tap on the name of the device you created at step 4, 'Office Echo Monkey'
 
-## 12) Tap, 'Add action'
+## 11) Tap, 'Add action'
 
-## 13) Scroll to the next page and tap 'Skills'
+## 12) Scroll to the next page and tap 'Skills'
 
-## 14) Select 'Your Skills'
+## 13) Select 'Your Skills'
 
-## 15) Find and Tap on 'Voice Monkey - Smart Home + Routine...'
+## 14) Find and Tap on 'Voice Monkey - Smart Home + Routine...'
 
-## 16) You should see a confirmation, Click Next
+## 15) You should see a confirmation, Click Next
 
-## 17) Tap, 'Choose Device'
+## 16) Tap, 'Choose Device'
 
-## 18) Select your Alexa device, 'Office Echo'
+## 17) Select your Alexa device, 'Office Echo'
 
 This is the name of the Echo device that you want to have the ability to speak and play sounds
 
-## 19) Click 'Save' in the upper right
+## 18) Click 'Save' in the upper right
 
 The routine you created is now displayed in the Routines List
 
 # On the Voice Monkey Site
 
-## 21) Click 'Sync device'
+## 19) Click 'Sync device'
 
-## 22) Your device from step 18, will say; "New device added, congratulations"
+## 20) Your device from step 18, will say; "New device added, congratulations"
 
 If you hear this message, click 'Yes'
 If you did not hear this message after a about a minute, click 'No' and review these steps...you may have missed one
 
-## 23) You were able to click 'Yes', now click 'View devices'
+## 21) You were able to click 'Yes', now click 'View devices'
 
-## 24) The device you added is shown in the list, 'Office Echo Monkey'
+## 22) The device you added is shown in the list, 'Office Echo Monkey'
 
 # In Indigo
 
-## 25) Create a Voice Monkey device
+## 23) Create a Voice Monkey device
 
 Devices -> New
 
@@ -74,15 +74,15 @@ Type: Voice Monkey
 
 Model: Voice Monkey Device
 
-## 26) In the 'Voice Monkey device name' field, type the device name, 'Office Echo Monkey', then click 'Save'
+## 24) In the 'Voice Monkey device name' field, type the device name, 'Office Echo Monkey', then click 'Save'
 
 The Preset ID fields can be left blank
 
-## 27) Give the device the same name you chose at step 18, 'Office Echo'
+## 25) Give the device the same name you chose at step 18, 'Office Echo'
 
 Any name is acceptable but using the same name is preferrable at this step.
 
-## 28) Select the device and click 'Send Status Request'
+## 26) Select the device and click 'Send Status Request'
 
 ## The device will begin speaking and your log will be updated
 
