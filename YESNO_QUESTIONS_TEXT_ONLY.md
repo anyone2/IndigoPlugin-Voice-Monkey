@@ -88,7 +88,7 @@ Start with 'Answered Yes' then 'Answered No'
 
 ## 26) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 27) Ensure both 'Power' and **'ON'** are checked, tap next
+## 27) Ensure both 'Power' and ( ## 'ON' ## )  are checked, tap next
 
 ## 28) Click 'Save'
 
