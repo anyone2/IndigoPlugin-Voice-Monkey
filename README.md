@@ -52,10 +52,10 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 
-Below is an example URL showing how a trigger named 'Indigo Trigger Example' can be activated from a web browser. The monkey name, which is the lowercase version of the trigger name on the Voice Monkey website, should have dashes inserted between the words.
+Below is an example URL showing how a trigger named 'Routine Trigger One' can be activated from a web browser. The monkey name, which is the lowercase version of the trigger name on the Voice Monkey website, should have dashes inserted between the words.
 
 
-    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=indigo-trigger-example
+    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 ---
 
 ## Creating a Device
