@@ -120,7 +120,7 @@ Now, create another Routine for 'Answered No'
 
 # In Indigo
 
-## 41) Select -> Plugin -> Voice Monkey -> Test Devices
+## 41) Select -> Plugin -> Voice Monkey -> Test Devices...
 
 ## 42) Select the device from step 14
 
