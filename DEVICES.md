@@ -43,6 +43,12 @@
 
 ---
 
+# 6a) Tap Routines
+
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/23-Alexa%20app%20-%20select%20'Routines'.jpeg)
+
+---
+
 # 7) Tap the " + ", to create a New Routine
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Device/07-Alexa%20app%20-%20click%20plus%20'%2B'%20sign.jpeg)
