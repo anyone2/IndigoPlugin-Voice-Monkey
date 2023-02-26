@@ -124,7 +124,7 @@ When you arrive on this screen, it defaults to 'ON', ensure you change it to 'OF
 
 ## 41) Select -> Plugin -> Voice Monkey -> Test Devices...
 
-## 42) Select the device from step 14
+## 42) Select the device from step 14, 'Office Echo'
 
 ## 43) Click Yes/No Speech
 
