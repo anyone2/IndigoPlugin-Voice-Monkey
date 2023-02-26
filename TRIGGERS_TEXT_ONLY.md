@@ -69,5 +69,5 @@ Give it any name you want
 The fun fact will play on the Echo selected at step 16.
 
 	Feb 26, 2023 at 4:12:52 PM
-		Action Group                    Triggering - 'Routine Trigger One'
+		Action Group                    Triggering - Routine Trigger One
 		Voice Monkey                    Trigger a Routine : "Routine Trigger One"
