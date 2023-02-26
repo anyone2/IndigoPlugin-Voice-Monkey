@@ -41,7 +41,7 @@ The values will be one, two, three, four, five, six, seven, eight, etc.
 
 ## 12) Edit the previously created Voice Monkey device
 
-Add the values of the Presets in the Prest ID Yes and Preset ID No fields
+Add the values of the presets in the Prest ID Yes and Preset ID No fields
 
 # In the Indigo Alexa Plugin
 
@@ -57,11 +57,12 @@ Add the values of the Presets in the Prest ID Yes and Preset ID No fields
 
 
 ## 15) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
-## The Alexa device should say it discovered the Voice Monkey device, 'Office Echo'
+
+The Alexa device should say it discovered the Voice Monkey device, 'Office Echo'
 
 # In the Alexa App
 
-# You need to create two Routines
+Create two Routines
 
 ## 16) Tap 'More', at the bottom of the screen
 
