@@ -36,43 +36,42 @@ name the device 'Office Echo Monkey'
 
 ## 14) Select 'Your Skills'
 
-## 14) Find and Tap on 'Voice Monkey - Smart Home + Routine...'
+## 15) Find and Tap on 'Voice Monkey - Smart Home + Routine...'
 
-## 14) You should see a confirmation, Click Next
+## 16) You should see a confirmation, Click Next
 
-## 15) Tap, 'Choose Device'
+## 17) Tap, 'Choose Device'
 
-## 16) Select your Alexa device, 'Office Echo'
+## 18) Select your Alexa device, 'Office Echo'
 
-## 17) Click 'Save' in the upper right
+## 19) Click 'Save' in the upper right
 
-## 18) The Routine will now be displayed in the Routines List
+## 20) The Routine will now be displayed in the Routines List
 
 # On the Voice Monkey Site
 
-## 19) Click 'Sync device'
+## 21) Click 'Sync device'
 
-## 20) The device should say; "New device added, congratulations"
+## 22) The device should say; "New device added, congratulations"
 ## If you hear this message, click 'Yes'
 ## If you do not hear this message, click 'No' and review these steps...you may have missed one
 
-## 21) If you clicked 'Yes', now click 'View devices'
+## 23) If you clicked 'Yes', now click 'View devices'
 
-## 22) The device you just added will be shown in the list
+## 24) The device you just added will be shown in the list
 
 # In Indigo
 
-## 23) Create a Voice Monkey device
+## 25) Create a Voice Monkey device
 
-## 24) In the 'Voice Monkey device name' field, type name you created at step 4
+## 26) In the 'Voice Monkey device name' field, type name you created at step 4, click save
 
-'Office Echo Monkey'
+i.e. 'Office Echo Monkey'
 
-The Preset IDs can be left blank
+The Preset ID fields can be left blank
 
-## 25) 
-## 24) Select the device and click 'Send Status Request'
-## You should hear the device and see output in the log
+## 27) Select the device and click 'Send Status Request'
+## The device should begin speaking and your log will be updated
 
 
     Feb 26, 2023 at 2:31:43 PM
@@ -81,6 +80,5 @@ The Preset IDs can be left blank
     "This device, Office Echo, is using the Voice Monkey API for Text-to-Speech. A Monkey ID is configured. The preset IDs for Yes and No responses are not configured."
 
 
-## 25) Congrats, you have a functioning device!!!
-
+## 28) Done
 
