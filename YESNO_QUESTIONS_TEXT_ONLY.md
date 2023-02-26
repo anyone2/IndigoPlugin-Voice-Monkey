@@ -19,13 +19,13 @@ If the name of the device that you want to give the ability to ask questions is 
 
 ## 6) Click on API -> Playground
 
-## 7) Select the 'Answered Yes' Trigger you created in step 3, then click Save as Preset
+## 7) Select the 'Answered Yes' Trigger you created in step 4, then click Save as Preset
 
 ## 8) Give the Preset the same name and append 'Preset'
 
 Name it 'Office Echo Answered Yes Preset' 
 
-## 9) Select the 'Answered No' Trigger you created in step 3, then click Save as Preset
+## 9) Select the 'Answered No' Trigger you created in step 4, then click Save as Preset
 
 
 ## 10) Give the Preset the same name but append 'Preset'
