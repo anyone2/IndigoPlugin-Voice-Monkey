@@ -60,13 +60,17 @@ The routine you created is now displayed in the Routines List
 If you hear this message, click 'Yes'
 If you did not hear this message after a about a minute, click 'No' and review these steps...you may have missed one
 
-## 23) If heard the message and clicked 'Yes', now click 'View devices'
+## 23) You were able to click 'Yes', now click 'View devices'
 
 ## 24) The device you added is shown in the list, 'Office Echo Monkey'
 
 # In Indigo
 
 ## 25) Create a Voice Monkey device
+
+Devices -> New
+Type: Voice Monkey
+Model: Voice Monkey Device
 
 ## 26) In the 'Voice Monkey device name' field, type the name, 'Office Echo Monkey'
 
