@@ -64,7 +64,7 @@ This window, 'Configure Trigger a Routine' should indicate that Trigger can be f
 
 ## 21) Highlight the Action Group you just created, and click Execute All
 
-The fun fact should play on the Echo selected at step 4.
+The fun fact will play on the Echo selected at step 16.
 
 	Feb 26, 2023 at 4:12:52 PM
 		Action Group                    Triggering - 'Routine Trigger One'
