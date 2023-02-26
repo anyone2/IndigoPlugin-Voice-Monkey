@@ -1,6 +1,6 @@
 ## Creating a Voice Monkey Device
 
-## A 27 step guide without screenshots
+## A 27 step guide
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 

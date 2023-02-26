@@ -1,7 +1,7 @@
 
 ## How to setup a device to support 'Ask a Yes or No Question'
 
-## a 43 step guide without screenshots
+## a 43 step guide
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
