@@ -45,7 +45,7 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 18) Select your Alexa device, 'Office Echo'
 
-This the name of the Echo device that you want to have the ability to speak and play sounds
+This is the name of the Echo device that you want to have the ability to speak and play sounds
 
 ## 19) Click 'Save' in the upper right
 
@@ -55,22 +55,20 @@ The routine you created is now displayed in the Routines List
 
 ## 21) Click 'Sync device'
 
-## 22) The device should say; "New device added, congratulations", 'Echo Device'
+## 22) Your device from step 18, will say; "New device added, congratulations"
 
 If you hear this message, click 'Yes'
-If you do not hear this message, click 'No' and review these steps...you may have missed one
+If you did not hear this message after a about a minute, click 'No' and review these steps...you may have missed one
 
-## 23) If you clicked 'Yes', now click 'View devices'
+## 23) If heard the message and clicked 'Yes', now click 'View devices'
 
-## 24) The device you just added will be shown in the list
+## 24) The device you just added will be shown in the list, 'Office Echo Monkey'
 
 # In Indigo
 
 ## 25) Create a Voice Monkey device
 
-## 26) In the 'Voice Monkey device name' field, type the name you created at step 4, click save
-
-i.e. 'Office Echo Monkey'
+## 26) In the 'Voice Monkey device name' field, type the name, 'Office Echo Monkey'
 
 The Preset ID fields can be left blank
 
