@@ -68,6 +68,8 @@ Below is an example URL showing how a trigger named 'Indigo Trigger Example' can
 
 After creating a device, no additional configuration is need to perform **Text-To-Speech**, **Play a Sound**, **Play a Audio File** or **Play a Background Audio File** 
 
+To perform a function:
+
 - Create an Action Group
 - Type: Device Actions
 
