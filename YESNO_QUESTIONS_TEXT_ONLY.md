@@ -76,7 +76,7 @@ Create two Routines
 
 ## 21) One at a time, select the triggers you created earlier
 
-Start with 'Answered Yes' then 'Answered No'
+Start with 'Answered Yes'
 
 ## 22) A confirmation is shown, tap 'Save'
 
