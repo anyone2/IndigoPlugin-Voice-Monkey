@@ -4,7 +4,7 @@
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
-## 2) Log into the Voice Monkey site - Click 'Manage Devices'
+## 2) Click 'Manage Devices'
 
 ## 3) Click 'Add a device'
 
