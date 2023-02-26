@@ -36,11 +36,11 @@ The trigger you just created, is shown under 'Activity', 'Routine Trigger One'
 
 ## 14) Tap 'Tell me a fun fact'
 
-## 15) A confirmation is shown, tap next
+## 15) A confirmation screen is shown, tap next
 
-## 16) Choose a device for the fun fact to played on
+## 16) Tap, 'Choose Device'
 
-This can be any device listed but pick a nearby Echo device
+This can be any device listed but pick a nearby Echo device, that can hear, when it plays a 'fun fact'
 
 ## 17) Click Save in the upper right
 
