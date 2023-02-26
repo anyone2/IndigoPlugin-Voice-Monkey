@@ -49,7 +49,7 @@ By following these steps, you will be able to generate a URL, confirm that it is
         - under Plugins -> Voice Monkey -> Configure...
 
 
-## Triggering a Alexa Routine
+## Triggering a Alexa Routine (a Free Feature)
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS_TEXT_ONLY.md)
 
@@ -64,24 +64,29 @@ By following these steps, you will be able to generate a URL, confirm that it is
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
-## Text-To-Speech
+## Text-To-Speech 
+## Play a Sound 
+## Play a Audio File 
+## Play a Background Audio File
+
+No additional setup is required to gain this ability after a Voice Monkey device is created as detailed in the guides above.
 
 - Create an Action Group
 - Type: Device Actions
 - Voice Monkey Controls -> Text to Speech
+- Voice Monkey Controls -> Play a Sound
+- Voice Monkey Controls -> Play a Audio File
+- Voice Monkey Controls -> Play a Background Audio File
+
 - Select a previously configured Voice Monkey device
-
-- In the text box, type what you want the device to attempt to speak
-
-    - Click the checkbox, to change the voice if you you want
+- Populate the screen which displays
 
 
-## Ask a Prompted Yes/No Question (a Pro feature)
+## Ask a Prompted Yes/No Question
 
-Get the basic features working before you attempt to set this up. 
+Create a Voice Monkey Device, ensure that Text-To-Speech is functioning.
 
-**Ensure that the Indigo Alexa Plugin is enabled.**
-
+**Enable the Indigo Alexa Plugin**
 It is required for this capability to work.
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
