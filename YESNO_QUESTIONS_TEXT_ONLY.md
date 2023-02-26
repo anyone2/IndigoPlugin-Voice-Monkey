@@ -116,6 +116,8 @@ Now, create another Routine for 'Answered No', in this guide 'Office Echo Answer
 
 ## 39) Ensure both 'Power' and ( ## 'OFF' ## ) are checked, then tap 'Next'
 
+When you arrive on this screen, default is 'ON', change it to 'OFF'
+
 ## 40) tap 'Save'
 
 # In Indigo
