@@ -13,6 +13,8 @@
 If the name the Echo device that you want to speak and play sounds is 'Office Echo',
 use the name 'Office Echo Monkey'
 
+Do not click on 'Sync Device' yet
+
 # In the Alexa App
 
 The device you just created, is shown under 'Activity', 'Office Echo Monkey'
@@ -47,7 +49,7 @@ This the name of the Echo device that you want to have the ability to speak and 
 
 ## 19) Click 'Save' in the upper right
 
-## 20) The Routine will now be displayed in the Routines List
+The Routine will now be displayed in the Routines List
 
 # On the Voice Monkey Site
 
