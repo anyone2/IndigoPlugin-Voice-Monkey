@@ -74,7 +74,7 @@ Type: Voice Monkey
 
 Model: Voice Monkey Device
 
-## 26) In the 'Voice Monkey device name' field, type the Voice Monkey device name, 'Office Echo Monkey'
+## 26) In the 'Voice Monkey device name' field, type the device name, 'Office Echo Monkey'
 
 The Preset ID fields can be left blank
 
