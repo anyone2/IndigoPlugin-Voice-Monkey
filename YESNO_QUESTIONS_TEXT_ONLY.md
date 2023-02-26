@@ -114,7 +114,7 @@ Now, create another Routine for 'Answered No'
 
 ## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 39) Ensure both 'Power' and *'OFF'* are checked, then tap 'Next'
+## 39) Ensure both 'Power' and ( ## 'OFF' ## ) are checked, then tap 'Next'
 
 ## 40) tap 'Save'
 
