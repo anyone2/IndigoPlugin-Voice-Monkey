@@ -76,7 +76,7 @@ Create two Routines
 
 ## 21) One at a time, select the triggers you created earlier
 
-Start with 'Answered Yes'
+Start with 'Answered Yes', in this guide 'Office Echo Answered Yes'
 
 ## 22) A confirmation is shown, tap 'Save'
 
@@ -94,7 +94,7 @@ Start with 'Answered Yes'
 
 ## 29) Tap the " + ", to create a New Routine
 
-Now, create another Routine for 'Answered No'
+Now, create another Routine for 'Answered No', in this guide 'Office Echo Answered No'
 
 ## 30) On the New Routine screen, tap 'When this happens'
 
