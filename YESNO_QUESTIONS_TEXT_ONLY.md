@@ -34,20 +34,22 @@ So name it 'Office Echo Answered No Preset'
 
 ## 10) The Presets now show in the list. Make note of the Yes Preset and No Preset IDs.
 
-The values will be one, two, three, etc.
+The values will be one, two, three, four, five, six, seven, eight, etc.
 
 
 # In Indigo
 
 ## 12) Edit the previously created Voice Monkey device
 
-Add the values of the Presets in the Preset ID No and Prest ID Yes fields
+Add the values of the Presets in the Prest ID Yes and Preset ID No fields
+
+# In the Indigo Alexa Plugin
 
 ## 13) Enable the Alexa Plugin, if it is not already enabled
 
-## 14) In the Alexa Plugin, select 'Manage Alexa Device Publications...''
+## 14) Select 'Manage Alexa Device Publications...''
 
-## Select the Voice Monkey device
+## Select the Voice Monkey device, i.e. 'Office Echo'
 ## tick the checkbox 'Publish device'
 ## select 'Switch' as the Type
 ## click Save   <--------
@@ -75,7 +77,7 @@ Add the values of the Presets in the Preset ID No and Prest ID Yes fields
 
 Start with 'Answered Yes' then 'Answered No'
 
-## 22) A confirmation is shown, taps 'Save'
+## 22) A confirmation is shown, tap 'Save'
 
 ## 23) Tap, 'Add action'
 
@@ -83,7 +85,7 @@ Start with 'Answered Yes' then 'Answered No'
 
 ## 25) Select 'Switches'
 
-## 26) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
+## 26) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
 ## 27) Ensure both 'Power' and 'On' are checked, tap next
 
@@ -109,7 +111,7 @@ Now, create another Routine for 'Answered No'
 
 ## 37) Select 'Switches'
 
-## 38) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
+## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
 ## 39) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
 
@@ -119,7 +121,7 @@ Now, create another Routine for 'Answered No'
 
 ## 41) Select -> Plugin -> Voice Monkey -> Test Devices
 
-## 42) Select the device from step 15
+## 42) Select the device from step 14
 
 ## 43) Click Yes/No Speech
 
