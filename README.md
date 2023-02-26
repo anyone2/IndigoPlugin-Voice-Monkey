@@ -61,7 +61,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
-After creating a device, no additional configuration is need to perform Text-To-Speech, Play a Sound, Play a Audio File or Play a Background Audio File
+After creating a device, no additional configuration is need to perform **Text-To-Speech**, **Play a Sound**, **Play a Audio File** or **Play a Background** Audio File
 
 - Create an Action Group
 - Type: Device Actions
