@@ -5,34 +5,34 @@
 
 ## 1) [Log into the Voice Monkey site](https://voicemonkey.io/start) 
 
-## Click Manage Devices
+## 2) Click Manage Devices
 
 
 
-## 2) Click Add a trigger
+## 3) Click Add a trigger
 
-## 3) Create two Triggers, one at a time
+## 4) Create two Triggers, one at a time
 
 If the name of the device that you to give the capability to ask questions is 'Office Echo Monkey', create two triggers, one named 'Office Echo Answered Yes' and the other named 'Office Echo Answered No'
 
-## 4) The two Triggers now show in the list
+## 5) The two Triggers now show in the list
 
-## 5) Click on API -> Playground
+## 6) Click on API -> Playground
 
-## 6) Select the 'Answered Yes' Trigger you created in step 3, then click Save as Preset
+## 7) Select the 'Answered Yes' Trigger you created in step 3, then click Save as Preset
 
-## 7) Give the Preset the same name and append 'Preset'
+## 8) Give the Preset the same name and append 'Preset'
 
 Name it 'Office Echo Answered Yes Preset' 
 
-## 8) Select the 'Answered No' Trigger you created in step 3, then click Save as Preset
+## 9) Select the 'Answered No' Trigger you created in step 3, then click Save as Preset
 
 
-## 9) Give the Preset the same name but append 'Preset'
+## 10) Give the Preset the same name but append 'Preset'
 
 Name it 'Office Echo Answered No Preset'
 
-## 10) The Presets now show in the list. Make note of the Yes Preset and No Preset IDs.
+## 11) The Presets now show in the list. Make note of the Yes Preset and No Preset IDs.
 
 The values will be one, two, three, four, five, six, seven, eight, etc.
 
