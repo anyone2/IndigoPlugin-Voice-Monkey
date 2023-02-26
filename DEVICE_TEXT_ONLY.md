@@ -15,7 +15,7 @@ use the name 'Office Echo Monkey'
 
 # In the Alexa App
 
-## The device you just created, is shown under 'Activity', 'Office Echo Monkey'
+The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 5) Tap 'More', at the bottom of the screen
 
