@@ -116,7 +116,7 @@ Now, create another Routine for 'Answered No', in this guide 'Office Echo Answer
 
 ## 39) Ensure both 'Power' and (  'OFF'  ) are checked, then tap 'Next'
 
-When you arrive on this screen, it defaultss to 'ON', ensure you change it to 'OFF'
+When you arrive on this screen, it defaults to 'ON', ensure you change it to 'OFF'
 
 ## 40) tap 'Save'
 
