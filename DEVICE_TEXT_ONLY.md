@@ -17,15 +17,13 @@ use the name 'Office Echo Monkey'
 
 ## The device you just created, is shown under 'Activity'
 
-## You need to create a Routine
+## 5) Tap 'More', at the bottom of the screen
 
-## 6) Tap 'More', at the bottom of the screen
+## 6) Tap Routines
 
-## 7) Tap Routines
+## 7) Tap the " + ", to create a New Routine
 
-## 8) Tap the " + ", to create a New Routine
-
-## 9) On the New Routine screen, tap 'When this happens'
+## 8) On the New Routine screen, tap 'When this happens'
 
 ## 10) Tap Smart Home
 
