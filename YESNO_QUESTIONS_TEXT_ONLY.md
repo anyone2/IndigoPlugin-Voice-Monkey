@@ -39,91 +39,89 @@ The values will be one, two, three, etc.
 
 # In Indigo
 
-## 12) Edit the Voice Monkey device you had previously created
+## 12) Edit the previously created Voice Monkey device
 
 Add the values of the Presets in the Preset ID No and Prest ID Yes fields
 
 ## 13) Enable the Alexa Plugin, if it is not already enabled
 
-
 ## 14) In the Alexa Plugin, select 'Manage Alexa Device Publications...''
 
-
-## 15) Select the Voice Monkey device
+## Select the Voice Monkey device
 ## tick the checkbox 'Publish device'
 ## select 'Switch' as the Type
 ## click Save   <--------
 ## click close
 
 
-## 16) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
+## 15) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
 ## The Alexa device should say it discovered the Voice Monkey device, 'Office Echo'
 
 # In the Alexa App
 
 # You need to create two Routines
 
-## 17) Tap 'More', at the bottom of the screen
+## 16) Tap 'More', at the bottom of the screen
 
-## 18) Tap Routines
+## 17) Tap Routines
 
-## 19) Tap the " + ", to create a New Routine
+## 18) Tap the " + ", to create a New Routine
 
-## 20) On the New Routine screen, tap 'When this happens'
+## 19) On the New Routine screen, tap 'When this happens'
 
-## 21) Tap Smart Home
+## 20) Tap Smart Home
 
-## 22) One at a time, select the triggers you created earlier
+## 21) One at a time, select the triggers you created earlier
 
 Start with 'Answered Yes' then 'Answered No'
 
-## 23) A confirmation is shown, taps 'Save'
+## 22) A confirmation is shown, taps 'Save'
 
-## 24) Tap, 'Add action'
+## 23) Tap, 'Add action'
 
-## 27) Tap 'Smart Home'
+## 24) Tap 'Smart Home'
 
-## 28) Select 'Switches'
+## 25) Select 'Switches'
 
-## 29) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
+## 26) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
 
-## 30) Ensure both 'Power' and 'On' are checked, tap next
+## 27) Ensure both 'Power' and 'On' are checked, tap next
 
-## 31) Click 'Save'
+## 28) Click 'Save'
 
-## 32) Tap the " + ", to create a New Routine
+## 29) Tap the " + ", to create a New Routine
 
 Now, create another Routine for 'Answered No'
 
-## 33) On the New Routine screen, tap 'When this happens'
+## 30) On the New Routine screen, tap 'When this happens'
 
-## 34) Tap Smart Home
+## 31) Tap Smart Home
 
-## 35) Select 'Switches'
+## 32) Select 'Switches'
 
-## 36) Tap the 'Answer No' device this time
+## 33) Tap the 'Answer No' device this time
 
-## 37) You should see a confirmation, click 'Save'
+## 34) You should see a confirmation, click 'Save'
 
-## 37) Tap, 'Add action'
+## 35) Tap, 'Add action'
 
-## 38) Tap Smart Home
+## 36) Tap Smart Home
 
-## 39) Select 'Switches'
+## 37) Select 'Switches'
 
-## 40) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
+## 38) Tap the device that you published with the Alexa Plugin at step 15, 'Office Echo'
 
-## 41) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
+## 39) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
 
-## 42) tap 'Save'
+## 40) tap 'Save'
 
 # In Indigo
 
-## 43) Select -> Plugin -> Voice Monkey -> Test Devices
+## 41) Select -> Plugin -> Voice Monkey -> Test Devices
 
-## 44) Select the device from step 15
+## 42) Select the device from step 15
 
-## 45) Click Yes/No Speech
+## 43) Click Yes/No Speech
 
 ## Answer the question and listen to the response
 
