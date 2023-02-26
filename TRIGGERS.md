@@ -36,7 +36,7 @@
 
 # 6a) Tap Routines
 
-![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/23-Alexa%20app%20-%20select%20'Routines'.jpeg
+![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/23-Alexa%20app%20-%20select%20'Routines'.jpeg)
 
 <!-- ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Create%20a%20Trigger/06-Alexa%20app%20-%20select%20'Routines'.jpeg) -->
 ---
