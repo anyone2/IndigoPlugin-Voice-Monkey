@@ -65,20 +65,20 @@ By following these steps, you will be able to generate a URL, confirm that it is
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
 
-## Text-To-Speech, Play a Sound, 
-## Play a Audio File, Play a Background Audio File
-
-No additional setup is required to gain this ability after a Voice Monkey device is created as detailed in the guides above.
+After creating a device, no additional configuration is need to perform Text-To-Speech, Play a Sound, Play a Audio File or Play a Background Audio File
 
 - Create an Action Group
 - Type: Device Actions
+
+Select: 
+
 - Voice Monkey Controls -> Text to Speech
 - Voice Monkey Controls -> Play a Sound
 - Voice Monkey Controls -> Play a Audio File
 - Voice Monkey Controls -> Play a Background Audio File
 
 - Select a previously configured Voice Monkey device
-- Populate the screen which displays
+- Then populate the screen which displays
 
 
 ## Ask a Prompted Yes/No Question
