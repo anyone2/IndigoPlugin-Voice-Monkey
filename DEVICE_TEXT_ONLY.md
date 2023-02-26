@@ -17,7 +17,7 @@ use the name 'Office Echo Monkey'
 
 ## The device you just created, is shown under 'Activity'
 
-## 4) Open the Alexa App
+## You need to create a Routine
 
 ## 6) Tap 'More', at the bottom of the screen
 
