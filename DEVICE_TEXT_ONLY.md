@@ -69,7 +69,9 @@ If you did not hear this message after a about a minute, click 'No' and review t
 ## 25) Create a Voice Monkey device
 
 Devices -> New
+
 Type: Voice Monkey
+
 Model: Voice Monkey Device
 
 ## 26) In the 'Voice Monkey device name' field, type the name, 'Office Echo Monkey'
