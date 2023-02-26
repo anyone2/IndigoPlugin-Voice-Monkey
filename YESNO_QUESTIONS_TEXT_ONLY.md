@@ -56,7 +56,7 @@ Add the values of the presets in the Prest ID Yes and Preset ID No fields
 ## click close
 
 
-## 15) Verbally say to an Alexa Device, 'Alexa, Discover Devices'
+## 15) Verbally say to an Alexa Device; 'Alexa, Discover Devices'
 
 The Alexa device should say it discovered the Voice Monkey device, 'Office Echo'
 
@@ -114,7 +114,7 @@ Now, create another Routine for 'Answered No'
 
 ## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 39) Ensure both 'Power' and **'OFF'** are checked, then tap 'Next'
+## 39) Ensure both 'Power' and *'OFF'* are checked, then tap 'Next'
 
 ## 40) tap 'Save'
 
