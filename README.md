@@ -35,10 +35,6 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 
 1. Enable the Voice Monkey Skill
 2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
-3. Create your first Monkey and routine
-4. Trigger your Monkey
-
-By following these steps, you will be able to generate a URL, confirm that it is working, and use it to trigger your monkeys from either your web browser or from services such as IFTTT or this plugin.
 
 
 ## Indigo Plugin Installlation Instructions
