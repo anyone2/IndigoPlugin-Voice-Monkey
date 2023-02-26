@@ -3,16 +3,17 @@
 
 ## a 44 step guide without screenshots
 
-## 1) Log into the Voice Monkey site - Click Manage Devices
+## 1) Log into the Voice Monkey site
 
-![alt text](https://voicemonkey.io)
+[https://voicemonkey.io/start](https://voicemonkey.io/start) 
 
+## Click Manage Devices
 
 ## 2) Click Add triggers
 
 ## 3) Create two Triggers, one at a time
 
-If the device name is 'Office Echo Monkey', create two triggers, one named 'Office Echo Answered Yes' and the other named 'Office Echo Answered No'
+If the name of the device that you want to speak is 'Office Echo Monkey', create two triggers, one named 'Office Echo Answered Yes' and the other named 'Office Echo Answered No'
 
 ## 4) The two Triggers now show in the list
 
