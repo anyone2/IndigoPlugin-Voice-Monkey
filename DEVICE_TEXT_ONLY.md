@@ -2,13 +2,13 @@
 
 ## A 25 step guide with screenshots
 
-# 1) Log into the Voice Monkey site - Click 'Manage Devices'
+##  1) Log into the Voice Monkey site - Click 'Manage Devices'
 
 
-# 2) Click 'Add a device'
+##  2) Click 'Add a device'
 
 
-# 3) Type in a device name
+##  3) Type in a device name
 
 ## Create a Routine in the Alexa App
 
