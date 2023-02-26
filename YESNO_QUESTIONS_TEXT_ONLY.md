@@ -39,7 +39,7 @@ The values will be one, two, three, four, five, six, seven, eight, etc.
 
 # In Indigo
 
-## 12) Edit the previously created Voice Monkey device
+## 12) Edit your previously created Voice Monkey device
 
 Add the values of the presets in the Prest ID Yes and Preset ID No fields
 
