@@ -43,7 +43,7 @@ The device you just created, is shown under 'Activity', 'Office Echo Monkey'
 
 ## 16) Tap, 'Choose Device'
 
-## 17) Select your Alexa device, 'Office Echo'
+## 17) Select your Echo device, 'Office Echo'
 
 This is the name of the Echo device that you want to have the ability to speak and play sounds
 
@@ -60,7 +60,7 @@ The routine you created is now displayed in the Routines List
 If you hear this message, click 'Yes'
 If you did not hear this message after a about a minute, click 'No' and review these steps...you may have missed one
 
-## 21) If you were able to click 'Yes', now click 'View devices'
+## 21) If you were able to click 'Yes', on the 'Congratulations' screen, click 'View devices'
 
 ## 22) The device you added is shown in the list, 'Office Echo Monkey'
 
