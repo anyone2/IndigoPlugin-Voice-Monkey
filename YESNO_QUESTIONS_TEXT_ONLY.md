@@ -88,7 +88,7 @@ Start with 'Answered Yes', in this guide 'Office Echo Answered Yes'
 
 ## 26) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 27) Ensure both 'Power' and ( ## 'ON' ## )  are checked, tap next
+## 27) Ensure both 'Power' and (  'ON'   )  are checked, tap next
 
 ## 28) Click 'Save'
 
@@ -114,9 +114,9 @@ Now, create another Routine for 'Answered No', in this guide 'Office Echo Answer
 
 ## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
 
-## 39) Ensure both 'Power' and ( ## 'OFF' ## ) are checked, then tap 'Next'
+## 39) Ensure both 'Power' and (  'OFF'  ) are checked, then tap 'Next'
 
-When you arrive on this screen, default is 'ON', change it to 'OFF'
+When you arrive on this screen, it defaultss to 'ON', ensure you change it to 'OFF'
 
 ## 40) tap 'Save'
 
