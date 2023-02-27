@@ -115,8 +115,9 @@ On the 'Configure 'Ask a Yes/No Question' window'
 
 - Enter a Yes or No Question in the provided field.
 
-**NOTE: To skip the execution of any Action Group, leave the selection 
-at '- select an item -', or manually select '- select an action group -**
+**NOTE: To skip the execution of any Action Group, leave the selection
+at '- select an item -'**, 
+**or manually select '- select an action group -'**
 
 - In the fields, **'If the Response is Yes'** and **'If the Response is No'**, select an action group to execute, based on the response given to the question
 
