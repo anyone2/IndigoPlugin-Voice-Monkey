@@ -198,7 +198,7 @@ To test your installation and configuration, create an Action Group. Select Voic
 
 IMPORTANT: This command should also work from the macOS command line.
 
-## Use
+## Usage
 
 To perform a function:
 
