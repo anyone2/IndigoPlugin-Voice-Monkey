@@ -5,14 +5,14 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 
 ## Supported Features:
 
-- Trigger a Alexa Routine
+- Trigger an Alexa Routine
 - Perform Text-To-Speech
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
 - Play a URL audio file (Dogs barking, etc.)
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
 - Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the Indigo Alexa Plugin is required)
 
-All of these are "Pro" features of the Amazon Alexa Skill except for the ability to Trigger a Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
+All of these are "Pro" features of the Amazon Alexa Skill except for the ability to Trigger an Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
 
 Visit [https://voicemonkey.io/start](https://voicemonkey.io/start) to learn more.
 
