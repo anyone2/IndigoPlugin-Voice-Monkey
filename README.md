@@ -121,15 +121,18 @@ On the 'Configure 'Ask a Yes/No Question' window'
 
 - Click the checkbox, 'Repeat', to see options on repeating questions.
 ---
+
 - Click the checkbox, **'When Response is Yes, stop repeating'**, to stop the question from repeating once a 'Yes' response is given.
 
 - Click the checkbox, **'When Response is No, stop repeating'**, to stop the question from repeating once a 'No' response is given.
+
 ---
-- Clicking the checkbox, **"When 'No Response', Execute Action Group?"** has different functions depending on if the question repeats or not. 
 
-- If the question **does not** repeat, the selected Action Group will be executed if a 'Yes' or 'No' response is not provided when the question is asked.
+- The function of the checkbox **'When 'No Response', Execute Action Group?'** varies depending on whether the question is repeating or not.
 
-- If the question is **repeating**, this Action Group will execute only if the 'Yes' or 'No' response that stops the repeat cycle, **if checked**, is not provided as a response to the question when it has repeated.
+- If the question **does not** repeat, this Action Group will be executed if a 'Yes' or 'No' response is not provided when the question is asked.
+
+- If the question is **repeating**, this Action Group will only be executed if the response that stops the repeat cycle (either 'Yes' or 'No') has not been provided when the question is repeated.
 
 
 
