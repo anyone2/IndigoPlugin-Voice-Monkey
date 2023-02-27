@@ -57,6 +57,7 @@ Below is an example URL showing how a trigger named 'Routine Trigger One' can be
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
+
 ---
 
 ## Creating a Device
@@ -194,10 +195,29 @@ To test your installation and configuration, create an Action Group. Select Voic
 
 IMPORTANT: This command should also work from the macOS command line.
 
+## Use
+
+To perform a function:
+
+- Create an Action Group
+- Type: Voice Monkey Actions
+
+Select: 
+
+- Voice Monkey Controls -> Type in a Request
+- Voice Monkey Controls -> Run an Alexa Routine by Name
+- Voice Monkey Controls -> Pass command line arguments
+- Voice Monkey Controls -> pass -d device |arg|
+
+Then:
+
+- Select a configured Voice Monkey device (if required)
+- Populate the 'configure...' window for your selection
+
 
 ## Advanced Scripting
 
-If everything is working up to this point, you will be able to leverage the Plugin to call alexa_remote_control functions
+If everything is working up to this point, you will be able to, from Indigo, to call alexa_remote_control functions
 
     import alexa_remote_control
 
