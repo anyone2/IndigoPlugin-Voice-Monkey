@@ -129,7 +129,7 @@ On the 'Configure 'Ask a Yes/No Question' window'
 
 - If the question **does not** repeat, the selected Action Group will be executed if a 'Yes' or 'No' response is not provided when the question is asked.
 
-- If the question is **repeating**, this Action Group will execute only if the 'Yes' or 'No' response that stops the repeat cycle, **if checked** is not provided as a response to the question when it is repeated.
+- If the question is **repeating**, this Action Group will execute only if the 'Yes' or 'No' response that stops the repeat cycle, **if checked**, is not provided as a response to the question when it has repeated.
 
 
 
