@@ -200,14 +200,13 @@ IMPORTANT: This command should also work from the macOS command line.
 To perform a function:
 
 - Create an Action Group
-- Type: Voice Monkey Actions
 
 Select: 
 
-- Voice Monkey Controls -> Type in a Request
-- Voice Monkey Controls -> Run an Alexa Routine by Name
-- Voice Monkey Controls -> Pass command line arguments
-- Voice Monkey Controls -> pass -d device |arg|
+- Type: Voice Monkey Controls -> Type in a Request
+- Type: Voice Monkey Controls -> Run an Alexa Routine by Name
+- Type: Voice Monkey Controls -> Pass command line arguments
+- Type: Voice Monkey Controls -> pass -d device |arg|
 
 Then:
 
@@ -215,9 +214,9 @@ Then:
 - Populate the 'configure...' window for your selection
 
 
-## Advanced Scripting
+## Additional Scripting
 
-If everything is working up to this point, you will be able to, from Indigo, to call alexa_remote_control functions
+If everything is working up to this point, you will be able to, from Indigo, to call **alexa_remote_control** functions
 
     import alexa_remote_control
 
