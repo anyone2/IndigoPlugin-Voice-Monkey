@@ -110,7 +110,7 @@ Select:
 
 Then:
 
-- Populate the 'Configure Ask a Yes/No Question'
+- Populate the 'Configure Ask a Yes/No Question' window
 
 
 ## Basic Scripting
