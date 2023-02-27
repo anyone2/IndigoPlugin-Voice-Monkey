@@ -101,42 +101,6 @@ Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 
 To perform this function:
 
-- Create an Action Group
-- Type: Device Actions 
-
-Then:
-
-- Voice Monkey Controls -> Ask a Yes/No Questons
-
-
-On the 'Configure 'Ask a Yes/No Question' window'
-
-- Select a Device
-
-- Enter a Yes or No Question in the provided field.
-
-**NOTE: To skip the execution of any Action Group, leave the selection
-at '- select an item -'**, 
-**or manually select '- select an action group -'**
-
-- In the fields, **'If the Response is Yes'** and **'If the Response is No'**, select an action group to execute, based on the response given to the question
-
-- Click the checkbox, 'Repeat', to see options on repeating questions.
----
-
-- Click the checkbox, **'When Response is Yes, stop repeating'**, to stop the question from repeating once a 'Yes' response is given.
-
-- Click the checkbox, **'When Response is No, stop repeating'**, to stop the question from repeating once a 'No' response is given.
-
----
-
-- The function of the checkbox **'When 'No Response', Execute Action Group?'** varies depending on whether the question is repeating or not.
-
-- If the question **does not** repeat, this Action Group will be executed if a 'Yes' or 'No' response is not provided when the question is asked.
-
-- If the question is **repeating**, this Action Group will only be executed if the response that stops the repeat cycle (either 'Yes' or 'No') has not been provided when the question is repeated.
-
-
 
 ## Basic Scripting
 
