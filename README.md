@@ -99,6 +99,37 @@ Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
+To perform a function:
+
+- Create an Action Group
+- Type: Voice Monkey Controls -> Ask a Yes/No Questons
+
+On the 'Configure 'Ask a Yes/No Question' window'
+
+- Select a Device
+
+- Enter a Yes or No Question in the provided field.
+
+*NOTE: To skip the execution of any Action Group, leave the selection at '- select an item -', or manually select '- select an action group -*
+
+- In the fields, 'If the Response is Yes' and 'If the Response is No', select an action group to execute, based on the response given to the question
+
+- Click the checkbox, 'Repeat', to see options on repeating questions.
+
+- Click the checkbox, 'When Response is Yes, stop repeating', to stop the question from repeating once a 'Yes' response is given.
+
+- Click the checkbox, 'When Response is No, stop repeating', to stop the question from repeating once a 'No' response is given.
+
+- Clicking the checkbox, "When 'No Response', Execute Action Group?" has different functions depending on if the question repeats or not. 
+
+- If the question does not repeat, the selected Action Group will be executed if a 'Yes' or 'No' response is not provided when the question is asked.
+
+- If the question is repeating, the selected action group will execute after repeating for the last time and then, only if, ??
+
+- If a repeating question is configured, this Action Group will execute only if the 'Yes' or 'No' response that stops the repeat cycle, is not received after the question is repeated a final time.
+
+
+
 ## Basic Scripting
 
 Place the file named 'voice_monkey.py' in your Python3-Includes folder.
