@@ -99,6 +99,18 @@ Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
+To perform a function:
+
+- Create an Action Group
+- Type: Device Actions
+
+Select:
+
+- Voice Monkey Controls -> Ask a Yes/No Question
+
+Then:
+
+- Populate the 'Configure Ask a Yes/No Question'
 
 
 ## Basic Scripting
