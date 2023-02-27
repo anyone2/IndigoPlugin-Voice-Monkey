@@ -218,7 +218,7 @@ Then:
 
 ## Additional Scripting
 
-If everything is working up to this point, you will be able to, from Indigo, to call **alexa_remote_control** functions
+If everything is working up to this point, you will be able to, from Indigo, call **alexa_remote_control** functions
 
     import alexa_remote_control
 
