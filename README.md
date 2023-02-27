@@ -99,7 +99,7 @@ Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS.md)
 
 
-To perform a function:
+To perform this function:
 
 - Create an Action Group
 - Type: Device Actions
