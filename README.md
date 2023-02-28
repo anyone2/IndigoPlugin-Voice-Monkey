@@ -108,7 +108,7 @@ To use this capability, follow these steps:
 To perform this function:
 
 - Create an Action Group
-- **Type:** Device Actions
+- Type: Device Actions
 
 Select:
 
@@ -222,10 +222,10 @@ To perform a function:
 
 Select: 
 
-- *Type:* Voice Monkey Controls -> Type in a Request
-- *Type:* Voice Monkey Controls -> Run an Alexa Routine by Name
-- *Type:* Voice Monkey Controls -> Pass command line arguments
-- *Type:* Voice Monkey Controls -> pass -d device |arg|
+- Type: Voice Monkey Controls -> Type in a Request
+- Type: Voice Monkey Controls -> Run an Alexa Routine by Name
+- Type: Voice Monkey Controls -> Pass command line arguments
+- Type: Voice Monkey Controls -> pass -d device |arg|
 
 Then:
 
