@@ -24,9 +24,9 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 ## Additional capabilities worth mentioning:
 
 - Speech Synthesis Markup Language (SSML) is supported in Text-To-Speech
-- Multiple voices are available to choose from for Text-To-Speech **only**
+- Multiple voices are available to choose from for Text-To-Speech (the language for the Yes or No prompts, unfornuately can not be changed)
 - Indigo variable substitution is supported in the Text-To-Speech and file name fields
-    - i.e. %%v:12345%% for variables and %%d:12345:someStateId%% for device 
+    - i.e. %%v:12345%% for variables and %%d:12345:someStateId%% for devices 
 
 
 ## Voice Monkey Skill Setup Instructions
@@ -45,18 +45,16 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
         - under Plugins -> Voice Monkey -> Configure...
 
 
-## Triggering a Alexa Routine (Unlimited virtual triggers)
+## Triggering a Alexa Routine (virtual triggers)
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS_TEXT_ONLY.md)
 
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 
-Below is an example URL showing how a trigger named 'Routine Trigger One' can be activated from a web browser. The monkey name, which is the lowercase version of the trigger name on the Voice Monkey website, should have dashes inserted between the words.
+Below is an example URL demonstrating how to activate a trigger named 'Routine Trigger One' from a web browser. The monkey name, which is shown at the end of the URL as 'routine-trigger-one', should be the lowercase version of the trigger name found on the Voice Monkey website. Ensure that there are dashes inserted between the words in the monkey name.
 
-
-    https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
-
+Example URL: https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
 ---
 
