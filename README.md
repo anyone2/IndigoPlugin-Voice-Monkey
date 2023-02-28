@@ -52,7 +52,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/TRIGGERS.md)
 
 
-If you are using the above guide to configure a virtual trigger, below is an example URL demonstrating how to activate a trigger named 'Routine Trigger One' from a web browser. The monkey name, which is shown at the end of the URL as 'routine-trigger-one', should be the lowercase version of the trigger name found on the Voice Monkey website. Ensure that there are dashes inserted between the words in the monkey name. This URL can be used to test your virtual trigger and ensure that it is functioning as expected.
+If you are using the above guides to only configure a virtual trigger, below is an example URL demonstrating how to activate a trigger named 'Routine Trigger One' from a web browser. The monkey name, which is shown at the end of the URL as 'routine-trigger-one', should be the lowercase version of the trigger name found on the Voice Monkey website. Ensure that there are dashes inserted between the words in the monkey name. This URL can be used to test your virtual trigger and ensure that it is functioning as expected.
 
 Example URL:
 
