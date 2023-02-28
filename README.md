@@ -54,7 +54,8 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 
 Below is an example URL demonstrating how to activate a trigger named 'Routine Trigger One' from a web browser. The monkey name, which is shown at the end of the URL as 'routine-trigger-one', should be the lowercase version of the trigger name found on the Voice Monkey website. Ensure that there are dashes inserted between the words in the monkey name.
 
-Example URL: 
+Example URL:
+ 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
 ---
