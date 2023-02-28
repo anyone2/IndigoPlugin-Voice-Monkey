@@ -41,7 +41,7 @@ The values will be one, two, three, four, five, six, seven, eight, etc.
 
 ## 12) Edit your previously created Voice Monkey device, i.e. 'Office Echo'
 
-Add the values of the presets in the Prest ID Yes and Preset ID No fields
+Add the values of the presets in the 'Prest ID Yes' and 'Preset ID No' fields
 
 # In the Indigo [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa)
 
