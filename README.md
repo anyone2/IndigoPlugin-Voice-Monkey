@@ -25,7 +25,7 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 ## Additional capabilities worth mentioning:
 
 - Speech Synthesis Markup Language (SSML) is supported in Text-To-Speech
-- Indigo variable substitution is supported in the Text-To-Speech and file name fields
+- Indigo variable substitution is supported in the Text-To-Speech fields and Audi File URL field
     - i.e. %%v:12345%% for variables and %%d:12345:someStateId%% for devices 
 - Multiple voices are available to choose from for Text-To-Speech 
     - the voice for the 'Yes or No prompt', unfortunately can not be changed
