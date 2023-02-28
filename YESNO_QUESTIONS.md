@@ -96,10 +96,10 @@
 ---
 
 # 16) Select the device you created in Indigo in step 13
-# tick the checkbox 'Publish device'
-# select 'Switch' as the Type
-# click Save   <--------
-# click close
+# - tick the checkbox 'Publish device'
+# - select ( 'Switch' ) as the Type
+# - click Save   <--------
+# - click close
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/16-Indigo%20-%20Alexa%20Plugin%20-%20Add%20Loft%20Test%20Echo.jpg)
 
@@ -183,7 +183,7 @@
 
 ---
 
-# 30) Ensure both 'Power' and 'On' are checked, tap next
+# 30) Ensure both 'Power' and ( 'On' ) are checked, tap next
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/33-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20On.jpeg)
 
@@ -256,7 +256,7 @@
 
 ---
 
-# 41) Ensure both 'Power' and 'Off' are checked, then tap 'Next'
+# 41) Ensure both 'Power' and ( 'Off' ) are checked, then tap 'Next'
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/44-Alexa%20app%20-%20Configure%20the%20device%20to%20Power%20Off.jpeg)
 
