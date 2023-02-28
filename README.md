@@ -1,6 +1,6 @@
 # IndigoPlugin-Voice-Monkey
 
-This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automation platform and allows you to control your Alexa devices from within Indigo. It works with the Voice Monkey Amazon Alexa skill which has the ability to perform text-to-speech, play preset sounds, and execute Alexa routines on an Alexa Smart device such as an Echo or Echo Dot.
+This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automation platform and allows you to control your Alexa devices from within Indigo. It works with the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) which has the ability to perform text-to-speech, play preset sounds, and execute Alexa routines on an Alexa Smart device such as an Echo or Echo Dot.
 
 
 ## Supported Features:
@@ -10,7 +10,7 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
 - Play a URL audio file (Dogs barking, etc.)
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
-- Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) is required)
+- Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) and [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) are required)
 
 All of these are "Pro" features of the Amazon Alexa Skill except for the ability to Trigger an Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
 
@@ -90,9 +90,17 @@ Then:
 
 ## Ask a Prompted Yes/No Question
 
-Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
+[Create a Device](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICE_TEXT_ONLY.md)
 
-**Enable the Indigo [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa)**, it is required for this capability to work with the plugin.
+To use this capability, follow these steps:
+
+1. Install the [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) from the Amazon Alexa Skills Store.
+2. Enable the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) in Indigo.
+3. Verify that the plugin is properly configured and functioning.
+4. Follow one of the Step-by-Step Guides shown below.
+
+Please note that both the Indigo Alexa Plugin and the Indigo Smart Home Skill are required for this capability to work.
+
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
 
