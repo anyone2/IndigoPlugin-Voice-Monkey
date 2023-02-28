@@ -108,7 +108,7 @@ To use this capability, follow these steps:
 To perform this function:
 
 - Create an Action Group
-- *Type:* Device Actions
+- **Type:** Device Actions
 
 Select:
 
