@@ -43,9 +43,9 @@ The values will be one, two, three, four, five, six, seven, eight, etc.
 
 Add the values of the presets in the Prest ID Yes and Preset ID No fields
 
-# In the Indigo Alexa Plugin
+# In the Indigo [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa)
 
-## 13) Enable the Alexa Plugin, if it is not already enabled
+## 13) Enable the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa), if it is not already enabled
 
 ## 14) Select 'Manage Alexa Device Publications...''
 
@@ -86,7 +86,7 @@ Start with 'Answered Yes', in this guide 'Office Echo Answered Yes'
 
 ## 25) Select 'Switches'
 
-## 26) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
+## 26) Tap the device that you published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 14, 'Office Echo'
 
 ## 27) Ensure both 'Power' and (  'ON'   )  are checked, tap next
 
@@ -112,7 +112,7 @@ Now, create another Routine for 'Answered No', in this guide 'Office Echo Answer
 
 ## 37) Select 'Switches'
 
-## 38) Tap the device that you published with the Alexa Plugin at step 14, 'Office Echo'
+## 38) Tap the device that you published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 14, 'Office Echo'
 
 ## 39) Ensure both 'Power' and (  'OFF'  ) are checked, then tap 'Next'
 

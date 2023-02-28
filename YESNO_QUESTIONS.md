@@ -89,7 +89,7 @@
 
 ---
 
-# 15) In the Alexa Plugin, select 'Manage Alexa Device Publications...''
+# 15) In the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa), select 'Manage Alexa Device Publications...''
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/15-Indigo%20-%20Alexa%20Plugin%20-%20Managed%20Publications.jpg)
 
@@ -177,7 +177,7 @@
 
 ---
 
-# 29) Tap the device that you published with the Alexa Plugin at step 16
+# 29) Tap the device that you published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 16
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/32-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
@@ -250,7 +250,7 @@
 
 ---
 
-# 40) Tap the device that was you published with the Alexa Plugin at step 16 & 29
+# 40) Tap the device that was you published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 16 & 29
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/43-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 

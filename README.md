@@ -10,7 +10,7 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 - Play a preset sound (Chime, Doorbell, Air Horn, etc.)
 - Play a URL audio file (Dogs barking, etc.)
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
-- Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the Indigo Alexa Plugin is required)
+- Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) is required)
 
 All of these are "Pro" features of the Amazon Alexa Skill except for the ability to Trigger an Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
 
@@ -92,7 +92,7 @@ Then:
 
 Create a Voice Monkey Device and ensure that Text-To-Speech is functioning.
 
-**Enable the Indigo Alexa Plugin**, it is required for this capability to work with the plugin.
+**Enable the Indigo [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa)**, it is required for this capability to work with the plugin.
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
 
