@@ -12,7 +12,7 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
 - Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) and [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) are required)
 
-All of these are "Pro" features of the Amazon Alexa Skill except for the ability to Trigger an Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
+All of these are "Pro" features of the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) except for the ability to Trigger an Alexa Routine. The "Pro" features, by the way, are $6 USD per year. 
 
 Visit [https://voicemonkey.io/start](https://voicemonkey.io/start) to learn more.
 
