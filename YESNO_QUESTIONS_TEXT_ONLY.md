@@ -49,11 +49,11 @@ Add the values of the presets in the 'Prest ID Yes' and 'Preset ID No' fields
 
 ## 14) Select 'Manage Alexa Device Publications...''
 
-## Select the Voice Monkey device, i.e. 'Office Echo'
-## tick the checkbox 'Publish device'
-## select 'Switch' as the Type
-## click Save   <--------
-## click close
+- ## Select the Voice Monkey device, i.e. 'Office Echo'
+- ## tick the checkbox 'Publish device'
+- ## select 'Switch' as the Type
+- ## click Save   <--------
+- ## click close
 
 
 ## 15) Verbally say to an Alexa Device; 'Alexa, Discover Devices'
