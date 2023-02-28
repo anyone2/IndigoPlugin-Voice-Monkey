@@ -39,7 +39,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
 
 
-## Indigo Plugin Installlation Instructions
+## Indigo Voice Monkey Plugin Installlation Instructions
 
 1. Download the plugin
 2. After the plugin starts
@@ -157,13 +157,9 @@ The full path is **'/Library/Application Support/Perceptive Automation/Python3-i
 
 ## "One more thing..."
 
-The plugin also works with **alexa_remote_control**, which gives it even greater control over Amazon Alexa devices.
+The Voice Monkey plugin is also compatible with 'alexa_remote_control', which provides additional control over Amazon Alexa devices.
 
-For more information and installation instructions see the following page: 
-
-[https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control)
-
-The configuration and installation of **alexa_remote_control** is **optional**, the Voice Monkey skill discussed above, will work without installing it.
+For more information and installation instructions for 'alexa_remote_control', please visit the following page: [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control). Note that the installation and configuration of 'alexa_remote_control' is optional - the Voice Monkey capabilities mentioned earlier will work without it.
 
 
 ## Supported Features: (with alexa_remote_control installed)
@@ -183,7 +179,7 @@ The configuration and installation of **alexa_remote_control** is **optional**, 
 
 ## Additional Indigo Plugin Installlation Instructions
 
-After configuring **alexa_remote_control**, which you can test using available commands from the MacOS command line, only a few more steps are needed.
+After configuring **alexa_remote_control**, which you can test using available commands from the macOS command line, only a few more steps are needed.
 
 - Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, in the **'/Library/Application Support/Perceptive Automation/Script'** folder.
 
