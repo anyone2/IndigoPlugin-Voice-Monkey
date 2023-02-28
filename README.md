@@ -100,7 +100,7 @@ To use this capability, follow these steps:
 4. Verify that the plugin is properly configured and functioning.
 5. Follow one of the Step-by-Step Guides shown below.
 
-*Installation of the Indigo Alexa Plugin and the Indigo Smart Home Skill are required for this capability to work.*
+**Installation of the Indigo Alexa Plugin and the Indigo Smart Home Skill are required for this capability to work.**
 
 [Step-by-Step Guide](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/YESNO_QUESTIONS_TEXT_ONLY.md)
 
