@@ -94,7 +94,7 @@ Then:
 
 To use this capability, follow these steps:
 
-1. [Create a Device](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICE_TEXT_ONLY.md) [Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
+1. [Create a Device](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICE_TEXT_ONLY.md) or [same guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 2. Install the [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) from the Amazon Alexa Skills Store.
 3. Enable the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) in Indigo.
 4. Verify that the plugin is properly configured and functioning.
