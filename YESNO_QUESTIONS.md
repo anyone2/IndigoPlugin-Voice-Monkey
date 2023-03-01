@@ -250,7 +250,7 @@
 
 ---
 
-# 40) Tap the device that was published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 16 & 29
+# 40) Tap the device that was published with the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) at step 16 and was used at step 29
 
 ![alt text](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Screenshots/Yes%20or%20No%20Questions/43-Alexa%20app%20-%20Select%20Loft%20Test%20Echo.jpeg)
 
