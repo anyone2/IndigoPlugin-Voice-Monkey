@@ -159,7 +159,7 @@ The Voice Monkey plugin is also compatible with 'alexa_remote_control', which pr
 
 For more information and installation instructions for 'alexa_remote_control', please visit the following page: [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control). Note that the installation and configuration of 'alexa_remote_control' is optional - the Voice Monkey capabilities mentioned earlier will work without it.
 
-Please use version v0.20d of the project file, available here](https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh). This version is compatible with macOS and contains all the features of the project. Note that version v0.20e, released on 2022-06-29, is not compatible with macOS and does not offer any additional features compared to v0.20d.
+Please use version v0.20d of the project file, [available here](https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh). This version is compatible with macOS and contains all the features of the project. Note that version v0.20e, released on 2022-06-29, is not compatible with macOS and does not offer any additional features compared to v0.20d.
 
 ## Supported Features: (with alexa_remote_control installed)
 
