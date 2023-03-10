@@ -202,14 +202,22 @@
             <Field id="simpleSeparator61" type="separator"></Field>
 
             <Field id="instruct1" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>To skip the execution of any Action Group, leave the selection at</Label>
+                <Label>If you do not want to execute a specific Action Group, you have two options:</Label>
             </Field>
 
             <Field id="instruct2" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>If you want to skip the execution of any Action Group, either leave the selection at '- select an item -', or manually select '- select an action group -'.</Label>
+                <Label>1. Leave the selection at the default value of '- select an item -'</Label>
             </Field>
 
-            <Field id="instruct3" type="separator"></Field>
+            <Field id="instruct3" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>2. Manually select the option '- select an action group -'</Label>
+            </Field>
+
+            <Field id="instruct4" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
+                <Label>Both options will prevent an Action Group from being executed.</Label>
+            </Field>
+
+            <Field id="instruct5" type="separator"></Field>
 
             <Field id="executeWhenYes" type="menu">
                 <Label>If the Response is Yes:</Label>

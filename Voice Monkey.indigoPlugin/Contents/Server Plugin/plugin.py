@@ -502,8 +502,11 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
+        # replace "&" with " &amp; "
+        ssml_text = re.sub("&", "&amp;", substituted_text) 
+
         # encoding query string
-        encoded_text = quote(substituted_text)
+        encoded_text = quote(ssml_text)
 
         # build payload
         payload = {
@@ -688,8 +691,11 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
+        # replace "&" with " &amp; "
+        ssml_text = re.sub("&", "&amp;", substituted_text)
+
         # encoding query string
-        encoded_text = quote(substituted_text)
+        encoded_text = quote(ssml_text)
 
         # get values for Voice Monkey 
         monkey_id = dev.pluginProps["monkey_id"]
@@ -815,10 +821,13 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
+        # replace "&" with " &amp; "
+        ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
                    "bkg-audio": quote_plus(substituted_url),
-                   "text_to_speech": quote(substituted_text)
+                   "text_to_speech": quote(ssml_text)
                    }
 
         # build API GET request
@@ -1012,8 +1021,11 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
+        # replace "&" with " &amp; "
+        ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+
         # call alexa_speaks
-        alexa_remote_control.alexa_speak(substituted_text, 
+        alexa_remote_control.alexa_speak(ssml_text, 
                                          device_name, 
                                          selected_voice)
 
@@ -1256,8 +1268,11 @@ class Plugin(indigo.PluginBase):
             # perform Indigo variable substitution 
             substituted_text = indigo.activePlugin.substitute(modified_text)
 
+            # replace "&" with " &amp; "
+            ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+
             # encoding query string
-            encoded_text = quote(substituted_text)
+            encoded_text = quote(ssml_text)
 
             ####
 
@@ -1270,7 +1285,7 @@ class Plugin(indigo.PluginBase):
                                     'YesNoQuestion',
                                     {
                                      'whichDevice': device_id,
-                                     "QuestionToAsk": substituted_text,
+                                     "QuestionToAsk": ssml_text,
                                      'executeWhenYes': execute_when_yes,
                                      'executeWhenNo': execute_when_no,
                                      })
