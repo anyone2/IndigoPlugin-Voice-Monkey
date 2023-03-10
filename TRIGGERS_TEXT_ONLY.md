@@ -58,7 +58,7 @@ Type: Device Actions -> Voice Monkey Controls -> Trigger a Routine
 
 ## 19) In the field, 'Preset Monkey ID', type the trigger name, created at step 4, 'Routine Trigger One', then click 'Save'
 
-This window, **'Configure Trigger a Routine'** should indicate that Trigger can be found on the Voice Monkey website under Routine Triggers. It will be reworded in a future release.
+The name is shown under "Routine Triggers" on the Voice Monkey website -> Dashboard -> Manage Devices
 
 ## 20) Name the Action Group, 'Triggering - Routine Trigger One', then click Ok
 
