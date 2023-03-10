@@ -68,7 +68,7 @@
         </State>
 
 
-        <State id="useDeviceName">
+        <State id="altDeviceName">
             <ValueType>String</ValueType>
             <TriggerLabel>Empty</TriggerLabel>
             <ControlPageLabel>Empty</ControlPageLabel>

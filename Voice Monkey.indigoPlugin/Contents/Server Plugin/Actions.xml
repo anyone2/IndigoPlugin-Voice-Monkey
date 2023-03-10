@@ -8,7 +8,7 @@
 
         <ConfigUI>
 
-            <SupportURL>https://voicemonkey.io/docs</SupportURL>
+            <SupportURL>https://app.voicemonkey.io/dashboard</SupportURL>
 
             <Field id="label70" type="label" fontColor="black" fontSize="large" alignWithControl="false">
                 <Label>Trigger a Routine</Label>
@@ -16,20 +16,20 @@
             <Field id="simpleSeparator70" type="separator"></Field>
 
             <Field id="monkey_id" type="textfield">
-                <Label>Preset Monkey ID:</Label>
+                <Label>Routine/Trigger Name</Label>
             </Field>
 
             <Field id="label71" type="label" fontColor="black" fontSize="medium" alignWithControl="true">
-                <Label>Enter the Preset Monkey ID that will trigger the routine.</Label>
+                <Label>Enter the name of the Trigger that will run the Alexa routine.</Label>
             </Field>
             <Field id="simpleSeparator71" type="separator"></Field>
             <Field id="label72" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
-                <Label>This value can be found under API -> Presets and is in the Monkey ID column</Label>
+                <Label>The name is shown under "Routine Triggers" on the Voice Monkey website -> Dashboard -> Manage Devices</Label>
             </Field>
 
             <Field id="simpleSeparator72" type="separator"></Field>
             <Field id="label73" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="false">
-                <Label>Click "?" to access https://voicemonkey.io/docs for documenation about creating, configuring and using triggers aka monkeys</Label>
+                <Label>Click the "?" button to access the Voice Monkey dashboard, where you can create and configure devices and triggers.</Label>
             </Field>
 
         </ConfigUI>
@@ -290,11 +290,11 @@
 
 
             <Field id="label56" type="label" fontColor="blue" fontSize="small" alignWithControl="true" visibleBindingId="RepeatQuestion" visibleBindingValue="false">
-                <Label>The selected Action Group will be executed if a response of 'Yes' or 'No' is not received after the question is asked.</Label>
+                <Label>Select an Action Group to be executed if a response of 'Yes' or 'No' is not received after the question is asked.</Label>
             </Field>
 
             <Field id="label57" type="label" fontColor="blue" fontSize="small" alignWithControl="true" visibleBindingId="RepeatQuestion" visibleBindingValue="true">
-                <Label>When a question repeats, this Action Group will execute if the 'Yes' or 'No' response that stops the repeat cycle, is not received after the question is repeated a final time.</Label>
+                <Label>When a question repeats, select an Action Group to be executed if the 'Yes' or 'No' response that stops the repeat cycle, is not received after the question is repeated a final time.</Label>
             </Field>
 
             <Field id="instructSeparator1" type="separator"></Field>

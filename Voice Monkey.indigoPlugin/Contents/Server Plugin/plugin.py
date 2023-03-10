@@ -86,7 +86,7 @@ class Plugin(indigo.PluginBase):
                     'value': props["no_preset_id"]},                
                 {'key': 'useAltName', 
                     'value': props["useAltName"]},                
-                {'key': 'useDeviceName', 
+                {'key': 'altDeviceName', 
                     'value': props["AltDeviceName"]},
                 {'key': 'LastQuestionEpoch', 'value': ''}, 
             ])
@@ -440,7 +440,7 @@ class Plugin(indigo.PluginBase):
 
             use_alt_name = dev.states.get("useAltName", False)
             if use_alt_name:
-                use_device_name = dev.states.get("useDeviceName", "")
+                use_device_name = dev.states.get("altDeviceName", "")
                 text_parts.append('An alternative device name is in use, '
                                   'that name is {}. '.format(use_device_name))
 
@@ -497,21 +497,19 @@ class Plugin(indigo.PluginBase):
         selected_voice = plugin_action.props.get("selectedVoice", False)
 
         # remove newline characters via RegEx
-        modified_text = re.sub("\n", "", text_to_speech)
-
+        modified_text = text_to_speech.replace("\n", "")
+        
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with " &amp; "
-        ssml_text = re.sub("&", "&amp;", substituted_text) 
-
-        # encoding query string
-        encoded_text = quote(ssml_text)
+        # replace "&" with "&amp;" and "<" with "" for SSML compatibility 
+        ssml_text = substituted_text.replace("&", "&amp;")
+        ssml_text = ssml_text.replace("<", "")
 
         # build payload
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
-                   "say_this": encoded_text
+                   "say_this": quote(ssml_text)
                    }
 
         # build url
@@ -648,9 +646,6 @@ class Plugin(indigo.PluginBase):
          
             self.logger.debug(f'new key created: {key}')
 
-            # update key
-            key = new_epoch_string
-
             # create a secondary dictionary item
             tracking = indigo.Dict()
             tracking['timestamp'] = new_run_time
@@ -685,17 +680,15 @@ class Plugin(indigo.PluginBase):
         # What to ask
         question_to_ask = plugin_action.props["QuestionToAsk"]
 
-        # remove newline characters via RegEx
-        modified_text = re.sub("\n", "", question_to_ask)
+        # remove newline characters
+        modified_text = question_to_ask.replace("\n", "")
 
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with " &amp; "
-        ssml_text = re.sub("&", "&amp;", substituted_text)
-
-        # encoding query string
-        encoded_text = quote(ssml_text)
+        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
+        ssml_text = substituted_text.replace("<", "")
+        ssml_text = ssml_text.replace("&", "&amp;")
 
         # get values for Voice Monkey 
         monkey_id = dev.pluginProps["monkey_id"]
@@ -705,7 +698,7 @@ class Plugin(indigo.PluginBase):
         # build payload for Voice Monkey
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
-                   "ask_this": encoded_text,
+                   "ask_this": quote(ssml_text),
                    "yes_preset": yes_preset_id,
                    "no_preset": no_preset_id
                    }
@@ -815,14 +808,15 @@ class Plugin(indigo.PluginBase):
         # what to say
         text_to_speech = plugin_action.props.get("TextToSpeech")
 
-        # remove newline characters via RegEx
-        modified_text = re.sub("\n", "", text_to_speech)
+        # remove newline characters
+        modified_text = text_to_speech.replace("\n", "")
 
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with " &amp; "
-        ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
+        ssml_text = substituted_text.replace("&", "&amp;")
+        ssml_text = ssml_text.replace("<", "")
 
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
@@ -927,7 +921,7 @@ class Plugin(indigo.PluginBase):
 
         # if use wants to use an alternate name
         if dev.pluginProps["useAltName"]:
-            the_device = dev.pluginProps["useDeviceName"]
+            the_device = dev.states['altDeviceName']
         else:  # otherwise use the device name
             the_device = dev.name
     
@@ -972,7 +966,7 @@ class Plugin(indigo.PluginBase):
 
             # if user wants to use an alternate name
             if dev.pluginProps["useAltName"]:
-                device_name = dev.pluginProps["AltDeviceName"]
+                device_name = dev.states['altDeviceName']
             else:  # otherwise use the device name
                 device_name = dev.name
 
@@ -1015,14 +1009,15 @@ class Plugin(indigo.PluginBase):
         text_to_speech = plugin_action.props.get("TextToSpeech")
         selected_voice = plugin_action.props.get("selectedVoice")
 
-        # remove newline characters via RegEx
-        modified_text = re.sub("\n", "", text_to_speech)
+        # remove newline characters
+        modified_text = text_to_speech.replace("\n", "")
 
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with " &amp; "
-        ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
+        ssml_text = substituted_text.replace("&", "&amp;")
+        ssml_text = ssml_text.replace("<", "")
 
         # call alexa_speaks
         alexa_remote_control.alexa_speak(ssml_text, 
@@ -1049,10 +1044,10 @@ class Plugin(indigo.PluginBase):
 
         # what to say
         the_request = plugin_action.props.get("RequestOfDevice")
-
         # if use wants to use an alternate name
         if dev.pluginProps["useAltName"]:
-            the_device = dev.pluginProps["useDeviceName"]
+            the_device = dev.states['altDeviceName']
+
         else:  # otherwise use the device name
             the_device = dev.name
 
@@ -1080,7 +1075,7 @@ class Plugin(indigo.PluginBase):
 
         # if user wants to use an alternate name
         if dev.pluginProps["useAltName"]:
-            device_name = dev.pluginProps["AltDeviceName"]
+            device_name = dev.states['altDeviceName']
         else:  # otherwise use the device name
             device_name = dev.name
 
@@ -1262,14 +1257,15 @@ class Plugin(indigo.PluginBase):
             question_to_ask = "Are you able to hear me clearly?"
 
             ####
-            # remove newline characters via RegEx
-            modified_text = re.sub("\n", "", question_to_ask)
+            # remove newline characters
+            modified_text = question_to_ask.replace("\n", "")
 
             # perform Indigo variable substitution 
             substituted_text = indigo.activePlugin.substitute(modified_text)
 
-            # replace "&" with " &amp; "
-            ssml_text = re.sub("&", "&amp;", substituted_text)  # 
+            # replace "&" with "&amp;" and 
+            ssml_text = substituted_text.replace("<", "")
+            ssml_text = ssml_text.replace("&", "&amp;")
 
             # encoding query string
             encoded_text = quote(ssml_text)
