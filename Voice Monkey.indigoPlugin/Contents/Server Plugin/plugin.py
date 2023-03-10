@@ -752,7 +752,7 @@ class Plugin(indigo.PluginBase):
         audio_file_url = plugin_action.props.get("audioFileUrl")
 
         # remove newline characters via RegEx
-        modified_url = re.sub("\n", "", audio_file_url)
+        modified_url = audio_file_url.replace("\n", "")
 
         # perform Indigo variable substitution 
         substituted_url = indigo.activePlugin.substitute(modified_url)
@@ -801,7 +801,8 @@ class Plugin(indigo.PluginBase):
 
         # which sound to make
         audio_file_url = plugin_action.props.get("backgroundAudioFileUrl")
-        modified_url = re.sub("\n", "", audio_file_url)
+        modified_url = audio_file_url.replace("\n", "")
+
         # perform Indigo variable substitution 
         substituted_url = indigo.activePlugin.substitute(modified_url)
 
@@ -1410,7 +1411,7 @@ class Plugin(indigo.PluginBase):
                 dev = indigo.devices.get(int(which_device))
 
                 if dev:
-                    ask = re.sub("\n", "", question)
+                    ask = question.replace("\n", "")
                     substituted_text = indigo.activePlugin.substitute(ask)
                     log_entry = (f'{dev.name} {repeat_msg} {time_string}')
 
@@ -2100,7 +2101,7 @@ class Plugin(indigo.PluginBase):
             dev = indigo.devices[int(which_device)]
             question = self.unanswered[key]['plugin_action']['QuestionToAsk']
             # remove newline characters via RegEx
-            question_to_ask = re.sub("\n", "", question)
+            question_to_ask = question.replace("\n", "")
             value = (key, f'{dev.name} - {question_to_ask}')
             values.append(value)
         return values
