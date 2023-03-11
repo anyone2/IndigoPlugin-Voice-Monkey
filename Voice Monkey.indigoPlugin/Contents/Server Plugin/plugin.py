@@ -502,9 +502,8 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with "&amp;" and "<" with "" for SSML compatibility 
+        # replace "&" with "&amp;" for SSML compatibility 
         ssml_text = substituted_text.replace("&", "&amp;")
-        ssml_text = ssml_text.replace("<", "")
 
         # build payload
         payload = {
@@ -686,9 +685,8 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
-        ssml_text = substituted_text.replace("<", "")
-        ssml_text = ssml_text.replace("&", "&amp;")
+        # replace "&" with "&amp;" for SSML compatibility
+        ssml_text = substituted_text.replace("&", "&amp;")
 
         # get values for Voice Monkey 
         monkey_id = dev.pluginProps["monkey_id"]
@@ -815,9 +813,8 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
+        # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
-        ssml_text = ssml_text.replace("<", "")
 
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
@@ -1016,9 +1013,8 @@ class Plugin(indigo.PluginBase):
         # perform Indigo variable substitution 
         substituted_text = indigo.activePlugin.substitute(modified_text)
 
-        # replace "&" with "&amp;" and "<" with "" for SSML compatibility
+        # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
-        ssml_text = ssml_text.replace("<", "")
 
         # call alexa_speaks
         alexa_remote_control.alexa_speak(ssml_text, 
@@ -1264,9 +1260,8 @@ class Plugin(indigo.PluginBase):
             # perform Indigo variable substitution 
             substituted_text = indigo.activePlugin.substitute(modified_text)
 
-            # replace "&" with "&amp;" and 
-            ssml_text = substituted_text.replace("<", "")
-            ssml_text = ssml_text.replace("&", "&amp;")
+            # replace "&" with "&amp;" for SSML compatibility
+            ssml_text = substituted_text.replace("&", "&amp;")
 
             # encoding query string
             encoded_text = quote(ssml_text)
