@@ -236,7 +236,9 @@ Then:
 
 - Select a configured Voice Monkey device (if required)
 - Populate the 'configure...' window for your selection
-- 
+
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Type%20in%20a%20Request%20-%20User%20Interface.png)
+
 ![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Run%20Alexa%20Routine%20By%20Name%20-%20User%20Interface.png)
 
 ## Additional Scripting
