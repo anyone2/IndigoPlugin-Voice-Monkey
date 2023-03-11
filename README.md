@@ -60,7 +60,7 @@ Example URL:
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
-![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Trigger%20Routine%20-%20User%20Interface.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Ask%20a%20Yes:No%20Question%20-%20User%20Interface.png)
 
 ---
 
