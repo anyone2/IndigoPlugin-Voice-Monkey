@@ -60,7 +60,7 @@ Example URL:
 
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
-![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Ask%20a%20Yes:No%20Question%20-%20User%20Interface.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Trigger%20Routine%20-%20User%20Interface.png)
 
 ---
 
@@ -71,7 +71,7 @@ Example URL:
 
 [Step-by-Step Guide with screenshots](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/DEVICES.md)
 
-![](file:///Users/nick/Documents/GitHub/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Voice%20Monkey%20Device.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Voice%20Monkey%20Device.png)
 
 After creating a device, no additional configuration is need to perform **Text-To-Speech**, **Play a Sound**, **Play a Audio File** or **Play a Background Audio File** 
 
@@ -92,7 +92,9 @@ Then:
 - Select a configured Voice Monkey device
 - Populate the 'configure...' window for your selection
 
-![](file:///Users/nick/Documents/GitHub/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Text%20to%20Speeh%20-%20User%20Interface.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Text%20to%20Speeh%20-%20User%20Interface.png)
+
+
 
 ## Ask a Prompted Yes/No Question
 
@@ -122,7 +124,7 @@ Then:
 
 - Populate the 'Configure Ask a Yes/No Question' window
 
-![](file:///Users/nick/Documents/GitHub/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Ask%20a%20Yes:No%20Question%20-%20User%20Interface.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Ask%20a%20Yes:No%20Question%20-%20User%20Interface.png)
 
 
 ## Basic Scripting
@@ -235,7 +237,7 @@ Then:
 - Select a configured Voice Monkey device (if required)
 - Populate the 'configure...' window for your selection
 - 
-![](file:///Users/nick/Documents/GitHub/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Run%20Alexa%20Routine%20By%20Name%20-%20User%20Interface.png)
+![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Run%20Alexa%20Routine%20By%20Name%20-%20User%20Interface.png)
 
 ## Additional Scripting
 
