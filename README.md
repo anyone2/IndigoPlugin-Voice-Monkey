@@ -61,6 +61,7 @@ Example URL:
     https://api.voicemonkey.io/trigger?access_token=ACCESS_TOKEN&secret_token=SECRET_TOKEN&monkey=routine-trigger-one
 
 ![](file:///Users/nick/Documents/GitHub/IndigoPlugin-Voice-Monkey/UserInterface/Configure%20Trigger%20Routine%20-%20User%20Interface.png)
+
 ---
 
 ## Creating a Device
