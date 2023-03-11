@@ -503,7 +503,7 @@
     </Action>    
 
     <Action id="AlexaRoutine" deviceFilter="self.VoiceMonkeyDevice">
-        <Name>Run a Alexa Routine by Name</Name>
+        <Name>Run Alexa Routine by Name</Name>
         <CallbackMethod>alexa_routine</CallbackMethod>
 
         <ConfigUI>
@@ -528,7 +528,7 @@
 
             <Field id="simpleSeparator72" type="separator"></Field>
             <Field id="label73" type="label" fontColor="darkgray" fontSize="medium" alignWithControl="false">
-                <Label>Click "?" to access https://github.com/thorsten-gehrig/alexa-remote-control for more information on the module used</Label>
+                <Label>Click "?" to access https://github.com/thorsten-gehrig/alexa-remote-control for more information on the project</Label>
             </Field>
 
         </ConfigUI>

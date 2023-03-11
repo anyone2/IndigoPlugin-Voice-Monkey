@@ -32,11 +32,13 @@ def process_output(stdout, stderr, log_entry, function_name):
             f'alexa_remote_control.sh: {stdout[stdout.find("ERROR"):]}',
             level=logging.ERROR
             )
+        return False
 
     # was the command successfully sent
     elif 'sending cmd' in stdout:
 
         indigo.server.log(f'{log_entry}', f'{function_name}')
+        return True
 
     else:  # some other problem
 
@@ -45,6 +47,7 @@ def process_output(stdout, stderr, log_entry, function_name):
             f'stdout: {stdout}', 
             level=logging.ERROR
             )
+        return False
 
         # if stderr has a value, show that
         if stderr:
@@ -52,6 +55,7 @@ def process_output(stdout, stderr, log_entry, function_name):
                 f'stderr: {stderr}', 
                 level=logging.ERROR
                 )    
+            return False
 
 
 def alexa_speak(say_this, the_device, voice=''):
