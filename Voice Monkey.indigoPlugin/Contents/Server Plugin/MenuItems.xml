@@ -57,43 +57,6 @@
 		</ConfigUI>
 	</MenuItem>
 
-	<MenuItem id="MenuSeparator"/>
-
-<MenuItem id="menu20">
-    <Name>Logging Options...</Name>
-            <CallbackMethod>logging_options</CallbackMethod>
-
-        <ConfigUI>
-
-
-	    <Field id="LoggingLabel" type="label" fontColor="black" fontSize="regular" alignText="center">
-	        <Label>Adjust the number of characters used for word wrap in the log.</Label>
-	    </Field>
-
-    	<Field id="LoggingSeperator2" type="separator"></Field>
-
-	    <Field id="maxCombinedLength" type="textfield" defaultValue="120">
-	        <Label>First line log length limit</Label>
-	    </Field>
-
-	    <Field id="maxCombinedLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
-	        <Label>Specify the maximum number of characters to display in the log for the first line of output by entering a value in the text field. The default value is 120 characters.</Label>
-	    </Field>
-
-    	<Field id="LoggingSeperator1" type="separator"></Field>
-
-	    <Field id="maxTextLength" type="textfield" defaultValue="100">
-	        <Label>Max line length</Label>
-	    </Field>
-
-	    <Field id="maxTextLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
-	        <Label>Enter the number of characters to display on one line when wrapping text. The default value is 100 characters.</Label>
-	    </Field>
-
-	</ConfigUI>
-</MenuItem>
-
-
 	<MenuItem id="MenuSeparator2"/>
 
 	<MenuItem id="toggleDebug">

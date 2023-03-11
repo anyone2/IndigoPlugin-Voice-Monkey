@@ -58,7 +58,7 @@
 
     <Field id="useAlexaRemoteControl" type="checkbox" defaultValue="false">
         <Label>Use alexa-remote-control</Label>
-        <Description>(OPTIONAL: Github repository tool)</Description>
+        <Description>(OPTIONAL: Github repository project)</Description>
     </Field>
 
     <Field id="createSomeSpace1" type="label" fontColor="darkgray" fontSize="large" readonly="True" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
@@ -90,6 +90,37 @@
     <Field id="githubLabel5" type="label" fontColor="black" fontSize="medium" alignWithControl="false" visibleBindingId="useAlexaRemoteControl" visibleBindingValue="true">
         <Label>For info go to: https://github.com/thorsten-gehrig/alexa-remote-control</Label>
     </Field>
+
+    <Field id="LoggingLabel" type="label" fontColor="black" fontSize="regular" alignText="center">
+        <Label>Adjust the number of characters used for word wrap in the log.</Label>
+    </Field>
+
+    <Field id="showDebugInfoSeperator" type="separator"></Field>
+
+    <Field id="showDebugInfo" type="checkbox" defaultValue="false">
+        <Label>Show Debug Messages</Label>
+    </Field>
+
+    <Field id="LoggingSeperator2" type="separator"></Field>
+
+    <Field id="maxCombinedLength" type="textfield">
+        <Label>First line log length limit</Label>
+    </Field>
+
+    <Field id="maxCombinedLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
+        <Label>Specify the maximum number of characters to display in the log for the first line of output by entering a value in the text field. The default value is 150 characters.</Label>
+    </Field>
+
+    <Field id="LoggingSeperator1" type="separator"></Field>
+
+    <Field id="maxTextLength" type="textfield">
+        <Label>Max line length</Label>
+    </Field>
+
+    <Field id="maxTextLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
+        <Label>Enter the number of characters to display on one line when wrapping text. The default value is 130 characters.</Label>
+    </Field>
+
 
     <Field id="creatingSpace" type="label" fontColor="darkgray" fontSize="large" readonly="True">
         <Label>:

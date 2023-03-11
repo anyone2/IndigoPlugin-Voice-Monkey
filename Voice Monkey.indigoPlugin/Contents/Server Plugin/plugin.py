@@ -46,8 +46,8 @@ class Plugin(indigo.PluginBase):
         self.unanswered = plugin_prefs.get("RepeatingYesNo", indigo.Dict())
 
         # configurable setting for output to the log
-        self.max_text_length = plugin_prefs.get("maxTextLength", 100)
-        self.max_combined_length = plugin_prefs.get("maxCombinedLength", 120)
+        self.max_text_length = plugin_prefs.get("maxTextLength", 130)
+        self.max_combined_length = plugin_prefs.get("maxCombinedLength", 150)
 
         # determine if alexa_remote_control was imported
         self.plugin_prefs["AltModuleImported"] = WAS_IMPORTED
@@ -1017,9 +1017,22 @@ class Plugin(indigo.PluginBase):
         ssml_text = substituted_text.replace("&", "&amp;")
 
         # call alexa_speaks
-        alexa_remote_control.alexa_speak(ssml_text, 
-                                         device_name, 
-                                         selected_voice)
+        # alexa_remote_control.alexa_speak(ssml_text, 
+        #                                  device_name, 
+        #                                  selected_voice)
+
+        # call alexa_speaks
+        results = alexa_remote_control.alexa_speak(ssml_text, 
+                                                   device_name, 
+                                                   selected_voice)
+        self.logger.debug(f"\n{results}")
+        if results:
+
+            log_entry = f'{dev.name} : Text-to-Speech : {selected_voice}'
+            self.wrapLogging(ssml_text, log_entry)
+            return True
+        else:
+            return False 
 
     ###########################################################
     def typed_request(self, plugin_action, dev):
@@ -1111,42 +1124,6 @@ class Plugin(indigo.PluginBase):
     ###########################################
     # Menu callbacks defined in MenuItems.xml #
     ###########################################
-    def logging_options(self, valuesDict, typeId="", devId=None):
-
-        errorsDict = indigo.Dict()
-        max_combined_length = valuesDict.get("maxCombinedLength")
-        max_text_length = valuesDict.get("maxTextLength")
-
-        if not max_combined_length.isdigit() or int(max_combined_length) < 25:
-
-            errorMsg = ('Invalid entry, a positive number greater than 25 '
-                        'was not entered for the character length.')
-            errorsDict["maxCombinedLength"] = errorMsg
-            errorsDict["showAlertText"] = (
-                'The minimum character value is 25. The default was 125.'
-                )
-        else:
-            self.max_combined_length = int(valuesDict.get('maxCombinedLength'))
-            self.plugin_prefs["maxCombinedLength"] = self.max_combined_length
-
-        if not max_text_length.isdigit() or int(max_text_length) < 25:
-
-            errorMsg = ('Invalid entry, a positive number greater than 25 '
-                        'was not entered for the character length.')
-            errorsDict["maxTextLength"] = errorMsg
-            errorsDict["showAlertText"] = (
-                'The minimum character value is 25. The default was 100.'
-            )
-
-        else:
-            self.max_text_length = int(valuesDict.get('maxTextLength'))
-            self.plugin_prefs["maxTextLength"] = self.max_text_length
-
-        # check for errors  #
-        if len(errorsDict) > 0:
-            return (False, valuesDict, errorsDict)
-        return (True, valuesDict)
-
     def toggleDebugging(self):
 
         # announce function if debugging
@@ -1851,6 +1828,15 @@ class Plugin(indigo.PluginBase):
 
         use_alexa_remote = valuesDict.get('useAlexaRemoteControl', False)
         adjust_timing = valuesDict.get('AdjustTiming', False)
+        max_combined_length = valuesDict.get("maxCombinedLength")
+        max_text_length = valuesDict.get("maxTextLength")
+        show_debug_messages = valuesDict.get("showDebugInfo", False)
+        self.debug = show_debug_messages
+
+        if show_debug_messages:
+            self.logger.info("debug logging is on")
+        else:
+            self.logger.info("debug logging is off")
 
         if not use_alexa_remote:
             valuesDict['forTextToSpeech'] = False
@@ -1949,6 +1935,31 @@ class Plugin(indigo.PluginBase):
 
             self.sleep_time = 5 
             valuesDict['sleepTime'] = 5
+
+        #
+        if max_combined_length < 25:
+
+            errorMsg = ('Invalid entry, a positive number greater than 25 '
+                        'was not entered for the character length.')
+            errorsDict["maxCombinedLength"] = errorMsg
+            errorsDict["showAlertText"] = (
+                'The minimum character value is 25. The default was 150.'
+                )
+        else:
+
+            self.max_combined_length = int(max_combined_length)
+
+        if max_text_length < 25:
+
+            errorMsg = ('Invalid entry, a positive number greater than 25 '
+                        'was not entered for the character length.')
+            errorsDict["maxTextLength"] = errorMsg
+            errorsDict["showAlertText"] = (
+                'The minimum character value is 25. The default was 130.'
+            )
+
+        else:
+            self.max_text_length = int(max_text_length)
 
         # where there any errors?
         if len(errorsDict) > 0:
