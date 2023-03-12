@@ -1005,7 +1005,6 @@ class Plugin(indigo.PluginBase):
 
         # what to say
         text_to_speech = plugin_action.props.get("TextToSpeech")
-        selected_voice = plugin_action.props.get("selectedVoice")
 
         # remove newline characters
         modified_text = text_to_speech.replace("\n", "")
@@ -1016,19 +1015,23 @@ class Plugin(indigo.PluginBase):
         # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
 
-        # call alexa_speaks
-        # alexa_remote_control.alexa_speak(ssml_text, 
-        #                                  device_name, 
-        #                                  selected_voice)
+        # if voice change checkbox ticked
+        if plugin_action.props.get("ChangeVoice", True):
+            selected_voice = plugin_action.props.get("selectedVoice")
+            if selected_voice:
+                selected_voice_info = (f'{voices.get(selected_voice)}')
+            else:
+                selected_voice_info = 'Alexa - Default'
+        else:
+            selected_voice = None
+            selected_voice_info = 'Alexa - Default'
 
         # call alexa_speaks
         results = alexa_remote_control.alexa_speak(ssml_text, 
                                                    device_name, 
                                                    selected_voice)
-        self.logger.debug(f"\n{results}")
         if results:
-
-            log_entry = f'{dev.name} : Text-to-Speech : {selected_voice}'
+            log_entry = f'{dev.name} : Text-to-Speech : {selected_voice_info}'
             self.wrapLogging(ssml_text, log_entry)
             return True
         else:
