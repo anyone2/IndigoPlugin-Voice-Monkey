@@ -491,7 +491,12 @@ class Plugin(indigo.PluginBase):
         monkey_id = dev.states['monkeyId']
 
         # what to say
-        text_to_speech = plugin_action.props.get("TextToSpeech")
+        text_to_speech = (f'{plugin_action.textToSpeak or ""} '
+                          f'{plugin_action.props.get("TextToSpeech")}')
+
+        if text_to_speech.isspace():
+            self.logger.error(u"Action has not been completely configured")
+            return False
 
         # what voice to use
         selected_voice = plugin_action.props.get("selectedVoice", False)
@@ -960,13 +965,15 @@ class Plugin(indigo.PluginBase):
         if plugin_action.description == "plugin action":
             device_name = dev 
 
-        elif plugin_action.description == "run a alexa routine by name":
+        elif plugin_action.description == "run alexa routine by name":
 
             # if user wants to use an alternate name
             if dev.pluginProps["useAltName"]:
                 device_name = dev.states['altDeviceName']
             else:  # otherwise use the device name
                 device_name = dev.name
+        else:
+            self.logger.error('Something went wrong')
 
         # if something to be said
         alexa_remote_control.alexa_routine(the_routine, 
@@ -1004,7 +1011,12 @@ class Plugin(indigo.PluginBase):
                 device_name = dev.name
 
         # what to say
-        text_to_speech = plugin_action.props.get("TextToSpeech")
+        text_to_speech = (f'{plugin_action.textToSpeak or ""} '
+                          f'{plugin_action.props.get("TextToSpeech")}')
+
+        if text_to_speech.isspace():
+            self.logger.error(u"Action has not been completely configured")
+            return False
 
         # remove newline characters
         modified_text = text_to_speech.replace("\n", "")
@@ -1547,16 +1559,16 @@ class Plugin(indigo.PluginBase):
         errorsDict = indigo.Dict()
 
         def validate_text_to_speech(valuesDict):
-            if len(valuesDict.get("TextToSpeech", "")) < 1:
-                errorsDict["TextToSpeech"] = (
-                    "Enter text that is at least one character long to "
-                    "use the text-to-speech feature."
-                )
-                self.logger.error(errorsDict["TextToSpeech"])
-                errorsDict["showAlertText"] = (
-                    'In the space provided, type what you want the device '
-                    'to say out loud '
-                    )
+            # if len(valuesDict.get("TextToSpeech", "")) < 0:
+            #     errorsDict["TextToSpeech"] = (
+            #         "Enter text that is at least one character long to "
+            #         "use the text-to-speech feature."
+            #     )
+            #     self.logger.error(errorsDict["TextToSpeech"])
+            #     errorsDict["showAlertText"] = (
+            #         'In the space provided, type what you want the device '
+            #         'to say out loud '
+            #         )
 
             change_voice = valuesDict.get("ChangeVoice", False)
             selected_voice = valuesDict.get("selectedVoice", None)
