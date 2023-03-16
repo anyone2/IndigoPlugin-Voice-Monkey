@@ -161,6 +161,11 @@
         </ConfigUI>
     </Action>    
 
+    <Action id="SimpleSpeak" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Simple Speak</Name>
+        <CallbackMethod>text_to_speech</CallbackMethod>
+    </Action>    
+
     <Action id="YesNoQuestionSeparator" uiPath="DeviceActions"/>
 
     <Action id="YesNoQuestion" uiPath="DeviceActions">

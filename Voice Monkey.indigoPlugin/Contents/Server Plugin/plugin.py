@@ -492,7 +492,7 @@ class Plugin(indigo.PluginBase):
 
         # what to say
         text_to_speech = (f'{plugin_action.textToSpeak or ""} '
-                          f'{plugin_action.props.get("TextToSpeech")}')
+                          f'{plugin_action.props.get("TextToSpeech", "")}')
 
         if text_to_speech.isspace():
             self.logger.error(u"Action has not been completely configured")
@@ -810,7 +810,7 @@ class Plugin(indigo.PluginBase):
         substituted_url = indigo.activePlugin.substitute(modified_url)
 
         # what to say
-        text_to_speech = plugin_action.props.get("TextToSpeech")
+        text_to_speech = plugin_action.props.get("TextToSpeech", "")
 
         # remove newline characters
         modified_text = text_to_speech.replace("\n", "")
@@ -1012,7 +1012,7 @@ class Plugin(indigo.PluginBase):
 
         # what to say
         text_to_speech = (f'{plugin_action.textToSpeak or ""} '
-                          f'{plugin_action.props.get("TextToSpeech")}')
+                          f'{plugin_action.props.get("TextToSpeech", "")}')
 
         if text_to_speech.isspace():
             self.logger.error(u"Action has not been completely configured")
