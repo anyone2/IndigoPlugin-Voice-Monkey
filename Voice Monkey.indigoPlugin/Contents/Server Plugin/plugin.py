@@ -3,6 +3,7 @@
 ####################
 
 import re
+import json
 import indigo
 import random
 import requests
@@ -52,19 +53,137 @@ class Plugin(indigo.PluginBase):
         # determine if alexa_remote_control was imported
         self.plugin_prefs["AltModuleImported"] = WAS_IMPORTED
 
+        # define the variable updated by the Announcements Plugin
+        self.subscription_variable = "spoken_announcement_raw"
+
+        # store the Announcements Plugin's Id
+        self.announcements_pid = 'com.fogbert.indigoplugin.announcements'
+
+        # define the device used to speak when using the Announcements Plugin
+        self.announcing_device = self.plugin_prefs.get('announcingDevice', 0)
+
     ########################################
     def startup(self):
         self.logger.debug("startup called")
 
         # show pending questions on startup
-        self.show_pending_questions()  
+        self.show_pending_questions()
 
-        result = self.isAlexaPluginRunning()
-        if not result["alexa_enabled"]:
+        # check if the Alexa Plugin is running
+        alexa_result = self.isPluginRunning('alexa')
+        if not alexa_result["plugin_enabled"]:
             self.logger.warn(
                        "The Alexa Indigo Plugin is not enabled. "
                        "The 'Ask a Yes/No Question' Device Action requires it."
                        )
+
+        # get value of Announcement Plugin subscription variable
+        spoken_announcement_var = indigo.variables.get(
+                                            self.subscription_variable)
+
+        # determine if variable subscription is enabled
+        if self.pluginPrefs.get('enableSubscription', False):
+
+            # check if the Announcements Plugin is running
+            announcements_result = self.isPluginRunning('announcements')
+            if announcements_result["plugin_enabled"]:
+
+                # Check if "spoken_announcement_raw" variable does NOT exist
+                if spoken_announcement_var is None:
+                    # Create "spoken_announcement_raw" variable
+                    indigo.variable.create(self.subscription_variable, 
+                                           value="", 
+                                           folder=None)
+                    indigo.server.log(
+                        f'The variable "{self.subscription_variable}" '
+                        'was created')
+
+                # subscribe to variable changes
+                indigo.variables.subscribeToChanges()
+
+                # update subscription state
+                self.subscription_enabled = True
+
+            else:  # the Announcements Plugin is NOT running
+
+                self.logger.warn(
+                           "The Announcements Plugin is not enabled. "
+                           "Please enable it or uncheck 'Use Announcements' "
+                           "in the Plugin Configuration Menu"
+                           )
+                # update subscription state
+                self.subscription_enabled = False
+
+        else:  # variable subscription is disabled
+
+            # update subscription state
+            self.subscription_enabled = False
+
+            # Check if "spoken_announcement_raw" variable exists
+            if spoken_announcement_var:
+                # delete variable
+                indigo.variable.delete(self.subscription_variable)
+                indigo.server.log(
+                    f'The variable "{self.subscription_variable}" '
+                    'was deleted')
+
+
+    def variableUpdated(self, orig_var, new_var):  # noqa
+        """
+        Triggers a text-to-speech announcement when the monitored variable 
+        is changed.
+        
+        Args:
+            orig_var (indigo.Variable): The original variable object.
+            new_var (indigo.Variable): The new variable object.
+        """
+
+        # Call the parent implementation of variableUpdated() base class
+        indigo.PluginBase.variableUpdated(self, orig_var, new_var)
+
+        # If "Subscribe to Changes" is enabled
+        if self.subscription_enabled:
+
+            # Check if "spoken_announcement_raw" variable exists
+            monitored_var = indigo.variables.get(self.subscription_variable)
+
+            # if variable we are monitoring exists and it has some value
+            if monitored_var and monitored_var.value:
+
+                # If "spoken_announcement_raw" variable changed
+                if orig_var.id == monitored_var.id:
+
+                    # prepare what is to be spoken
+                    action = actionDict('text to speech', 
+                                        'TextToSpeech',
+                                        {"TextToSpeech": new_var.value})
+
+                    # ensure speak announcement device exists
+                    dev = indigo.devices.get(int(self.announcing_device))
+                    if dev:
+                        self.text_to_speech(action, dev)
+                    else:
+                        self.logger.warn(
+                            "The device configured to speak when the "
+                            "'Speak Announcement' button is pressed, can "
+                            "not be found."
+                            )
+                    # clear out the variable
+                    indigo.variable.updateValue(
+                                    self.subscription_variable, "")
+
+            # if equal to None, variable doesn't exists
+            elif monitored_var is None:
+                # Create "spoken_announcement_raw" variable
+                indigo.variable.create(self.subscription_variable, 
+                                       value="", 
+                                       folder=None)
+                indigo.server.log(
+                    f'The variable "{self.subscription_variable}" '
+                    'was created')
+
+            else:  # ignore
+                pass
 
     ########################################
     def shutdown(self):
@@ -136,7 +255,8 @@ class Plugin(indigo.PluginBase):
         delayed = tracking.get('delayed', False)
         cycles = int(plugin_action.get('cycles', 0))
         seconds = int(plugin_action.get('seconds', 0))
-        question_text = plugin_action.get('QuestionToAsk')
+        question_to_ask = plugin_action.get('QuestionToAsk')
+        question_text = self.substitute(question_to_ask)
         which_device = plugin_action.get('whichDevice')
         repeats = plugin_action.get('RepeatQuestion', False)
         stop_when_no = plugin_action.get('StopWhenNo', True)
@@ -471,17 +591,18 @@ class Plugin(indigo.PluginBase):
         self.logger.debug("text_to_speech called")
 
         # if over-riding how Speech is handled
-        if self.plugin_prefs.get("forTextToSpeech"):
-            if plugin_action.description == 'text to speech':
-                self.alexa_speak(plugin_action, dev)
-                return True
+        actions = {
+            'text to speech': self.alexa_speak,
+            'simple speak': self.alexa_speak,
+            'plugin action': self.validatePluginExecuteAction, 
 
-            # if running as script
-            elif plugin_action.description == "plugin action":
-
-                # validate plugin_action
-                if not self.validatePluginExecuteAction(plugin_action, dev):
-                    return False
+        }
+        if self.plugin_prefs.get('forTextToSpeech'):
+            action_fn = actions.get(plugin_action.description)
+            if action_fn:
+                return action_fn(plugin_action, dev)
+            else:
+                return False
 
         # check if a Monkey and tokens are fully configured
         if not self.monkey_validation(plugin_action, dev):
@@ -491,12 +612,17 @@ class Plugin(indigo.PluginBase):
         monkey_id = dev.states['monkeyId']
 
         # what to say
-        text_to_speech = (f'{plugin_action.textToSpeak or ""} '
-                          f'{plugin_action.props.get("TextToSpeech", "")}')
+        if hasattr(plugin_action, 'textToSpeak') and plugin_action.textToSpeak:
+            text_to_speech = (f'{plugin_action.textToSpeak} '
+                              f'{plugin_action.props.get("TextToSpeech", "")}')
+        else:
+            text_to_speech = plugin_action.props.get("TextToSpeech", "")
 
-        if text_to_speech.isspace():
+        # if there is nothing to speak
+        if text_to_speech.isspace() or len(text_to_speech) == 0:
             self.logger.error(u"Action has not been completely configured")
-            return False
+            text_to_speech = ("No announcement text specified. Please update "
+                              "the action to replace this message.")
 
         # what voice to use
         selected_voice = plugin_action.props.get("selectedVoice", False)
@@ -505,7 +631,7 @@ class Plugin(indigo.PluginBase):
         modified_text = text_to_speech.replace("\n", "")
         
         # perform Indigo variable substitution 
-        substituted_text = indigo.activePlugin.substitute(modified_text)
+        substituted_text = self.substitute(modified_text)
 
         # replace "&" with "&amp;" for SSML compatibility 
         ssml_text = substituted_text.replace("&", "&amp;")
@@ -688,7 +814,7 @@ class Plugin(indigo.PluginBase):
         modified_text = question_to_ask.replace("\n", "")
 
         # perform Indigo variable substitution 
-        substituted_text = indigo.activePlugin.substitute(modified_text)
+        substituted_text = self.substitute(modified_text)
 
         # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
@@ -730,6 +856,64 @@ class Plugin(indigo.PluginBase):
             return False     
 
     ###########################################################
+    def cancel_a_question(self, plugin_action, dev=None):
+        """
+        This function cancels the Yes or No Question entered.
+        
+        Passed to it is the Yes or No Question, it cycles thru all of 
+        the unanswers questions and cancels the one which matches the
+        text of the question entered and device
+
+        cancelQuestion
+        """
+        
+        self.logger.debug("cancel_a_question called")
+
+        # the name of the Yes/No question to cancel
+        question_to_cancel = plugin_action.props['question_to_cancel']
+        cancel_question_on_device = plugin_action.props['which_device']
+
+        # loop thru the unanswered questions
+        for key in self.unanswered.keys():
+
+            action = self.unanswered[key]['plugin_action']
+            question_to_ask = action.get('QuestionToAsk')
+            asking_device = action['whichDevice']
+
+            # look for a match
+            if (question_to_cancel == question_to_ask 
+               and cancel_question_on_device == asking_device):
+
+                # if voice monkey device exists
+                dev = indigo.devices.get(int(asking_device))
+                if dev:
+
+                    # if the question was just asked
+                    if dev.states['LastQuestionEpoch'] == key:
+                        # clear the device state 
+                        dev.updateStatesOnServer([
+                            {'key': 'LastQuestionEpoch', 'value': ''}, 
+                        ])
+
+                    # delete the question
+                    del self.unanswered[key]
+                    # remove special characters
+                    question = (question_to_ask
+                                .replace('\u2028', "")
+                                .replace('\n', ""))
+                    indigo.server.log(
+                        f"Canceled Yes/No Question : {dev.name} : "
+                        f'"{self.substitute(question)}"')
+                    break
+                    
+                else:
+                    self.logger.error(
+                      'The device asking the question, no longer exists. ')
+
+        else:
+            indigo.server.log('A matching Yes/No Question was not found. ')
+
+    ###########################################################
     def play_audio_file_url(self, plugin_action, dev):
         """
 
@@ -758,7 +942,7 @@ class Plugin(indigo.PluginBase):
         modified_url = audio_file_url.replace("\n", "")
 
         # perform Indigo variable substitution 
-        substituted_url = indigo.activePlugin.substitute(modified_url)
+        substituted_url = self.substitute(modified_url)
 
         payload = {
                    "monkey_name": "-".join(monkey_id.lower().split()),
@@ -807,7 +991,7 @@ class Plugin(indigo.PluginBase):
         modified_url = audio_file_url.replace("\n", "")
 
         # perform Indigo variable substitution 
-        substituted_url = indigo.activePlugin.substitute(modified_url)
+        substituted_url = self.substitute(modified_url)
 
         # what to say
         text_to_speech = plugin_action.props.get("TextToSpeech", "")
@@ -816,7 +1000,7 @@ class Plugin(indigo.PluginBase):
         modified_text = text_to_speech.replace("\n", "")
 
         # perform Indigo variable substitution 
-        substituted_text = indigo.activePlugin.substitute(modified_text)
+        substituted_text = self.substitute(modified_text)
 
         # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
@@ -1011,8 +1195,11 @@ class Plugin(indigo.PluginBase):
                 device_name = dev.name
 
         # what to say
-        text_to_speech = (f'{plugin_action.textToSpeak or ""} '
-                          f'{plugin_action.props.get("TextToSpeech", "")}')
+        if hasattr(plugin_action, 'textToSpeak') and plugin_action.textToSpeak:
+            text_to_speech = (f'{plugin_action.textToSpeak} '
+                              f'{plugin_action.props.get("TextToSpeech", "")}')
+        else:
+            text_to_speech = plugin_action.props.get("TextToSpeech", "")
 
         if text_to_speech.isspace():
             self.logger.error(u"Action has not been completely configured")
@@ -1022,7 +1209,7 @@ class Plugin(indigo.PluginBase):
         modified_text = text_to_speech.replace("\n", "")
 
         # perform Indigo variable substitution 
-        substituted_text = indigo.activePlugin.substitute(modified_text)
+        substituted_text = self.substitute(modified_text)
 
         # replace "&" with "&amp;" for SSML compatibility
         ssml_text = substituted_text.replace("&", "&amp;")
@@ -1044,7 +1231,7 @@ class Plugin(indigo.PluginBase):
                                                    selected_voice)
         if results:
             log_entry = f'{dev.name} : Text-to-Speech : {selected_voice_info}'
-            self.wrapLogging(ssml_text, log_entry)
+            self.wrapLogging(substituted_text, log_entry)
             return True
         else:
             return False 
@@ -1156,45 +1343,43 @@ class Plugin(indigo.PluginBase):
     def cancel_question(self, valuesDict, typeId="", devId=None):  
 
         questions = valuesDict.get("questions")
-        for d in questions:
+        for key in questions:
 
             try:
-                action = self.unanswered[d]['plugin_action']
+                action = self.unanswered[key]['plugin_action']
                 question = action.get('QuestionToAsk')
                 which_device = action['whichDevice']
 
-                try:
-                    dev = indigo.devices[int(which_device)]
+                # if voice monkey device exists
+                dev = indigo.devices.get(int(which_device))
+                if dev:
                     device_name = dev.name
 
                     # get the key in the device right now
                     last_question_epoch = dev.states['LastQuestionEpoch'] 
 
-                    # was the question just asked
-                    if last_question_epoch == d:
-                        # remove the devices Yes/No responding Action Group
+                    # if the question was just asked
+                    if last_question_epoch == key:
+                        # clear the device state 
                         dev.updateStatesOnServer([
                             {'key': 'LastQuestionEpoch', 'value': ''}, 
                         ])
+                    # delete the question
+                    del self.unanswered[key]
+                    log_entry = (f"'{device_name}' pending question cancelled")
+                    text = (f"{question}") 
+                    self.wrapLogging(text, log_entry)
 
-                except KeyError:
+                else:  # device not found
+                    
                     self.logger.error(
                       'The configured device with the ID '
                       f'"{which_device}", no longer exists. '
                        )
-                    device_name = "Unknown"
-
-                del self.unanswered[d]
-                log_entry = (f"'{device_name}' pending question cancelled")
-                text = (f"{question}") 
-                self.wrapLogging(text, log_entry)
 
             except KeyError:
                 self.logger.error(
-                  f'The question key "{d}", no longer exists. ')
-
-        else:  # when done looping
-            pass
+                  f'The question key "{key}", no longer exists. ')
 
     ###########################################
     def speech_test(self, valuesDict, typeId):
@@ -1245,20 +1430,17 @@ class Plugin(indigo.PluginBase):
             # what to ask
             question_to_ask = "Are you able to hear me clearly?"
 
-            ####
             # remove newline characters
             modified_text = question_to_ask.replace("\n", "")
 
             # perform Indigo variable substitution 
-            substituted_text = indigo.activePlugin.substitute(modified_text)
+            substituted_text = self.substitute(modified_text)
 
             # replace "&" with "&amp;" for SSML compatibility
             ssml_text = substituted_text.replace("&", "&amp;")
 
             # encoding query string
             encoded_text = quote(ssml_text)
-
-            ####
 
             # pick random action groups..just for validation
             action_groups = indigo.actionGroups
@@ -1269,7 +1451,7 @@ class Plugin(indigo.PluginBase):
                                     'YesNoQuestion',
                                     {
                                      'whichDevice': device_id,
-                                     "QuestionToAsk": ssml_text,
+                                     "QuestionToAsk": substituted_text,
                                      'executeWhenYes': execute_when_yes,
                                      'executeWhenNo': execute_when_no,
                                      })
@@ -1399,7 +1581,7 @@ class Plugin(indigo.PluginBase):
 
                 if dev:
                     ask = question.replace("\n", "")
-                    substituted_text = indigo.activePlugin.substitute(ask)
+                    substituted_text = self.substitute(ask)
                     log_entry = (f'{dev.name} {repeat_msg} {time_string}')
 
                     indigo.server.log(log_entry)
@@ -1559,16 +1741,6 @@ class Plugin(indigo.PluginBase):
         errorsDict = indigo.Dict()
 
         def validate_text_to_speech(valuesDict):
-            # if len(valuesDict.get("TextToSpeech", "")) < 0:
-            #     errorsDict["TextToSpeech"] = (
-            #         "Enter text that is at least one character long to "
-            #         "use the text-to-speech feature."
-            #     )
-            #     self.logger.error(errorsDict["TextToSpeech"])
-            #     errorsDict["showAlertText"] = (
-            #         'In the space provided, type what you want the device '
-            #         'to say out loud '
-            #         )
 
             change_voice = valuesDict.get("ChangeVoice", False)
             selected_voice = valuesDict.get("selectedVoice", None)
@@ -1582,7 +1754,7 @@ class Plugin(indigo.PluginBase):
                 self.logger.error(errorsDict["selectedVoice"])
 
         def validate_play_audio_file_url(valuesDict):
-            if not self._validateURL(valuesDict.get("audioFileUrl", "")):
+            if not self.validateURL(valuesDict.get("audioFileUrl", "")):
                 errorsDict["audioFileUrl"] = (
                     "Enter a publicly accessible URL. "
                     "The URL must begin with https://"
@@ -1590,7 +1762,7 @@ class Plugin(indigo.PluginBase):
                 self.logger.error(errorsDict["audioFileUrl"])
 
         def validate_play_background_audio_file(valuesDict):
-            if not self._validateURL(
+            if not self.validateURL(
                  valuesDict.get("backgroundAudioFileUrl", "")):
 
                 errorsDict["backgroundAudioFileUrl"] = (
@@ -1777,8 +1949,8 @@ class Plugin(indigo.PluginBase):
 
         def validate_yes_no_question(valuesDict):
 
-            result = self.isAlexaPluginRunning()
-            if not result["alexa_enabled"]:
+            result = self.isPluginRunning('alexa')
+            if not result["plugin_enabled"]:
                 err_msg = 'The Indigo Alexa plugin is not enabled.'
                 errorsDict["QuestionToAsk"] = (err_msg)
                 self.logger.error(err_msg)
@@ -1794,6 +1966,95 @@ class Plugin(indigo.PluginBase):
                 errorsDict["QuestionToAsk"] = (
                     "The question you want to ask has an invalid format")
 
+        def validate_cancelQuestion(valuesDict):
+
+            which_device = valuesDict.get("which_device", "0")
+            question_to_cancel = valuesDict.get("question_to_cancel", "")
+
+            if not which_device.isdigit():
+                errorsDict["which_device"] = (
+                    "Please select the device which asks the question "
+                    "you want to cancel.")
+                self.logger.error(errorsDict["which_device"])
+                errorsDict["showAlertText"] = errorsDict["which_device"]
+
+            if len(question_to_cancel) < 1:
+                errorsDict["question_to_cancel"] = (
+                    "You must type in the EXACT text of the Yes/No Question, "
+                    "in order to cancel it. TIP: Use copy & paste.")
+                self.logger.error(errorsDict["question_to_cancel"])
+                errorsDict["showAlertText"] = errorsDict["question_to_cancel"]
+
+        def validate_announcements(valuesDict):
+
+            result = self.isPluginRunning('announcements')
+            if not result["plugin_enabled"]:
+                err_msg = 'The Announcements Plugin is not enabled. '
+                errorsDict["Announcements"] = (err_msg)
+                self.logger.error(err_msg)
+                errorsDict["showAlertText"] = (
+                    "To use 'Speak Announcements', you have "
+                    "to Enable the Announcements plugin."
+                    )
+
+            # get Announcement Source and Item to Speak
+            source_id = valuesDict["theAnnouncement"]
+            announcementToSpeak = valuesDict["announcementToSpeak"]
+
+            # this will be a digit, if something is entered
+            if not source_id.isdigit():
+                err_msg = (
+                           'Please select a Source.'
+                           )
+                errorsDict["theAnnouncement"] = (err_msg)
+                self.logger.error(err_msg)
+                errorsDict["showAlertText"] = (err_msg)
+
+            # validate Announcement Devices
+            elif indigo.devices[int(source_id)].model == "Announcements Device":  # noqa
+
+                # get all Announcements Devices
+                plugin = indigo.server.getPlugin(self.announcements_pid)
+                result = plugin.executeAction("exportAnnouncements")
+                all_announcements = json.loads(result)
+
+                # get selected the announcement
+                announcements = all_announcements[source_id]
+
+                # modify the name, then search for the matching announcement
+                modified_name = announcementToSpeak.replace("_", " ")
+                matching_items = [v for k, v in announcements.items() 
+                                  if v['Name'] == modified_name]
+                announcement_message = (matching_items[0]['Announcement'] 
+                                        if matching_items else None)
+
+                # process the announcement message if found
+                if announcement_message is None:
+                    err_msg = ('Announcement not found')
+                    errorsDict["announcementToSpeak"] = (err_msg)
+                    self.logger.error(err_msg)
+                    errorsDict["showAlertText"] = (err_msg)
+
+                elif re.search(r'\[\[.*?\]\]', announcement_message):
+                    err_msg = (
+                               'This Plugin is unable to interpret the '
+                               'embedded speech commands in the selected '
+                               'announcement.')
+                    errorsDict["announcementToSpeak"] = (err_msg)
+                    self.logger.error(err_msg)
+                    errorsDict["showAlertText"] = (err_msg)
+
+            else:  # validate "Salutations Device"
+
+                # determine if something was selected
+                if len(announcementToSpeak) < 1:
+                    err_msg = (
+                               'Please select an Item to Speak.'
+                               )
+                    errorsDict["announcementToSpeak"] = (err_msg)
+                    self.logger.error(err_msg)
+                    errorsDict["showAlertText"] = (err_msg)
+
         # Validate based on typeId
         if typeId == "PlayBackgroundAudioFile":
             validate_play_background_audio_file(valuesDict)
@@ -1807,6 +2068,9 @@ class Plugin(indigo.PluginBase):
             validate_repeat_settings(valuesDict)
             validate_action_groups(valuesDict)
             validate_device(valuesDict)
+
+        elif typeId == "cancelQuestion":
+            validate_cancelQuestion(valuesDict)
 
         elif typeId == "TriggerRoutine":
             validate_trigger_routine(valuesDict)
@@ -1824,7 +2088,10 @@ class Plugin(indigo.PluginBase):
             validate_pass_args(valuesDict)    
 
         elif typeId == "PassDeviceArg":
-            validate_pass_args(valuesDict)    
+            validate_pass_args(valuesDict)
+
+        elif typeId == "SpeakAnnouncements":
+            validate_announcements(valuesDict)
 
         # where there any errors?
         if len(errorsDict) > 0:
@@ -1841,6 +2108,9 @@ class Plugin(indigo.PluginBase):
 
         errorsDict = indigo.Dict()
 
+        enable_subscription = valuesDict.get('enableSubscription', False)
+        announcing_device = valuesDict.get('announcingDevice', False)
+        
         use_alexa_remote = valuesDict.get('useAlexaRemoteControl', False)
         adjust_timing = valuesDict.get('AdjustTiming', False)
         max_combined_length = valuesDict.get("maxCombinedLength")
@@ -1886,6 +2156,32 @@ class Plugin(indigo.PluginBase):
                 errorsDict["showAlertText"] = (
                         'To use the Voice Monkey API, you must '
                         'enter both your Secret and Access Tokens')
+
+        # if subscription is enabled
+        if enable_subscription:
+
+            # check to see if the Announcements Plugin is running
+            result = self.isPluginRunning('announcements')
+            if not result["plugin_enabled"]:
+                errorMsg = ('The Announcements Plugin is not enabled. '
+                            "It is required to use Variable Subscription.")
+                errorsDict["enableSubscription"] = errorMsg
+                errorsDict["showAlertText"] = (errorMsg)
+
+            # error if a device is not selected
+            elif not announcing_device:
+                errorMsg = ("Please select a device to speak when you "
+                            "the 'Speak Announcement' button within "
+                            "the Announcements plugin is pressed")
+                errorsDict["announcingDevice"] = errorMsg
+                errorsDict["showAlertText"] = (errorMsg)
+
+            else:
+
+                self.announcing_device = announcing_device
+
+        else:
+            self.announcing_device = False
 
         # if user wants to use an alternate name
         if use_alexa_remote:
@@ -1981,6 +2277,13 @@ class Plugin(indigo.PluginBase):
             return (False, valuesDict, errorsDict)
         return (True, valuesDict)
 
+    def closedPrefsConfigUi(self, valuesDict, userCancelled):
+
+        # restart the plugin if the user, enabled or disabled subscription
+        if self.subscription_enabled != valuesDict['enableSubscription']:
+            indigo.server.log("Preparing to restart plugin...")
+            self.restartPlugin(message="", isError=False)
+
     ####################
     # Event Validation #
     ####################
@@ -2001,19 +2304,14 @@ class Plugin(indigo.PluginBase):
         # announce function if debugging
         self.logger.debug("validatePluginExecuteAction called")
 
-        if type(dev) is indigo.RelayDevice:
+        if isinstance(dev, indigo.RelayDevice):
             device_id = dev.id
         else:
             device_id = dev
 
-        # validate Action Config for scripting
-        result = self.validateActionConfigUi(plugin_action.props, 
-                                             plugin_action.pluginTypeId, 
-                                             device_id)
-        if not result[0]:
-            return False
-        else:
-            return True
+        return self.validateActionConfigUi(plugin_action.props, 
+                                           plugin_action.pluginTypeId, 
+                                           device_id)[0]
 
     ######################################################
     # valid the action group passed
@@ -2050,57 +2348,57 @@ class Plugin(indigo.PluginBase):
         of the plugin if the user is using the Alternate module 
         
         It returns True if the it can validate what was passed to it
-        and False if it can not, and prints a message for the uers in the log
+        and False if it can not, and prints a message for the user in the log
         """
 
         # announce function if debugging
         self.logger.debug("monkey_validation called")
 
-        errorsDict = indigo.Dict()
-
-        # check if the access and secret tokens are configured
         access_token = self.plugin_prefs.get("accessToken")
         secret_token = self.plugin_prefs.get("secretToken")
 
-        if not access_token or not secret_token:
-
-            self.logger.error(
-                'To use the Monkey Voice API, you must configure an '
-                'Access Token and a Secret Token '
-                ) 
-            errorsDict["accessToken"] = 'Invalid'
-            errorsDict["secretToken"] = 'Invalid'
-
         # check if a useable Monkey Id values is configured
-        # could be blank if the Alternate module in use
-        if type(dev) is indigo.RelayDevice:
+        if isinstance(dev,  indigo.RelayDevice):
             props = dev.pluginProps
-            monkey_id = props["monkey_id"]
-            if len(monkey_id) < 1:
-                self.logger.error(
-                    'The Voice Monkey functions are not fully configured '
-                    'for this device. ')
-                self.logger.error(
-                    'Check the "(Voice Monkey device name)" '
-                    'configured in Indigo for the selected device'
-                    ) 
-                errorsDict["monkey_id"] = False
+            monkey_id = props.get("monkey_id", None)
+        
+        # if a Yes/No Question action, check if the Alexa App is running
+        if plugin_action.pluginTypeId == "YesNoQuestion":
+            result = self.isPluginRunning('alexa')
+        else:
+            result = None
 
-        # validate if called by Yes/No Questions
-        if plugin_action.pluginTypeId == 'YesNoQuestion':
-
-            result = self.isAlexaPluginRunning()
-            if not result["alexa_enabled"]:
-                self.logger.error(
-                       "The Alexa Indigo Plugin is not enabled. "
-                       "The 'Ask a Yes/No Question' Device Action requires it."
-                           )
-                errorsDict["alexa_enabled"] = False
-
-        # where there any errors?
-        if len(errorsDict) > 0:
-            return False
-        return True
+        # define items to check with error messages if check fails
+        errors = {
+            "accessToken": "To use the Monkey Voice API, you must configure "
+                           "an Access Token.",
+            "secretToken": "To use the Monkey Voice API, you must configure "
+                           "a Secret Token.",
+            "monkey_id": "The Voice Monkey functions are not fully configured "
+                         "for this device.",
+            "alexa_enabled": "The Alexa Indigo Plugin is not enabled. "
+                             "The 'Ask a Yes/No Question' Device Action "
+                             "requires it."
+        }
+        error_fields = []
+        for field, message in errors.items():
+            if field == "accessToken":
+                if not access_token:
+                    error_fields.append(field)
+                    self.logger.error(message)
+            elif field == "secretToken":
+                if not secret_token:
+                    error_fields.append(field)
+                    self.logger.error(message)
+            elif field == "monkey_id":
+                if monkey_id is not None and len(monkey_id) < 1:
+                    error_fields.append(field)
+                    self.logger.error(message)
+            elif field == "alexa_enabled":
+                if result is not None and not result["plugin_enabled"]:
+                    error_fields.append(field)
+                    self.logger.error(message)
+        return not bool(error_fields)  # returns True if no errors
 
     ################################
     # Functions handling Questions #
@@ -2121,11 +2419,176 @@ class Plugin(indigo.PluginBase):
             which_device = self.unanswered[key]['plugin_action']['whichDevice']
             dev = indigo.devices[int(which_device)]
             question = self.unanswered[key]['plugin_action']['QuestionToAsk']
-            # remove newline characters via RegEx
+            # remove newline characters
             question_to_ask = question.replace("\n", "")
             value = (key, f'{dev.name} - {question_to_ask}')
             values.append(value)
         return values
+
+    #################################################
+    # Functions Related to the Announcemetns Plugin #
+    #################################################
+    def refresh_fields(self, plugin_action, dev, something):
+        """ 
+        Dummy callback to force dynamic control refreshes
+        The refresh_fields() method is a dummy callback used solely 
+        to fire other actions that require a callback be run. 
+        It performs no other function.
+        :param str fltr:
+        :param str type_id:
+        :param int target_id:
+        """
+        self.logger.debug("refresh_fields()")
+
+    def announcement_speak_action(self, plugin_action, dev):
+        """
+
+        """
+        self.logger.debug("announcement_speak_action")
+
+        # check to see if the Announcements Plugin is running
+        result = self.isPluginRunning('announcements')
+        if not result["plugin_enabled"]:
+            err_msg = ('The Announcements Plugin is not enabled. '
+                       "The 'Speak Announcements' Device Action requires it.")
+            self.logger.error(err_msg)
+            return False
+
+        # get Announcement Source and Item to Speak
+        source_id = int(plugin_action.props['theAnnouncement'])
+        announcement_name = plugin_action.props["announcementToSpeak"]
+
+        # if device does not exist
+        if indigo.devices.get(source_id) is None:
+            err_msg = ('Announcements device not found. Please edit the '
+                       'Action Group and select another device.')
+            self.logger.error(err_msg)
+            return False
+
+        elif not indigo.devices[source_id].enabled:
+            err_msg = ('The selected Announcements is not enabled. ')
+            self.logger.warn(err_msg)
+            return False
+
+        # if an Announcement Devices
+        elif indigo.devices[source_id].model == "Announcements Device":
+
+            # get all Announcements devices
+            plugin = indigo.server.getPlugin(self.announcements_pid)
+            result = plugin.executeAction("exportAnnouncements")
+            exported_announcements = json.loads(result)
+
+            # get selected the announcement
+            announcements = exported_announcements[str(source_id)]
+
+            # modify the name, then search for the matching announcement
+            matching_name = announcement_name.replace("_", " ")
+            matching_items = [v for k, v in announcements.items()
+                              if v['Name'] == matching_name]
+            announcement_message = (matching_items[0]['Announcement']
+                                    if matching_items else None)
+
+            # process the announcement message if found
+            if announcement_message is not None:
+
+                if ('[[' in announcement_message and
+                        ']]' in announcement_message):
+                    err_msg = ("This plugin cannot interpret speech commands "
+                               "in the selected announcement. Please update "
+                               "the announcement with Speech Synthesis "
+                               "Markup Language (SSML) commands."
+                               )
+                    self.logger.error(err_msg)
+                    return False
+
+                elif ('<<' in announcement_message and
+                      '>>' in announcement_message):
+
+                    # refresh the Announcement, then use its
+                    plugin.executeAction(
+                        "refreshAnnouncementData", source_id,
+                        {'announcementToRefresh': announcement_name,
+                         'announcementDeviceToRefresh': source_id})
+
+                    # pause to allow device state to update
+                    self.sleep(0.5)
+
+                    # get device state
+                    the_device = indigo.devices[source_id]
+                    text_to_speak = the_device.states[announcement_name]
+
+                else:  # no modifiers used
+                    text_to_speak = announcement_message
+
+                # prepare and then speak announcement
+                action = actionDict('text to speech', 'TextToSpeech',
+                                    {"TextToSpeech": text_to_speak})
+                self.text_to_speech(action, dev)
+
+            else:  # announcment not found
+                self.logger.warn('The configured Announcement was not found')
+
+        else:  # "Salutations Device" detected
+
+            # use the device state for the text to speak
+            text_to_speak = (indigo.devices[source_id].
+                             states[announcement_name])
+            action = actionDict('text to speech',
+                                'TextToSpeech',
+                                {"TextToSpeech": text_to_speak})
+            self.text_to_speech(action, dev)
+
+
+
+    def deviceList(self, dev_filter=None):  # noqa
+        """
+        Returns a list of tuples containing Indigo devices 
+        for use in config dialogs (etc.)
+        :param str dev_filter:
+        :return: [(ID, "Name"), (ID, "Name")]
+        """
+        devices_list = [('None', 'None')]
+        devices_list.extend((dev.id, dev.name) 
+                            for dev in indigo.devices.iter(dev_filter))
+        return devices_list
+
+    def announcement_devices(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
+    # def announcement_devices(self, valuesDict, dev):  # noqa
+        """
+        Returns a list of tuples containing Indigo devices 
+        for use in config dialogs (etc.)
+        :param str dev_filter:
+        :return: [(ID, "Name"), (ID, "Name")]
+        """
+        return self.deviceList(self.announcements_pid)
+
+    @staticmethod
+    def generator_announcement_list(filter="", values_dict=None, type_id="", target_id=0):  # noqa
+        """
+        Generate a list of states for Indigo controls
+        Returns a list of states for selected plugin device.
+        :param str fltr:
+        :param indigo.Dict values_dict:
+        :param str type_id:
+        :param int target_id:
+        :return list result:
+        """
+        try:
+            announcement_id = int(values_dict['theAnnouncement'])
+            if announcement_id in indigo.devices:
+                result = [
+                    (state, state.replace("_", " "))
+                    for state in indigo.devices[announcement_id].states
+                    if 'onOffState' not in state
+                ]
+            else:
+                result = [('value', 'Value')]
+        except KeyError:
+            result = [('None', 'None')]
+        except ValueError:
+            result = [('None', 'None')]
+
+        return result
 
     ###########################
     # Miscellaneous Functions #
@@ -2208,6 +2671,9 @@ class Plugin(indigo.PluginBase):
         else:
             indigo.server.log(combined_text)   
 
+
+
+
     def myListGenerator(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
         """
 
@@ -2273,27 +2739,33 @@ class Plugin(indigo.PluginBase):
             if id == ID:
                 return device
 
-    def isAlexaPluginRunning(self):
+    def isPluginRunning(self, plugin_name):
 
-        # check if the Alexa Plugin is running
-        alexa_id = "com.indigodomo.indigoplugin.alexa"
-        alexaPlugin = indigo.server.getPlugin(alexa_id)
-        alexa_enabled = alexaPlugin.isEnabled()
+        plugin_names = {
+            'alexa': 
+            {'plugin_id': 'com.indigodomo.indigoplugin.alexa'},
+            'announcements': 
+            {'plugin_id': self.announcements_pid},
+        }
+
+        # check if the Plugin is running
+        plugin_id = plugin_names[plugin_name]['plugin_id']
+        plugin = indigo.server.getPlugin(plugin_id)
+        plugin_enabled = plugin.isEnabled()
 
         return {
-                "alexa_enabled": alexa_enabled
+                "plugin_enabled": plugin_enabled
                 }
 
     ###########################
-    @staticmethod
-    def _validateURL(url):
+    def validateURL(self, url):
         '''
         This function validates a URL formating and only accept https://
         '''
         regex = ("^((https)://)[-a-zA-Z0-9@:%._\\+~#?&//=]{2,256}"
                  "\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)$")
 
-        substituted_url = indigo.activePlugin.substitute(url)
+        substituted_url = self.substitute(url)
         r = re.compile(regex)
         if (re.search(r, substituted_url)):
             return True

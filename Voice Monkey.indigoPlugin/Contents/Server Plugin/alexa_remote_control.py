@@ -37,7 +37,8 @@ def process_output(stdout, stderr, log_entry, function_name):
     # was the command successfully sent
     elif 'sending cmd' in stdout:
 
-        indigo.server.log(f'{log_entry}', f'{function_name}')
+        if function_name != 'alexa_speak':
+            indigo.server.log(f'{log_entry}', f'{function_name}')
         return True
 
     else:  # some other problem
@@ -82,7 +83,7 @@ def alexa_speak(say_this, the_device, voice=''):
     ]
 
     stdout, stderr = run_shell(the_parameters)
-    process_output(stdout, stderr, log_entry, 'alexa_speak')
+    return process_output(stdout, stderr, log_entry, 'alexa_speak')
 
 
 def ask_alexa(ask_this, the_device):

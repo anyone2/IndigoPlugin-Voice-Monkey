@@ -17,6 +17,23 @@
         <Label>API Secret Token:</Label>
     </Field>
 
+    <Field id="selectDeviceSeperator1" type="separator"></Field>
+
+    <Field id="enableSubscription" type="checkbox" defaultValue="false">
+        <Label>Enable Variable Subscription</Label>
+        <Description>(Announcements Plugin Support)</Description>
+    </Field>
+
+    <Field id="subscriptionLabel" type="label" fontColor="blue" fontSize="medium" alignWithControl="false" visibleBindingId="enableSubscription" visibleBindingValue="true">
+        <Label>When enabled, an integration with the Announcements Plugin is created for building announcements. A variable called 'spoken_announcement_raw' is created, which is written to and spoken when you press the 'Speak Announcement' button within the plugin.</Label>
+    </Field>
+
+    <Field id="announcingDevice" type="menu" visibleBindingId="enableSubscription" visibleBindingValue="true">
+        <Label>Select the Device to Speak</Label>
+        <List class="indigo.devices" filter="self.VoiceMonkeyDevice"/>
+    </Field>
+
+
     <Field id="AdjustSeparator1" type="separator"></Field>
 
     <Field id="AdjustTiming" type="checkbox" defaultValue="false">
@@ -91,10 +108,6 @@
         <Label>For info go to: https://github.com/thorsten-gehrig/alexa-remote-control</Label>
     </Field>
 
-    <Field id="LoggingLabel" type="label" fontColor="black" fontSize="regular" alignText="center">
-        <Label>Adjust the number of characters used for word wrap in the log.</Label>
-    </Field>
-
     <Field id="showDebugInfoSeperator" type="separator"></Field>
 
     <Field id="showDebugInfo" type="checkbox" defaultValue="false">
@@ -102,6 +115,10 @@
     </Field>
 
     <Field id="LoggingSeperator2" type="separator"></Field>
+
+    <Field id="LoggingLabel" type="label" fontColor="black" fontSize="regular" alignText="center">
+        <Label>Adjust the number of characters used for word wrap in the log.</Label>
+    </Field>
 
     <Field id="maxCombinedLength" type="textfield">
         <Label>First line log length limit</Label>

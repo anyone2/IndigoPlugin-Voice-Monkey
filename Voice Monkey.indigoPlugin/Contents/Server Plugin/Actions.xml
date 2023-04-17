@@ -166,6 +166,30 @@
         <CallbackMethod>text_to_speech</CallbackMethod>
     </Action>    
 
+    <Action id="SpeakAnnouncementsSeparator" uiPath="DeviceActions"/>
+
+    <Action id="SpeakAnnouncements" deviceFilter="self.VoiceMonkeyDevice" uiPath="DeviceActions">
+        <Name>Use Announcements Plugin</Name>
+        <CallbackMethod>announcement_speak_action</CallbackMethod>
+        <ConfigUI>
+
+            <Field id="theAnnouncement" type="menu" fontColor="black" fontSize="regular">
+                <Label>Source:</Label>
+                <List class="self" filter="" method="announcement_devices" dynamicReload="true"/>
+                <CallbackMethod>refresh_fields</CallbackMethod>
+
+            </Field>
+
+
+            <Field id="announcementToSpeak" type="menu" fontColor="black" fontSize="regular">
+                <Label>Item to Speak:</Label>
+                <List class="self" filter="" method="generator_announcement_list" dynamicReload="true"/>
+            </Field>
+
+
+        </ConfigUI>
+    </Action>
+
     <Action id="YesNoQuestionSeparator" uiPath="DeviceActions"/>
 
     <Action id="YesNoQuestion" uiPath="DeviceActions">
@@ -322,6 +346,32 @@
 
         </ConfigUI>
 
+    </Action>
+
+    <Action id="cancelQuestion" uiPath="DeviceActions">
+        <Name>Cancel a Yes/No Question</Name>
+        <CallbackMethod>cancel_a_question</CallbackMethod>
+        <ConfigUI>
+            <Field id="which_device" type="menu">
+                <Label>Select a Device:</Label>
+                <List class="indigo.devices" filter="self.VoiceMonkeyDevice"/>
+            </Field>
+            <Field id="question_to_cancel" type="textfield">
+                <Label>Yes or No Question:
+
+
+
+                </Label>                
+            </Field>
+            <Field id="cancelLabel1" type="label" fontColor="darkgray" fontSize="small" alignWithControl="true">
+                <Label>(Use Option+Return to move the cursor to the next line)</Label>
+            </Field>
+
+            <Field id="cancelLabel2" type="label" fontColor="black" fontSize="medium" alignWithControl="false">
+                <Label>Enter the Yes or No question exactly as originally inputted, so the plugin can find and cancel it. It is recommended to use Copy/Past for Accuracy.</Label>
+            </Field>
+
+        </ConfigUI>
     </Action>
 
     <Action id="PlaySoundsSeparator" uiPath="DeviceActions"/>
