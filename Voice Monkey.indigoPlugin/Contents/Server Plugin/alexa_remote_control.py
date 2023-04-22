@@ -4,6 +4,7 @@ import indigo
 import logging
 import subprocess
 import shlex
+from alexa_constants import sounds
 
 
 def run_shell(the_parameters):
@@ -207,39 +208,12 @@ def list_available_devices():
 
 def alexa_play_sound(the_sound, the_device):
 
-    sounds = {
-              'Air Horn 1': '/alarms/air_horns/air_horn_01',
-              'Boing 1': '/alarms/beeps_and_bloops/boing_01',
-              'Bell 1': '/alarms/beeps_and_bloops/bell_01',
-              'Bell 2': '/alarms/beeps_and_bloops/bell_02',
-              'Bell 3': '/alarms/chimes_and_bells/chimes_bells_05',
-              'Buzzer 1': '/alarms/buzzers/buzzers_01',
-              'Buzzer 2': '/alarms/buzzers/buzzers_04',
-              'Chimes': '/alarms/chimes_and_bells/chimes_bells_04',
-              'Ding 1': '/alarms/beeps_and_bloops/bell_03',
-              'Ding 2': '/alarms/beeps_and_bloops/bell_04',
-              'Doorbell 1': '/home/amzn_sfx_doorbell_01',
-              'Doorbell 2': '/home/amzn_sfx_doorbell_chime_02',
-              'Electronic Beep 1': '/musical/amzn_sfx_electronic_beep_01',
-              'Electronic Beep 2': '/musical/amzn_sfx_electronic_beep_02',
-              'Electronic Beep 3': '/scifi/amzn_sfx_scifi_timer_beep_01',
-              'Intro 1': '/alarms/beeps_and_bloops/intro_02',
-              'Siren 1': '/scifi/amzn_sfx_scifi_alarm_01',
-              'Siren 2': '/alarms/beeps_and_bloops/buzz_03',
-              'Tone 1': '/musical/amzn_sfx_test_tone_01',
-              'Tone 2': '/alarms/beeps_and_bloops/tone_02',
-              'Tone 3': '/alarms/beeps_and_bloops/tone_05',
-              'Woosh': '/alarms/beeps_and_bloops/woosh_02',
-
-    }
-
-    # format sound and play sound, if not found use Air Horn 1
-    sound_url = "<audio src='soundbank://soundlibrary{0}'/>"
-    sound_to_play = sound_url.format(
-        sounds.get(the_sound, sounds['Air Horn 1']))
+    # format sound 
+    sound_to_play = (f"<audio src='soundbank://soundlibrary{the_sound}'/>")
+    sound_name = sounds.get(the_sound)
 
     # format log output
-    log_entry = f'{the_device}: Play a Sound : "{the_sound}"'
+    log_entry = f'{the_device}: Play a Sound : "{sound_name}"'
 
     # build the shell command
     the_parameters = [

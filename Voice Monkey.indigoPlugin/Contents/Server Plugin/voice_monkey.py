@@ -81,6 +81,20 @@ def yes_or_no(question,
     return ifPluginEnabledExecuteAction('YesNoQuestion', props, deviceId)
 
 
+def cancel_yes_or_no(question, deviceId=None):
+    """
+    This function will cancel a specific Yes or No Question being asked 
+    on a given device if it exists.
+    
+    Passed to it is Question and the device.
+    """
+    props = {   
+        'question_to_cancel': question, 
+        'which_device': deviceId,  
+    }
+    return ifPluginEnabledExecuteAction('cancelQuestion', props, deviceId)
+
+
 def play_audio(audioFileUrl, deviceId):
     """
     This function is used to play an audio file on a selected device.

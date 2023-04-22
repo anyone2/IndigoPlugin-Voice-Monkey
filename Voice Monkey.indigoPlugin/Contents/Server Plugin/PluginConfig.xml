@@ -33,6 +33,14 @@
         <List class="indigo.devices" filter="self.VoiceMonkeyDevice"/>
     </Field>
 
+    <Field id="ChangeVoice" type="checkbox" defaultValue="false" visibleBindingId="enableSubscription" visibleBindingValue="true">>
+        <Label> </Label>
+        <Description>Change the Voice?</Description>
+    </Field>
+
+    <Field type="menu" id="selectedVoice" visibleBindingId="ChangeVoice" visibleBindingValue="true">
+        <List class="self" filter="" method="voicesList"/>
+    </Field>
 
     <Field id="AdjustSeparator1" type="separator"></Field>
 
@@ -135,7 +143,7 @@
     </Field>
 
     <Field id="maxTextLengthLabel" type="label" fontColor="blue" fontSize="small" alignWithControl="false" >
-        <Label>Enter the number of characters to display on one line when wrapping text. The default value is 130 characters.</Label>
+        <Label>Enter the number of characters to display on one line when wrapping text. The default value is 150 characters.</Label>
     </Field>
 
 

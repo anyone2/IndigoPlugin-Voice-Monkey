@@ -47,7 +47,7 @@ class Plugin(indigo.PluginBase):
         self.unanswered = plugin_prefs.get("RepeatingYesNo", indigo.Dict())
 
         # configurable setting for output to the log
-        self.max_text_length = plugin_prefs.get("maxTextLength", 130)
+        self.max_text_length = plugin_prefs.get("maxTextLength", 150)
         self.max_combined_length = plugin_prefs.get("maxCombinedLength", 150)
 
         # determine if alexa_remote_control was imported
@@ -61,6 +61,10 @@ class Plugin(indigo.PluginBase):
 
         # define the device used to speak when using the Announcements Plugin
         self.announcing_device = self.plugin_prefs.get('announcingDevice', 0)
+
+        # device voice to use with the Announcements Plugin
+        self.change_voice = self.plugin_prefs.get('ChangeVoice', False)
+        self.selected_voice = self.plugin_prefs.get('selectedVoice', False)
 
     ########################################
     def startup(self):
@@ -156,7 +160,9 @@ class Plugin(indigo.PluginBase):
                     # prepare what is to be spoken
                     action = actionDict('text to speech', 
                                         'TextToSpeech',
-                                        {"TextToSpeech": new_var.value})
+                                        {"selectedVoice": self.selected_voice,
+                                         "ChangeVoice": self.change_voice,
+                                         "TextToSpeech": new_var.value})
 
                     # ensure speak announcement device exists
                     dev = indigo.devices.get(int(self.announcing_device))
@@ -263,6 +269,10 @@ class Plugin(indigo.PluginBase):
         stop_when_yes = plugin_action.get('StopWhenYes', True)
         no_response = plugin_action.get('noResponseActionGroup', None)
         execute_no_response = plugin_action.get('executeNoResponse', False)
+
+        # prepare for display, perform substituion and remove line feeds
+        question = self.substitute(question_to_ask)
+        question_text = (question.replace('\u2028', "").replace('\n', ""))
 
         dev = indigo.devices.get(int(which_device))
         if not dev:
@@ -390,11 +400,11 @@ class Plugin(indigo.PluginBase):
 
     ##################################
     def responseReceived(self, answer, action, dev):
-        dev = indigo.devices[action.deviceId]
 
         self.logger.debug("responseReceived called")
 
         # get current device states
+        dev = indigo.devices[action.deviceId]
         last_question_epoch = dev.states['LastQuestionEpoch']
 
         # match the response to the unanswered questions list
@@ -430,35 +440,35 @@ class Plugin(indigo.PluginBase):
                 response_action_group = off_no_action_group
                 message_prefix = f"'{dev.name}' received a 'No' response."
 
-            if response_action_group:
-                # - select an action group -' was not picked by the user
-                if int(response_action_group) != 0:
-                    try:
-                        message = (f"{message_prefix}")
+            # an action group was not picked by the user or not passed
+            if response_action_group and response_action_group != '0':
+                
+                message = (f"{message_prefix}")
 
-                        if exit_on_answer:
-                            if repeats:
-                                message += (
-                                    " The question will not be asked again.")
-                            del self.unanswered[last_question_epoch]
-                        elif repeats and int(cycles) > int(the_count):
-                            message += (" The question will be repeated "
-                                        f"in {time_string}.")
-                        elif repeats and int(cycles) <= int(the_count):
-                            message += " The question will not be repeated."
-                            del self.unanswered[last_question_epoch]
-                        else:
-                            del self.unanswered[last_question_epoch]
+                if exit_on_answer:
+                    if repeats:
+                        message += (
+                            " The question will not be asked again.")
+                    del self.unanswered[last_question_epoch]
+                elif repeats and int(cycles) > int(the_count):
+                    message += (" The question will be repeated "
+                                f"in {time_string}.")
+                elif repeats and int(cycles) <= int(the_count):
+                    message += " The question will not be repeated."
+                    del self.unanswered[last_question_epoch]
+                else:
+                    del self.unanswered[last_question_epoch]
 
-                        self.logger.info(message)
-                        indigo.actionGroup.execute(int(response_action_group))
+                try:
+                    self.logger.info(message)
+                    indigo.actionGroup.execute(int(response_action_group))
 
-                    except ValueError:
-                        self.logger.critical(
-                            f"The Action Group configured for a '{answer}' "
-                            "response cannot be found."
-                        )
-                        del self.unanswered[last_question_epoch]
+                except ValueError:
+                    self.logger.critical(
+                        f"The Action Group configured for a '{answer}' "
+                        "response cannot be found."
+                    )
+                    del self.unanswered[last_question_epoch]
             else:
                 message = (f"{message_prefix} A response is "
                            "not configured.")
@@ -594,14 +604,16 @@ class Plugin(indigo.PluginBase):
         actions = {
             'text to speech': self.alexa_speak,
             'simple speak': self.alexa_speak,
-            'plugin action': self.validatePluginExecuteAction, 
-
+            'plugin action': False,  # do not over-ride script speech request
         }
         if self.plugin_prefs.get('forTextToSpeech'):
             action_fn = actions.get(plugin_action.description)
             if action_fn:
                 return action_fn(plugin_action, dev)
-            else:
+
+        if plugin_action.description == "plugin action":
+            # validate Action Config for scripting
+            if not self.validatePluginExecuteAction(plugin_action, dev):
                 return False
 
         # check if a Monkey and tokens are fully configured
@@ -627,9 +639,11 @@ class Plugin(indigo.PluginBase):
         # what voice to use
         selected_voice = plugin_action.props.get("selectedVoice", False)
 
-        # remove newline characters via RegEx
-        modified_text = text_to_speech.replace("\n", "")
-        
+        # remove newline characters
+        modified_text = (text_to_speech
+                         .replace('\u2028', "")
+                         .replace('\n', ""))        
+
         # perform Indigo variable substitution 
         substituted_text = self.substitute(modified_text)
 
@@ -723,7 +737,13 @@ class Plugin(indigo.PluginBase):
 
         # get the device info
         which_device = plugin_action.props["whichDevice"]
-        dev = indigo.devices[int(which_device)]
+        dev = indigo.devices.get(int(which_device))
+        if not dev:
+            self.logger.warn(
+                "The device configured to ask the Yes/No question "
+                "can no longer be found."
+                )
+            return False
 
         # if running as script
         if plugin_action.description == "plugin action":
@@ -811,7 +831,9 @@ class Plugin(indigo.PluginBase):
         question_to_ask = plugin_action.props["QuestionToAsk"]
 
         # remove newline characters
-        modified_text = question_to_ask.replace("\n", "")
+        modified_text = (question_to_ask
+                         .replace('\u2028', "")
+                         .replace('\n', ""))
 
         # perform Indigo variable substitution 
         substituted_text = self.substitute(modified_text)
@@ -865,8 +887,7 @@ class Plugin(indigo.PluginBase):
         text of the question entered and device
 
         cancelQuestion
-        """
-        
+        """        
         self.logger.debug("cancel_a_question called")
 
         # the name of the Yes/No question to cancel
@@ -882,7 +903,7 @@ class Plugin(indigo.PluginBase):
 
             # look for a match
             if (question_to_cancel == question_to_ask 
-               and cancel_question_on_device == asking_device):
+               and str(cancel_question_on_device) == asking_device):
 
                 # if voice monkey device exists
                 dev = indigo.devices.get(int(asking_device))
@@ -897,21 +918,41 @@ class Plugin(indigo.PluginBase):
 
                     # delete the question
                     del self.unanswered[key]
+
+                    # format the log entry
+                    log_entry = (
+                        f'Succesfully Canceled Yes/No Question : {dev.name}')
+
                     # remove special characters
-                    question = (question_to_ask
-                                .replace('\u2028', "")
-                                .replace('\n', ""))
-                    indigo.server.log(
-                        f"Canceled Yes/No Question : {dev.name} : "
-                        f'"{self.substitute(question)}"')
+                    modified_text = (question_to_ask
+                                     .replace('\u2028', "")
+                                     .replace('\n', ""))
+
+                    self.wrapLogging(self.substitute(modified_text), log_entry)
+
                     break
                     
                 else:
                     self.logger.error(
                       'The device asking the question, no longer exists. ')
 
-        else:
-            indigo.server.log('A matching Yes/No Question was not found. ')
+        else:  # match not found
+
+            dev = indigo.devices.get(int(cancel_question_on_device))
+            if dev:
+
+                # remove special characters
+                modified_text = (question_to_cancel
+                                 .replace('\u2028', "")
+                                 .replace('\n', ""))
+                # warn the user
+                self.logger.warn(
+                    'Cancel failed, no matching Yes/No Question found : '
+                    f'{dev.name} : "{modified_text}"')
+
+            else:
+                self.logger.error(
+                  'The device asking the question, no longer exists. ')
 
     ###########################################################
     def play_audio_file_url(self, plugin_action, dev):
@@ -938,8 +979,10 @@ class Plugin(indigo.PluginBase):
         # which sound to make
         audio_file_url = plugin_action.props.get("audioFileUrl")
 
-        # remove newline characters via RegEx
-        modified_url = audio_file_url.replace("\n", "")
+        # remove newline characters
+        modified_url = (audio_file_url
+                        .replace('\u2028', "")
+                        .replace('\n', ""))
 
         # perform Indigo variable substitution 
         substituted_url = self.substitute(modified_url)
@@ -988,7 +1031,11 @@ class Plugin(indigo.PluginBase):
 
         # which sound to make
         audio_file_url = plugin_action.props.get("backgroundAudioFileUrl")
-        modified_url = audio_file_url.replace("\n", "")
+
+        # remove newline characters
+        modified_url = (audio_file_url
+                        .replace('\u2028', "")
+                        .replace('\n', ""))
 
         # perform Indigo variable substitution 
         substituted_url = self.substitute(modified_url)
@@ -997,7 +1044,9 @@ class Plugin(indigo.PluginBase):
         text_to_speech = plugin_action.props.get("TextToSpeech", "")
 
         # remove newline characters
-        modified_text = text_to_speech.replace("\n", "")
+        modified_text = (text_to_speech
+                         .replace('\u2028', "")
+                         .replace('\n', ""))
 
         # perform Indigo variable substitution 
         substituted_text = self.substitute(modified_text)
@@ -1036,8 +1085,23 @@ class Plugin(indigo.PluginBase):
 
         PlaySound
         """
-
         self.logger.debug("play_sound called")
+
+        # where to play it
+        monkey_id = dev.states['monkeyId']
+
+        # get the name of the sound
+        sound_path = plugin_action.props.get("soundName", 
+                                             '/musical/amzn_sfx_test_tone_01')
+        # get the path of the sound to make
+        the_sound = sounds.get(sound_path, 'Tone 1') 
+
+        # if scripting
+        if plugin_action.description == "plugin action":
+            the_sound = sound_path
+            sound_path = next((key for key, value in sounds.items() 
+                              if value == sound_path), None)
+            sound_path = str(sound_path) if sound_path is not None else ""                          
 
         # if over-riding how sounds are played
         if self.plugin_prefs.get("forPlayingSounds"):
@@ -1055,15 +1119,6 @@ class Plugin(indigo.PluginBase):
         # check if a Monkey and tokens are fully configured
         if not self.monkey_validation(plugin_action, dev):
             return False
-
-        # where to play it
-        monkey_id = dev.states['monkeyId']
-
-        # get the name of the sound
-        the_sound = plugin_action.props.get("soundName")
-
-        # get the path of the sound to make
-        sound_path = sounds.get(the_sound) 
 
         # build payload
         payload = {
@@ -1206,7 +1261,9 @@ class Plugin(indigo.PluginBase):
             return False
 
         # remove newline characters
-        modified_text = text_to_speech.replace("\n", "")
+        modified_text = (text_to_speech
+                         .replace('\u2028', "")
+                         .replace('\n', ""))
 
         # perform Indigo variable substitution 
         substituted_text = self.substitute(modified_text)
@@ -1230,7 +1287,8 @@ class Plugin(indigo.PluginBase):
                                                    device_name, 
                                                    selected_voice)
         if results:
-            log_entry = f'{dev.name} : Text-to-Speech : {selected_voice_info}'
+            log_entry = (f'{device_name} : Text-to-Speech : '
+                         f'{selected_voice_info}')
             self.wrapLogging(substituted_text, log_entry)
             return True
         else:
@@ -1431,7 +1489,9 @@ class Plugin(indigo.PluginBase):
             question_to_ask = "Are you able to hear me clearly?"
 
             # remove newline characters
-            modified_text = question_to_ask.replace("\n", "")
+            modified_text = (question_to_ask
+                             .replace('\u2028', "")
+                             .replace('\n', ""))
 
             # perform Indigo variable substitution 
             substituted_text = self.substitute(modified_text)
@@ -1554,8 +1614,8 @@ class Plugin(indigo.PluginBase):
 
                 one_or_more = 'cycle' if the_count == 1 else 'cycles'
                 repeat_msg = (
-                    f"has a repeating Yes/No with {cycles - the_count} "
-                    f"{one_or_more} left")
+                    "has a repeating Yes/No Question with "
+                    f"{cycles - the_count} {one_or_more} left")
 
                 if delayed:
                     time_string = (
@@ -1580,7 +1640,12 @@ class Plugin(indigo.PluginBase):
                 dev = indigo.devices.get(int(which_device))
 
                 if dev:
-                    ask = question.replace("\n", "")
+
+                    # remove newline characters
+                    ask = (question
+                           .replace('\u2028', "")
+                           .replace('\n', ""))
+
                     substituted_text = self.substitute(ask)
                     log_entry = (f'{dev.name} {repeat_msg} {time_string}')
 
@@ -1759,6 +1824,7 @@ class Plugin(indigo.PluginBase):
                     "Enter a publicly accessible URL. "
                     "The URL must begin with https://"
                 )
+                errorsDict["showAlertText"] = errorsDict["audioFileUrl"]
                 self.logger.error(errorsDict["audioFileUrl"])
 
         def validate_play_background_audio_file(valuesDict):
@@ -1769,6 +1835,8 @@ class Plugin(indigo.PluginBase):
                     "Enter a publicly accessible URL. "
                     "The URL must begin with https://"
                 )
+                errorsDict["showAlertText"] = errorsDict[
+                                                "backgroundAudioFileUrl"]
                 self.logger.error(errorsDict["backgroundAudioFileUrl"])
 
         def validate_trigger_routine(valuesDict):
@@ -1790,6 +1858,7 @@ class Plugin(indigo.PluginBase):
                     "Additional configuration is required. "
                     "This is not a capability of the Voice Monkey API."
                 )
+                errorsDict["showAlertText"] = errorsDict["RequestOfDevice"]
                 self.logger.error(errorsDict["RequestOfDevice"])
 
             if len(RequestOfDevice) < 1:
@@ -1807,6 +1876,7 @@ class Plugin(indigo.PluginBase):
                     "Additional configuration is required. "
                     "This is not a capability of the Voice Monkey API."
                 )
+                errorsDict["showAlertText"] = errorsDict["monkey_id"]
                 self.logger.error(errorsDict["monkey_id"])
 
             if len(monkey_id) < 1:
@@ -1824,6 +1894,7 @@ class Plugin(indigo.PluginBase):
                     "Additional configuration is required. "
                     "This is not a capability of the Voice Monkey API."
                 )
+                errorsDict["showAlertText"] = errorsDict["arguments"]
                 self.logger.error(errorsDict["arguments"])
 
             if len(arguments) < 1:
@@ -1866,10 +1937,12 @@ class Plugin(indigo.PluginBase):
                                "the question.")
                     self.logger.error(err_msg)
                     errorsDict["whichDevice"] = err_msg
+                    errorsDict["showAlertText"] = errorsDict["whichDevice"]
             else:
                 err_msg = "Please select the Device that asks the question."
                 self.logger.error(err_msg)
                 errorsDict["whichDevice"] = err_msg
+                errorsDict["showAlertText"] = err_msg
 
         def validate_action_groups(valuesDict):
 
@@ -1892,6 +1965,7 @@ class Plugin(indigo.PluginBase):
                 self.logger.error(err_msg)
                 errorsDict['executeWhenYes'] = err_msg
                 errorsDict['executeWhenNo'] = err_msg
+                errorsDict["showAlertText"] = err_msg
             else:
                 for yes_or_no in ['executeWhenYes', 'executeWhenNo']:
                     action_group = valuesDict.get(yes_or_no, False)
@@ -1902,6 +1976,7 @@ class Plugin(indigo.PluginBase):
                                    "the Yes or No response.")
                         self.logger.error(err_msg)
                         errorsDict[yes_or_no] = err_msg
+                        errorsDict["showAlertText"] = err_msg
 
             if execute_no_response:
                 if no_response_group:
@@ -1916,6 +1991,7 @@ class Plugin(indigo.PluginBase):
                             "to be executed, if the option is ticked."
                         )
                         errorsDict["noResponseActionGroup"] = err_msg
+                        errorsDict["showAlertText"] = err_msg
                         self.logger.error(err_msg)
                 else:
                     err_msg = (
@@ -1923,6 +1999,7 @@ class Plugin(indigo.PluginBase):
                         "to be executed, if the option is ticked."
                     )
                     errorsDict["noResponseActionGroup"] = err_msg
+                    errorsDict["showAlertText"] = err_msg
                     self.logger.error(err_msg)
 
         def validate_repeat_settings(valuesDict):
@@ -1961,10 +2038,11 @@ class Plugin(indigo.PluginBase):
 
             question_to_ask = valuesDict.get("QuestionToAsk", "")
             if not question_to_ask:
-                self.logger.error(
+                err_msg = (
                     "The question you want to ask has an invalid format")
-                errorsDict["QuestionToAsk"] = (
-                    "The question you want to ask has an invalid format")
+                self.logger.error(err_msg)
+                errorsDict["QuestionToAsk"] = (err_msg)
+                errorsDict["showAlertText"] = err_msg
 
         def validate_cancelQuestion(valuesDict):
 
@@ -2060,7 +2138,7 @@ class Plugin(indigo.PluginBase):
             validate_play_background_audio_file(valuesDict)
             validate_text_to_speech(valuesDict)
 
-        elif typeId == "PlayAudioFile":
+        elif typeId == "PlayAudioFileUrl":
             validate_play_audio_file_url(valuesDict)
 
         elif typeId == "YesNoQuestion":
@@ -2092,6 +2170,8 @@ class Plugin(indigo.PluginBase):
 
         elif typeId == "SpeakAnnouncements":
             validate_announcements(valuesDict)
+        else:
+            self.logger.debug(f'unaccounted for: {typeId}')
 
         # where there any errors?
         if len(errorsDict) > 0:
@@ -2108,176 +2188,234 @@ class Plugin(indigo.PluginBase):
 
         errorsDict = indigo.Dict()
 
-        enable_subscription = valuesDict.get('enableSubscription', False)
-        announcing_device = valuesDict.get('announcingDevice', False)
-        
-        use_alexa_remote = valuesDict.get('useAlexaRemoteControl', False)
-        adjust_timing = valuesDict.get('AdjustTiming', False)
-        max_combined_length = valuesDict.get("maxCombinedLength")
-        max_text_length = valuesDict.get("maxTextLength")
-        show_debug_messages = valuesDict.get("showDebugInfo", False)
-        self.debug = show_debug_messages
+        # Validate tokens preferences
+        def validate_tokens_pref(valuesDict):
 
-        if show_debug_messages:
-            self.logger.info("debug logging is on")
-        else:
-            self.logger.info("debug logging is off")
+            # validate Access and Secret Tokens
+            access_token = valuesDict.get("accessToken", '')
+            secret_token = valuesDict.get("secretToken", '')
 
-        if not use_alexa_remote:
-            valuesDict['forTextToSpeech'] = False
-            valuesDict['forPlayingSounds'] = False
-
-        access_token = valuesDict.get("accessToken", '')
-        secret_token = valuesDict.get("secretToken", '')
-
-        # if either access token not enter, warn the user but allow it
-        if not (len(access_token) >= 1 and len(secret_token) >= 1):
-            # if using the alexa_remote_control_module
-            if use_alexa_remote:
-                self.logger.warn(
-                    'To use any function that requires the Voice Monkey API, '
-                    "such as audio playback "
-                    )
-                self.logger.warn(
-                    "or verbally prompted 'Yes or No' questions, "
-                    "API Tokens are required."
-                                 )
-                self.logger.warn(
-                    "The imported 'alexa_remote_control' module can handle "
-                    "text-to-speech and sound playback, if it is set up and "
-                    "configured correctly."
-                                 )
-
-            else:  # if not using the alexa_remote_control_module
-                errorMsg = (
-                    'Voice Monkey API Tokens are not configured correctly')
-                errorsDict["accessToken"] = errorMsg
-                errorsDict["secretToken"] = errorMsg
-                errorsDict["showAlertText"] = (
-                        'To use the Voice Monkey API, you must '
-                        'enter both your Secret and Access Tokens')
-
-        # if subscription is enabled
-        if enable_subscription:
-
-            # check to see if the Announcements Plugin is running
-            result = self.isPluginRunning('announcements')
-            if not result["plugin_enabled"]:
-                errorMsg = ('The Announcements Plugin is not enabled. '
-                            "It is required to use Variable Subscription.")
-                errorsDict["enableSubscription"] = errorMsg
-                errorsDict["showAlertText"] = (errorMsg)
-
-            # error if a device is not selected
-            elif not announcing_device:
-                errorMsg = ("Please select a device to speak when you "
-                            "the 'Speak Announcement' button within "
-                            "the Announcements plugin is pressed")
-                errorsDict["announcingDevice"] = errorMsg
-                errorsDict["showAlertText"] = (errorMsg)
-
-            else:
-
-                self.announcing_device = announcing_device
-
-        else:
-            self.announcing_device = False
-
-        # if user wants to use an alternate name
-        if use_alexa_remote:
-            # prepare the error message
-            errorMsg = (
-                        "Additional configuration is required "
-                        "before this selection is allowed. See "
-                        "the documenation for more information."
+            # if either access token not enter, warn the user but allow it
+            if not (len(access_token) >= 1 and len(secret_token) >= 1):
+                # if using the alexa_remote_control_module
+                if valuesDict.get('useAlexaRemoteControl', False):
+                    self.logger.warn(
+                        'To use any function that requires the Voice Monkey '
+                        "API, such as audio playback "
                         )
-            if not self.plugin_prefs.get("AltModuleImported"):
-                # don't allow this configuration
-                errorsDict["showAlertText"] = (errorMsg)
-                errorsDict["use_alexa_remote"] = errorMsg
-                self.logger.error(errorsDict["use_alexa_remote"])
+                    self.logger.warn(
+                        "or verbally prompted 'Yes or No' questions, "
+                        "API Tokens are required."
+                                     )
+                    self.logger.warn(
+                        "The imported 'alexa_remote_control' module can "
+                        " handle text-to-speech and sound playback, if "
+                        "it is set up and configured correctly."
+                                     )
 
-        if adjust_timing:
-            max_time_to_wait = valuesDict.get('maxTimeToWait')
-            min_yes_no_delay = valuesDict.get('minYesNoDelay')
-            sleep_time = valuesDict.get('sleepTime')
-            if max_time_to_wait < 5:
-                errorMsg = ('Invalid entry, a positive number greater than 5 '
-                            'was not entered')
-                errorsDict["maxTimeToWait"] = errorMsg
+                else:  # if not using the alexa_remote_control_module
+                    errorMsg = (
+                        'Voice Monkey API Tokens are not configured correctly')
+                    errorsDict["accessToken"] = errorMsg
+                    errorsDict["secretToken"] = errorMsg
+                    errorsDict["showAlertText"] = (
+                            'To use the Voice Monkey API, you must '
+                            'enter both your Secret and Access Tokens')
+
+        # Validate announcement plugin preferences
+        def validate_announcements_pref(valuesDict):
+
+            enable_subscription = valuesDict.get('enableSubscription', False)
+            announcing_device = valuesDict.get('announcingDevice', False)
+            change_voice = valuesDict.get('ChangeVoice', False)
+            selected_voice = valuesDict.get('selectedVoice', False)
+
+            # if subscription is enabled
+            if enable_subscription:
+
+                # check to see if the Announcements Plugin is running
+                result = self.isPluginRunning('announcements')
+                if not result["plugin_enabled"]:
+                    errorMsg = ('The Announcements Plugin is not enabled. '
+                                "It is required to use Variable Subscription.")
+                    errorsDict["enableSubscription"] = errorMsg
+                    errorsDict["showAlertText"] = (errorMsg)
+
+                # error if a device is not selected
+                elif not announcing_device:
+                    errorMsg = ("Please select a device to speak when you "
+                                "the 'Speak Announcement' button within "
+                                "the Announcements plugin is pressed")
+                    errorsDict["announcingDevice"] = errorMsg
+                    errorsDict["showAlertText"] = (errorMsg)
+                else:
+                    self.announcing_device = announcing_device
+
+                # if a different voice is not wanted
+                if not change_voice:
+                    self.selected_voice = None
+                elif selected_voice and selected_voice not in voices:
+                    errorsDict["selectedVoice"] = (
+                        f"The voice '{selected_voice}' is not recognized")
+                    errorsDict["showAlertText"] = (errorsDict["selectedVoice"])
+                elif not selected_voice:
+                    errorsDict["selectedVoice"] = (
+                        "Please select a voice or uncheck 'Change the Voice?'")
+                    errorsDict["showAlertText"] = (errorsDict["selectedVoice"])
+                else:
+                    self.selected_voice = selected_voice
+                    self.change_voice = change_voice
+
+            else:  # variable subscription is disabled
+
+                self.announcing_device = False
+                self.selected_voice = None
+                self.change_voice = False
+                valuesDict['ChangeVoice'] = False
+
+        # Validate yes/no question timing preferences
+        def validate_yesno_timing_pref(valuesDict):
+
+            # Validate Yes/No timing
+            adjust_timing = valuesDict.get('AdjustTiming', False)        
+            if adjust_timing:
+                max_time_to_wait = valuesDict.get('maxTimeToWait')
+                min_yes_no_delay = valuesDict.get('minYesNoDelay')
+                sleep_time = valuesDict.get('sleepTime')
+                if max_time_to_wait < 5:
+                    errorMsg = ('Invalid entry, a positive number greater '
+                                'than 5 was not entered')
+                    errorsDict["maxTimeToWait"] = errorMsg
+                    errorsDict["showAlertText"] = (
+                        'The maximum number of seconds to wait for a Yes or '
+                        'No response must be a positive number greater than 5.'
+                        )
+                else:
+                    self.max_wait = int(valuesDict.get('maxTimeToWait'))
+
+                if min_yes_no_delay < 5:
+                    errorMsg = ('Invalid entry, a positive number greater '
+                                'than 5 was not entered')
+                    errorsDict["minYesNoDelay"] = errorMsg
+                    errorsDict["showAlertText"] = (
+                        'The minimum number of seconds that must elapse '
+                        'before a question can be repeated, must be a '
+                        'positive number greater than 5'
+                    )
+                else:
+                    self.min_delay = int(valuesDict.get('minYesNoDelay'))
+
+                if sleep_time < 1:
+                    errorMsg = ('Invalid entry, value can not be less than 0.')
+                    errorsDict["sleepTime"] = errorMsg
+                    errorsDict["showAlertText"] = (
+                        'Specify the number of seconds to pause between '
+                        'iterations of the runConcurrentThread() function by '
+                        'entering a value in the text field. The default '
+                        'value is 5 seconds. '
+                    )
+                else:
+                    self.sleep_time = int(valuesDict.get('sleepTime'))
+
+            else:  # change them back to defaults unchecked
+                
+                self.min_delay = 35
+                valuesDict['minYesNoDelay'] = 35
+
+                self.max_wait = 30 
+                valuesDict['maxTimeToWait'] = 30
+
+                self.sleep_time = 5 
+                valuesDict['sleepTime'] = 5
+
+        # Validate alexa remote control preferences
+        def validate_alexa_remote_control_pref(valuesDict):
+
+            use_alexa_remote = valuesDict.get('useAlexaRemoteControl', False)
+
+            if use_alexa_remote:
+                errorMsg = (
+                            "Additional configuration is required "
+                            "before this selection is allowed. See "
+                            "the documenation for more information."
+                            )
+                if not self.plugin_prefs.get("AltModuleImported"):
+                    # don't allow this configuration
+                    errorsDict["showAlertText"] = errorMsg
+                    errorsDict["use_alexa_remote"] = errorMsg
+            else:  # not using alexa remote control
+                valuesDict['forTextToSpeech'] = False
+                valuesDict['forPlayingSounds'] = False
+
+        # configure debugging
+        def configure_debug_pref(valuesDict):
+            
+            show_debug_messages = valuesDict.get("showDebugInfo", False)
+            self.debug = show_debug_messages
+            if show_debug_messages:
+                self.logger.info("debug logging is on")
+            else:
+                self.logger.info("debug logging is off")
+
+        # Validate logging preferences
+        def validate_logging_pref(valuesDict):
+            # Validate log wrapping
+            max_combined_length = valuesDict.get("maxCombinedLength")
+            max_text_length = valuesDict.get("maxTextLength")
+            if max_combined_length < 25:
+
+                errorMsg = ('Invalid entry, a positive number greater than 25 '
+                            'was not entered for the character length.')
+                errorsDict["maxCombinedLength"] = errorMsg
                 errorsDict["showAlertText"] = (
-                    'The maximum number of seconds to wait for a Yes or No '
-                    'response must be a positive number greater than 5.'
+                    'The minimum character value is 25. The default was 150.'
                     )
             else:
-                self.max_wait = int(valuesDict.get('maxTimeToWait'))
+                self.max_combined_length = int(max_combined_length)
 
-            if min_yes_no_delay < 5:
-                errorMsg = ('Invalid entry, a positive number greater than 5 '
-                            'was not entered')
-                errorsDict["minYesNoDelay"] = errorMsg
+            if max_text_length < 25:
+                errorMsg = ('Invalid entry, a positive number greater than 25 '
+                            'was not entered for the character length.')
+                errorsDict["maxTextLength"] = errorMsg
                 errorsDict["showAlertText"] = (
-                    'The minimum number of seconds that must elapse before '
-                    'a question can be repeated, must be a positive number '
-                    'greater than 5'
+                    'The minimum character value is 25. The default was 150.'
                 )
             else:
-                self.min_delay = int(valuesDict.get('minYesNoDelay'))
+                self.max_text_length = int(max_text_length)
 
-            if sleep_time < 1:
-                errorMsg = ('Invalid entry, value can not be less than 0.')
-                errorsDict["sleepTime"] = errorMsg
-                errorsDict["showAlertText"] = (
-                    'Specify the number of seconds to pause between '
-                    'iterations of the runConcurrentThread() function by '
-                    'entering a value in the text field. The default value '
-                    'is 5 seconds. '
-                )
-            else:
-                self.sleep_time = int(valuesDict.get('sleepTime'))
+        #########################
+        #  Validate Preferences #
+        #########################
 
-        else:  # change them back to defaults unchecked
-            
-            self.min_delay = 35
-            valuesDict['minYesNoDelay'] = 35
+        # Validate tokens preferences
+        validate_tokens_pref(valuesDict) 
 
-            self.max_wait = 30 
-            valuesDict['maxTimeToWait'] = 30
+        # Validate announcement plugin preferences
+        validate_announcements_pref(valuesDict)
 
-            self.sleep_time = 5 
-            valuesDict['sleepTime'] = 5
+        # Validate yes/no question timing preferences
+        validate_yesno_timing_pref(valuesDict)
 
-        #
-        if max_combined_length < 25:
+        # Validate alexa remote control preferences
+        validate_alexa_remote_control_pref(valuesDict)
 
-            errorMsg = ('Invalid entry, a positive number greater than 25 '
-                        'was not entered for the character length.')
-            errorsDict["maxCombinedLength"] = errorMsg
-            errorsDict["showAlertText"] = (
-                'The minimum character value is 25. The default was 150.'
-                )
-        else:
+        # configure debugging
+        configure_debug_pref(valuesDict)
 
-            self.max_combined_length = int(max_combined_length)
-
-        if max_text_length < 25:
-
-            errorMsg = ('Invalid entry, a positive number greater than 25 '
-                        'was not entered for the character length.')
-            errorsDict["maxTextLength"] = errorMsg
-            errorsDict["showAlertText"] = (
-                'The minimum character value is 25. The default was 130.'
-            )
-
-        else:
-            self.max_text_length = int(max_text_length)
+        # Validate logging preferences
+        validate_logging_pref(valuesDict)
 
         # where there any errors?
         if len(errorsDict) > 0:
             return (False, valuesDict, errorsDict)
         return (True, valuesDict)
 
+    ####################
+    # Config UI Closed #
+    ####################
     def closedPrefsConfigUi(self, valuesDict, userCancelled):
+
+        self.logger.debug("closedPrefsConfigUi called")
 
         # restart the plugin if the user, enabled or disabled subscription
         if self.subscription_enabled != valuesDict['enableSubscription']:
@@ -2361,6 +2499,8 @@ class Plugin(indigo.PluginBase):
         if isinstance(dev,  indigo.RelayDevice):
             props = dev.pluginProps
             monkey_id = props.get("monkey_id", None)
+        else:
+            monkey_id = plugin_action.props['monkey_id']
         
         # if a Yes/No Question action, check if the Alexa App is running
         if plugin_action.pluginTypeId == "YesNoQuestion":
@@ -2419,8 +2559,12 @@ class Plugin(indigo.PluginBase):
             which_device = self.unanswered[key]['plugin_action']['whichDevice']
             dev = indigo.devices[int(which_device)]
             question = self.unanswered[key]['plugin_action']['QuestionToAsk']
+
             # remove newline characters
-            question_to_ask = question.replace("\n", "")
+            question_to_ask = (question
+                               .replace('\u2028', "")
+                               .replace('\n', ""))
+
             value = (key, f'{dev.name} - {question_to_ask}')
             values.append(value)
         return values
@@ -2438,7 +2582,7 @@ class Plugin(indigo.PluginBase):
         :param str type_id:
         :param int target_id:
         """
-        self.logger.debug("refresh_fields()")
+        self.logger.debug("refresh_fields")
 
     def announcement_speak_action(self, plugin_action, dev):
         """
@@ -2457,6 +2601,12 @@ class Plugin(indigo.PluginBase):
         # get Announcement Source and Item to Speak
         source_id = int(plugin_action.props['theAnnouncement'])
         announcement_name = plugin_action.props["announcementToSpeak"]
+
+        # what voice to use
+        selected_voice = plugin_action.props.get( 
+                                "selectedAnnouncementVoice", False)
+        change_voice = plugin_action.props.get(
+                                "ChangeAnnouncementVoice", True)
 
         # if device does not exist
         if indigo.devices.get(source_id) is None:
@@ -2522,7 +2672,9 @@ class Plugin(indigo.PluginBase):
 
                 # prepare and then speak announcement
                 action = actionDict('text to speech', 'TextToSpeech',
-                                    {"TextToSpeech": text_to_speak})
+                                    {"selectedVoice": selected_voice,
+                                     "ChangeVoice": change_voice,
+                                     "TextToSpeech": text_to_speak})
                 self.text_to_speech(action, dev)
 
             else:  # announcment not found
@@ -2533,14 +2685,13 @@ class Plugin(indigo.PluginBase):
             # use the device state for the text to speak
             text_to_speak = (indigo.devices[source_id].
                              states[announcement_name])
-            action = actionDict('text to speech',
-                                'TextToSpeech',
-                                {"TextToSpeech": text_to_speak})
+            action = actionDict('text to speech', 'TextToSpeech',
+                                {"selectedVoice": selected_voice,
+                                 "ChangeVoice": change_voice,
+                                 "TextToSpeech": text_to_speak})
             self.text_to_speech(action, dev)
 
-
-
-    def deviceList(self, dev_filter=None):  # noqa
+    def deviceList(self, dev_filter=None):
         """
         Returns a list of tuples containing Indigo devices 
         for use in config dialogs (etc.)
@@ -2659,21 +2810,19 @@ class Plugin(indigo.PluginBase):
 
     def wrapLogging(self, substituted_text, log_entry):  
 
-        if len(substituted_text) > self.max_text_length:
-            wrapped_text = textwrap.fill(substituted_text, 
-                                         self.max_text_length)
-        else:
-            wrapped_text = substituted_text
+        # combine the output lines
+        combined_text = f'{log_entry} : "{substituted_text}"'
 
-        combined_text = f'{log_entry} : "{wrapped_text}"'
         if len(combined_text) > self.max_combined_length:
-            indigo.server.log(f'{log_entry}\n"{wrapped_text}"')
+            wrapped_text = textwrap.wrap(substituted_text, 
+                                         width=self.max_text_length)
+            indigo.server.log(f'{log_entry}')
+            for line in wrapped_text:
+                indigo.server.log(f'"{line}"')
+
         else:
-            indigo.server.log(combined_text)   
-
-
-
-
+            indigo.server.log(f'{combined_text}')  
+  
     def myListGenerator(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
         """
 
@@ -2704,6 +2853,26 @@ class Plugin(indigo.PluginBase):
         else:
             return [("Default", "")]
 
+    def voicesList(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
+        """
+        Dynamic list of the different voices within alexa_constants.py
+
+        """
+        voice_list = []
+        for name, description in voices.items():
+            voice_list.append((name, description))
+        return voice_list
+
+    def soundsList(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
+        """
+        Dynamic list of the different sounds within alexa_constants.py
+
+        """
+        sounds_list = []
+        for path, name in sounds.items():
+            sounds_list.append((path, name))
+        return sounds_list
+
     def actionsWithAnExit(self, filter="", valuesDict=None, typeId="", targetId=0):  # noqa
         """
         
@@ -2714,7 +2883,7 @@ class Plugin(indigo.PluginBase):
         """
         action_group_list = [(ag.id, ag.name) for ag in indigo.actionGroups]
         sorted_list = sorted(action_group_list, key=lambda x: x[1].lower())
-        sorted_list.append((0, '- select an action group -'))
+        sorted_list.insert(0, (0, '- select an action group -'))
         return sorted_list if sorted_list else [(0, '')]
 
     def find_by_action(self, ID):  

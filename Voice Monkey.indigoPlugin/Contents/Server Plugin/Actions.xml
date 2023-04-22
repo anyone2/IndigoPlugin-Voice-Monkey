@@ -83,67 +83,8 @@
                 <Description>Change the Voice?</Description>
             </Field>
 
-            <Field type="menu" id="selectedVoice" defaultValue="Alexa" visibleBindingId="ChangeVoice" visibleBindingValue="true">
-                <List>
-
-                    <Option value="Naja">Danish (F) - Naja</Option>
-                    <Option value="Mads">Danish (M) - Mads</Option>
-                    <Option value="Lotte">Dutch (F) - Lotte</Option>
-                    <Option value="Ruben">Dutch (M) - Ruben</Option>
-                    <Option value="Nicole">English, Australian (F) - Nicole</Option>
-                    <Option value="Russell">English, Australian (M) - Russell</Option>
-                    <Option value="Amy">English, British (F) - Amy</Option>
-                    <Option value="Emma">English, British (F) - Emma</Option>
-                    <Option value="Brian">English, British (M) - Brian</Option>
-                    <Option value="Raveena">English, Indian (F) - Raveena</Option>
-                    <Option value="Aditi">English, Indian (F) - Aditi</Option>
-                    <Option value="Ivy">English, US (F) - Ivy</Option>
-                    <Option value="Joanna">English, US (F) - Joanna</Option>
-                    <Option value="Kendra">English, US (F) - Kendra</Option>
-                    <Option value="Kimberly">English, US (F) - Kimberly</Option>
-                    <Option value="Salli">English, US (F) - Salli</Option>
-                    <Option value="Joey">English, US (M) - Joey</Option>
-                    <Option value="Justin">English, US (M) - Justin</Option>
-                    <Option value="Matthew">English, US (M) - Matthew</Option>
-                    <Option value="Geraint">English, Welsh (M) - Geraint</Option>
-                    <Option value="Celine">French (F) - Céline</Option>
-                    <Option value="Lea">French (F) - Léa</Option>
-                    <Option value="Mathieu">French (M) - Mathieu</Option>
-                    <Option value="Chantal">French, Canadian (F) - Chantal</Option>
-                    <Option value="Marlene">German (F) - Marlene</Option>
-                    <Option value="Vicki">German (F) - Vicki</Option>
-                    <Option value="Hans">German (M) - Hans</Option>
-                    <Option value="Aditi">Hindi (F) - Aditi</Option>
-                    <Option value="Dóra">Icelandic (F) - Dóra</Option>
-                    <Option value="Karl">Icelandic (M) - Karl</Option>
-                    <Option value="Carla">Italian (F) - Carla</Option>
-                    <Option value="Giorgio">Italian (M) - Giorgio</Option>
-                    <Option value="Takumi">Japanese (M) - Takumi</Option>
-                    <Option value="Mizuki">Japanese (F) - Mizuki</Option>
-                    <Option value="Seoyeon">Korean (F) - Seoyeon</Option>
-                    <Option value="Liv">Norwegian (F) - Liv</Option>
-                    <Option value="Ewa">Polish (F) - Ewa</Option>
-                    <Option value="Maja">Polish (F) - Maja</Option>
-                    <Option value="Jacek">Polish (M) - Jacek</Option>
-                    <Option value="Jan">Polish (M) - Jan</Option>
-                    <Option value="Vitoria">Portugese, Brazilian (F) - Vitória</Option>
-                    <Option value="Ricardo">Portugese, Brazilian (M) - Ricardo</Option>
-                    <Option value="Ines">Portugese, European (F) - Inês</Option>
-                    <Option value="Cristiano">Portugese, European (M) - Cristiano</Option>
-                    <Option value="Carmen">Romanian (F) - Carmen</Option>
-                    <Option value="Tatyana">Russian (F) - Tatyana</Option>
-                    <Option value="Maxim">Russian (M) - Maxim</Option>
-                    <Option value="Conchita">Spanish, European (F) - Conchita</Option>
-                    <Option value="Enrique">Spanish, European (M) - Enrique</Option>
-                    <Option value="Penélope">Spanish, US (F) - Penélope</Option>
-                    <Option value="Miguel">Spanish, US (M) - Miguel</Option>
-                    <Option value="Astrid">Swedish (F) - Astrid</Option>
-                    <Option value="Filiz">Turkish (F) - Filiz</Option>
-                    <Option value="Gwyneth">Welsh (F) - Gwyneth</Option>
-
-
-
-                </List>
+            <Field type="menu" id="selectedVoice" visibleBindingId="ChangeVoice" visibleBindingValue="true">
+                <List class="self" filter="" method="voicesList"/>
 
             </Field>
 
@@ -186,7 +127,22 @@
                 <List class="self" filter="" method="generator_announcement_list" dynamicReload="true"/>
             </Field>
 
+            <Field id="announcementSeparator1" type="separator"></Field>
 
+            <Field id="ChangeAnnouncementVoice" type="checkbox" defaultValue="false">
+                <Label> </Label>
+                <Description>Change the Voice?</Description>
+            </Field>
+
+            <Field type="menu" id="selectedAnnouncementVoice" visibleBindingId="ChangeAnnouncementVoice" visibleBindingValue="true">
+                <List class="self" filter="" method="voicesList"/>
+            </Field>
+            <Field id="blanks2" type="label" fontColor="darkgray" fontSize="large" readonly="True">
+                <Label>:
+
+                </Label>
+
+            </Field>
         </ConfigUI>
     </Action>
 
@@ -231,26 +187,22 @@
             <Field id="simpleSeparator61" type="separator"></Field>
 
             <Field id="instruct1" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>If you do not want to execute a specific Action Group, you have two options:</Label>
+                <Label>If you do not want to execute a specific Action Group:</Label>
             </Field>
 
             <Field id="instruct2" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>1. Leave the selection at the default value of '- select an item -'</Label>
+                <Label>Leave the selection at the default value of '- select an action group -'</Label>
             </Field>
 
             <Field id="instruct3" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>2. Manually select the option '- select an action group -'</Label>
+                <Label>or manually select '- select an action group -'</Label>
             </Field>
 
-            <Field id="instruct4" type="label" fontColor="blue" fontSize="medium" alignWithControl="false">
-                <Label>Both options will prevent an Action Group from being executed.</Label>
-            </Field>
+            <Field id="instruct4" type="separator"></Field>
 
-            <Field id="instruct5" type="separator"></Field>
-
-            <Field id="executeWhenYes" type="menu">
+            <Field id="executeWhenYes" type="menu" defaultValue="">
                 <Label>If the Response is Yes:</Label>
-                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+                <List class="self" filter="" method="actionsWithAnExit"/>
             </Field>
 
             <Field id="label63" type="label" fontColor="blue" fontSize="medium" alignWithControl="true">
@@ -260,9 +212,9 @@
 
             <Field id="simpleSeparator62" type="separator"></Field>
 
-            <Field id="executeWhenNo" type="menu">
+            <Field id="executeWhenNo" type="menu" defaultValue="">
                 <Label>If the Response is No:</Label>
-                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+                <List class="self" filter="" method="actionsWithAnExit"/>
             </Field>
 
             <Field id="label64" type="label" fontColor="blue" fontSize="medium" alignWithControl="true">
@@ -311,9 +263,9 @@
                 <Description>Execute an Action Group?</Description>
             </Field>
 
-            <Field id="noResponseActionGroup" type="menu" visibleBindingId="executeNoResponse" visibleBindingValue="true" defaultValue="-=( Do Not Execute )=-">
+            <Field id="noResponseActionGroup" type="menu" visibleBindingId="executeNoResponse" visibleBindingValue="true" defaultValue="">
                 <Label>Action Group:</Label>
-                <List class="self" filter="stuff" method="actionsWithAnExit"/>
+                <List class="self" filter="" method="actionsWithAnExit"/>
             </Field>
 
 
@@ -381,35 +333,9 @@
         <CallbackMethod>play_sound</CallbackMethod>
 
         <ConfigUI>
-            ￼<Field type="menu" id="soundName" defaultValue="Air Horn 1">
+            ￼<Field type="menu" id="soundName" defaultValue="">
                 <Label>Popup Menu:</Label>
-                <List>
-
-                    <Option value="Air Horn 1">Air Horn 1</Option>
-                    <Option value="Boing 1">Boing 1</Option>
-                    <Option value="Bell 1">Bell 1</Option>
-                    <Option value="Bell 2">Bell 2</Option>
-                    <Option value="Bell 3">Bell 3</Option>
-                    <Option value="Buzzer 1">Buzzer 1</Option>
-                    <Option value="Buzzer 2">Buzzer 2</Option>
-                    <Option value="Chimes">Chimes</Option>
-                    <Option value="Ding 1">Ding 1</Option>
-                    <Option value="Ding 2">Ding 2</Option>
-                    <Option value="Doorbell 1">Doorbell 1</Option>
-                    <Option value="Doorbell 2">Doorbell 2</Option>
-                    <Option value="Electronic Beep 1">Electronic Beep 1</Option>
-                    <Option value="Electronic Beep 2">Electronic Beep 2</Option>
-                    <Option value="Electronic Beep 3">Electronic Beep 3</Option>
-                    <Option value="Intro 1">Intro 1</Option>
-                    <Option value="Siren 1">Siren 1</Option>
-                    <Option value="Siren 2">Siren 2</Option>
-                    <Option value="Tone 1">Tone 1</Option>
-                    <Option value="Tone 2">Tone 2</Option>
-                    <Option value="Tone 3">Tone 3</Option>
-                    <Option value="Woosh">Woosh</Option>
-
-                </List>
-                <!-- <CallbackMethod>menuChanged</CallbackMethod> -->
+                <List class="self" filter="" method="soundsList"/>
             </Field>
         </ConfigUI>
     </Action>    
