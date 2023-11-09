@@ -1185,6 +1185,8 @@ class Plugin(indigo.PluginBase):
 
         # announce function if debugging
         self.logger.debug("alexa_routine called")
+        self.logger.debug(f"{plugin_action.description}")
+        # self.logger.debug(f"dev: {dev}")
 
         # input not validated
 
@@ -1204,7 +1206,7 @@ class Plugin(indigo.PluginBase):
         if plugin_action.description == "plugin action":
             device_name = dev 
 
-        elif plugin_action.description == "run alexa routine by name":
+        elif plugin_action.description == "run alexa routine by name":  # was "run alexa routine by name"
 
             # if user wants to use an alternate name
             if dev.pluginProps["useAltName"]:
@@ -1242,8 +1244,13 @@ class Plugin(indigo.PluginBase):
 
         # if no device name passed in from scripting, determine the device name
         if not device_name:
+
+            if dev is None:
+                self.logger.error(u"Action has not been completely configured")
+                return False
+
             # check if user wants to use an alternate name
-            if dev.pluginProps.get("useAltName", False):
+            elif dev.pluginProps.get("useAltName", False):
                 device_name = dev.pluginProps["AltDeviceName"]
             else:  
                 # otherwise use the default device name
@@ -2416,9 +2423,11 @@ class Plugin(indigo.PluginBase):
     def closedPrefsConfigUi(self, valuesDict, userCancelled):
 
         self.logger.debug("closedPrefsConfigUi called")
+        self.logger.debug(f"enableSubscription: {valuesDict['enableSubscription']}")
 
         # restart the plugin if the user, enabled or disabled subscription
-        if self.subscription_enabled != valuesDict['enableSubscription']:
+        if self.subscription_enabled != valuesDict.get('enableSubscription', False):
+
             indigo.server.log("Preparing to restart plugin...")
             self.restartPlugin(message="", isError=False)
 
@@ -2500,7 +2509,7 @@ class Plugin(indigo.PluginBase):
             props = dev.pluginProps
             monkey_id = props.get("monkey_id", None)
         else:
-            monkey_id = plugin_action.props['monkey_id']
+            monkey_id = plugin_action.props.get('monkey_id')  # plugin_action.props['monkey_id']
         
         # if a Yes/No Question action, check if the Alexa App is running
         if plugin_action.pluginTypeId == "YesNoQuestion":
@@ -2531,7 +2540,7 @@ class Plugin(indigo.PluginBase):
                     error_fields.append(field)
                     self.logger.error(message)
             elif field == "monkey_id":
-                if monkey_id is not None and len(monkey_id) < 1:
+                if monkey_id is None or len(monkey_id) < 1:
                     error_fields.append(field)
                     self.logger.error(message)
             elif field == "alexa_enabled":
