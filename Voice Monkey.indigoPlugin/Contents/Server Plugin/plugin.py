@@ -2423,7 +2423,6 @@ class Plugin(indigo.PluginBase):
     def closedPrefsConfigUi(self, valuesDict, userCancelled):
 
         self.logger.debug("closedPrefsConfigUi called")
-        self.logger.debug(f"enableSubscription: {valuesDict['enableSubscription']}")
 
         # restart the plugin if the user, enabled or disabled subscription
         if self.subscription_enabled != valuesDict.get('enableSubscription', False):
