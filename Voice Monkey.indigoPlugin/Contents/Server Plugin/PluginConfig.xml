@@ -128,7 +128,7 @@
         <Label>Adjust the number of characters used for word wrap in the log.</Label>
     </Field>
 
-    <Field id="maxCombinedLength" type="textfield">
+    <Field id="maxCombinedLength" type="textfield" defaultValue="150">
         <Label>First line log length limit</Label>
     </Field>
 
@@ -138,7 +138,7 @@
 
     <Field id="LoggingSeperator1" type="separator"></Field>
 
-    <Field id="maxTextLength" type="textfield">
+    <Field id="maxTextLength" type="textfield" defaultValue="150">
         <Label>Max line length</Label>
     </Field>
 

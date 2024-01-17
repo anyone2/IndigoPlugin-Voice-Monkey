@@ -487,16 +487,30 @@ class Plugin(indigo.PluginBase):
 
                 self.logger.info(message)
 
+            # clear out the device states, for the next question
+            dev.updateStatesOnServer([
+                {'key': 'onOffState', 'value': False},
+                {'key': 'LastQuestionEpoch', 'value': ''}, 
+            ])
+
         else:  # not found in unanswered questions
 
             if last_question_epoch == "Testing":
                 self.confirm_test(answer, dev)
 
-        # clear out the device states, for the next question
-        dev.updateStatesOnServer([
-            {'key': 'onOffState', 'value': False},
-            {'key': 'LastQuestionEpoch', 'value': ''}, 
-        ])
+                # clear out the device states, for the next question
+                dev.updateStatesOnServer([
+                    {'key': 'onOffState', 'value': False},
+                    {'key': 'LastQuestionEpoch', 'value': ''}, 
+                ])
+
+            elif answer == "Yes":
+
+                dev.updateStateOnServer("onOffState", True)
+
+            elif answer == "No":
+
+                dev.updateStateOnServer("onOffState", False)
 
     ###########################
     # General Action callback #
@@ -1186,7 +1200,6 @@ class Plugin(indigo.PluginBase):
         # announce function if debugging
         self.logger.debug("alexa_routine called")
         self.logger.debug(f"{plugin_action.description}")
-        # self.logger.debug(f"dev: {dev}")
 
         # input not validated
 
@@ -1206,7 +1219,7 @@ class Plugin(indigo.PluginBase):
         if plugin_action.description == "plugin action":
             device_name = dev 
 
-        elif plugin_action.description == "run alexa routine by name":  # was "run alexa routine by name"
+        elif plugin_action.description == "run alexa routine by name":
 
             # if user wants to use an alternate name
             if dev.pluginProps["useAltName"]:
@@ -2284,55 +2297,72 @@ class Plugin(indigo.PluginBase):
         def validate_yesno_timing_pref(valuesDict):
 
             # Validate Yes/No timing
-            adjust_timing = valuesDict.get('AdjustTiming', False)        
+            adjust_timing = valuesDict.get('AdjustTiming', False)
             if adjust_timing:
-                max_time_to_wait = valuesDict.get('maxTimeToWait')
-                min_yes_no_delay = valuesDict.get('minYesNoDelay')
-                sleep_time = valuesDict.get('sleepTime')
-                if max_time_to_wait < 5:
+                try:
+                    max_time_to_wait = int(valuesDict.get('maxTimeToWait'))
+                    if max_time_to_wait < 5:
+                        raise ValueError("maxTimeToWait must be at least 5.")
+                except (ValueError, TypeError) as e:
+                    self.logger.debug(str(e))
                     errorMsg = ('Invalid entry, a positive number greater '
                                 'than 5 was not entered')
                     errorsDict["maxTimeToWait"] = errorMsg
                     errorsDict["showAlertText"] = (
-                        'The maximum number of seconds to wait for a Yes or '
-                        'No response must be a positive number greater than 5.'
-                        )
+                        'The maximum number of seconds to wait for a '
+                        'Yes or No response must be a positive number '
+                        'greater than 5.')
                 else:
-                    self.max_wait = int(valuesDict.get('maxTimeToWait'))
+                    self.max_wait = max_time_to_wait
 
-                if min_yes_no_delay < 5:
+                try:
+                    min_yes_no_delay = int(valuesDict.get('minYesNoDelay'))
+                    if min_yes_no_delay < 5:
+                        raise ValueError("minYesNoDelay must be at least 5.")
+                except (ValueError, TypeError) as e:
+                    self.logger.debug(str(e))
                     errorMsg = ('Invalid entry, a positive number greater '
                                 'than 5 was not entered')
                     errorsDict["minYesNoDelay"] = errorMsg
-                    errorsDict["showAlertText"] = (
-                        'The minimum number of seconds that must elapse '
-                        'before a question can be repeated, must be a '
-                        'positive number greater than 5'
-                    )
+                    if "showAlertText" not in errorsDict:
+                        errorsDict["showAlertText"] = (
+                            'The minimum number of seconds that must elapse '
+                            'before a question can be repeated, must be a '
+                            'positive number greater than 5')
+                    else:
+                        errorsDict["showAlertText"] += (
+                            ' Also, the minimum number of seconds for '
+                            'minYesNoDelay must be greater than 5.')
                 else:
-                    self.min_delay = int(valuesDict.get('minYesNoDelay'))
+                    self.min_delay = min_yes_no_delay
 
-                if sleep_time < 1:
-                    errorMsg = ('Invalid entry, value can not be less than 0.')
+                try:
+                    sleep_time = int(valuesDict.get('sleepTime'))
+                    if sleep_time < 1:
+                        raise ValueError("sleepTime cannot be less than 1.")
+                except (ValueError, TypeError) as e:
+                    self.logger.debug(str(e))
+                    errorMsg = 'Invalid entry, value cannot be less than 1.'
                     errorsDict["sleepTime"] = errorMsg
-                    errorsDict["showAlertText"] = (
-                        'Specify the number of seconds to pause between '
-                        'iterations of the runConcurrentThread() function by '
-                        'entering a value in the text field. The default '
-                        'value is 5 seconds. '
-                    )
+                    if "showAlertText" not in errorsDict:
+                        errorsDict["showAlertText"] = (
+                            'Specify the number of seconds to pause between '
+                            'iterations of the runConcurrentThread() function '
+                            'by entering a value in the text field. '
+                            'The default value is 5 seconds.')
+                    else:
+                        errorsDict["showAlertText"] += (
+                            ' Also, the sleepTime must be a positive number '
+                            'and cannot be less than 1.')
                 else:
-                    self.sleep_time = int(valuesDict.get('sleepTime'))
+                    self.sleep_time = sleep_time
 
-            else:  # change them back to defaults unchecked
-                
+            else:  # change them back to defaults if unchecked
                 self.min_delay = 35
+                self.max_wait = 30
+                self.sleep_time = 5
                 valuesDict['minYesNoDelay'] = 35
-
-                self.max_wait = 30 
                 valuesDict['maxTimeToWait'] = 30
-
-                self.sleep_time = 5 
                 valuesDict['sleepTime'] = 5
 
         # Validate alexa remote control preferences
@@ -2366,29 +2396,40 @@ class Plugin(indigo.PluginBase):
 
         # Validate logging preferences
         def validate_logging_pref(valuesDict):
-            # Validate log wrapping
-            max_combined_length = valuesDict.get("maxCombinedLength")
-            max_text_length = valuesDict.get("maxTextLength")
-            if max_combined_length < 25:
 
+            # Validate and convert max_combined_length
+            try:
+                self.max_combined_length = int(valuesDict.get(
+                                               "maxCombinedLength", 150))
+                if self.max_combined_length < 25:
+                    raise ValueError("maxCombinedLength must be at least 25.")
+            except (ValueError, TypeError) as e:
+                self.logger.debug(str(e))
                 errorMsg = ('Invalid entry, a positive number greater than 25 '
                             'was not entered for the character length.')
                 errorsDict["maxCombinedLength"] = errorMsg
                 errorsDict["showAlertText"] = (
-                    'The minimum character value is 25. The default was 150.'
-                    )
-            else:
-                self.max_combined_length = int(max_combined_length)
+                    'The minimum character value for maxCombinedLength is 25. '
+                    'The default was 150.')
 
-            if max_text_length < 25:
+            try:
+                self.max_text_length = int(valuesDict.get(
+                                           "maxTextLength", 150))
+                if self.max_text_length < 25:
+                    raise ValueError("maxTextLength must be at least 25.")
+            except (ValueError, TypeError) as e:
+                self.logger.debug(str(e))
                 errorMsg = ('Invalid entry, a positive number greater than 25 '
                             'was not entered for the character length.')
                 errorsDict["maxTextLength"] = errorMsg
-                errorsDict["showAlertText"] = (
-                    'The minimum character value is 25. The default was 150.'
-                )
-            else:
-                self.max_text_length = int(max_text_length)
+                if "showAlertText" not in errorsDict:
+                    errorsDict["showAlertText"] = (
+                        'The minimum character value for maxTextLength is 25. '
+                        'The default was 150.')
+                else:
+                    errorsDict["showAlertText"] += (
+                        ' Also, the minimum character value for maxTextLength '
+                        'is 25. The default was 150.')
 
         #########################
         #  Validate Preferences #
@@ -2425,7 +2466,8 @@ class Plugin(indigo.PluginBase):
         self.logger.debug("closedPrefsConfigUi called")
 
         # restart the plugin if the user, enabled or disabled subscription
-        if self.subscription_enabled != valuesDict.get('enableSubscription', False):
+        if self.subscription_enabled != valuesDict.get('enableSubscription', 
+                                                       False):
 
             indigo.server.log("Preparing to restart plugin...")
             self.restartPlugin(message="", isError=False)
@@ -2508,7 +2550,7 @@ class Plugin(indigo.PluginBase):
             props = dev.pluginProps
             monkey_id = props.get("monkey_id", None)
         else:
-            monkey_id = plugin_action.props.get('monkey_id')  # plugin_action.props['monkey_id']
+            monkey_id = plugin_action.props.get('monkey_id') 
         
         # if a Yes/No Question action, check if the Alexa App is running
         if plugin_action.pluginTypeId == "YesNoQuestion":
