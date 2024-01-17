@@ -391,7 +391,7 @@ class Plugin(indigo.PluginBase):
             # If success then log that the command was successfully sent.
             self.logger.info(f'sent "{dev.name}" toggle')
 
-            # And then tell the Indigo Server to update the state:
+            # And then tell the Indigo Server to update the state
             dev.updateStateOnServer("onOffState", new_on_state)
 
         else:  # Anything not implemented

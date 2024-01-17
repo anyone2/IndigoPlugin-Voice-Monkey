@@ -2,7 +2,7 @@
 <PluginConfig>
     <SupportURL>https://app.voicemonkey.io/dashboard</SupportURL>
     <Field id="topLabel" type="label">
-        <Label>To use the Voice Monkey API, you need to enter your Access Tokens. They an be found on the Voice Monkey site.</Label>
+        <Label>To use the Voice Monkey API, you need to enter your Access Tokens. They can be found on the Voice Monkey site.</Label>
     </Field>
 
     <Field id="ClickUrlLabel" type="label">
