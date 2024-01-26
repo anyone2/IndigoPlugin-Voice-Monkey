@@ -187,25 +187,11 @@ Please use version v0.20d of the project file, [available here](https://github.c
 
 After configuring **alexa_remote_control**, which you can test using available commands from the macOS command line, only a few more steps are needed.
 
-- Place the **alexa_remote_control.sh** file you downloaded and modified as part of the instructions found here [https://github.com/thorsten-gehrig/alexa-remote-control](https://github.com/thorsten-gehrig/alexa-remote-control), or a copy of it, in the **'/Library/Application Support/Perceptive Automation/Script'** folder.
-
-Place the **alexa_remote_control.py** file included in this reposisitory, into the Python3-Includes folder.
-
-The full path is **'/Library/Application Support/Perceptive Automation/Python3-includes'**
-
-## IMPORTANT: Do not move either of these files until after you get alexa_remote_control.sh working.
-
 After you placed the files in the folders shown above:
 
 - In Indigo, under Plugins -> Reload Libraries and Attachments
 - In Indigo, under Plugins -> Voice Monkey -> Reload
 
-In the Indigo log, the plugin "should" now indicate the **alexa_remote_control** module was imported.
-
-    Starting plugin "Voice Monkey 2022.1.0" (pid 25946)
-    Voice Monkey                    alexa_remote_control was imported
-    Started plugin "Voice Monkey 2022.1.0"
-    Voice Monkey                    There are no pending Yes/No Questions
 
 - In Indigo, under Plugins -> Voice Monkey -> Configure...
 
@@ -240,29 +226,8 @@ Then:
 
 ![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Run%20Alexa%20Routine%20By%20Name%20-%20User%20Interface.png)
 
-## Additional Scripting
 
-If everything is working up to this point, you will be able to, from Indigo, call **alexa_remote_control** functions
-
-    import alexa_remote_control
-
-    # indigo.devices[651183378] # "Loft Echo"
-
-    ask_alexa_this = 'How many days until christmas?' 
-    alexa_remote_control.ask_alexa(ask_alexa_this, "Loft Echo")
-
-    say_this = 'Its only a few more days until christmas' 
-    alexa_remote_control.alexa_speak(say_this, "Loft Echo", 'Aditi')
-
-    alexa_remote_control.alexa_play_sound('Bell 2', 'Loft Echo')
-
-    alexa_remote_control.pass_cmd_line_args("-d 'Loft Echo' -e speak:'Hello world!'")
-
-    routine_name = "Loft: Morning Routine"
-    alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
-
-
-## Walk thru of setup of alexa-remote-control
+## A walk thru of the setup of alexa-remote-control
 
 I documented a walk-through of the installation and configuration of the Alexa Remote Control Project, which foor the macOS requires version 0.2d of the project file.
 
@@ -413,5 +378,26 @@ Download the **alexa\_remote\_control.py** <https://github.com/anyone2/IndigoPlu
 Place both files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
 
 
+
+## Additional Scripting
+
+If everything is working up to this point, you will be able to, from Indigo, call **alexa_remote_control** functions
+
+    import alexa_remote_control
+
+    # indigo.devices[651183378] # "Loft Echo"
+
+    ask_alexa_this = 'How many days until christmas?' 
+    alexa_remote_control.ask_alexa(ask_alexa_this, "Loft Echo")
+
+    say_this = 'Its only a few more days until christmas' 
+    alexa_remote_control.alexa_speak(say_this, "Loft Echo", 'Aditi')
+
+    alexa_remote_control.alexa_play_sound('Bell 2', 'Loft Echo')
+
+    alexa_remote_control.pass_cmd_line_args("-d 'Loft Echo' -e speak:'Hello world!'")
+
+    routine_name = "Loft: Morning Routine"
+    alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
 
 
