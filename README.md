@@ -376,8 +376,7 @@ Download [alexa_remote_control.py](https://github.com/anyone2/IndigoPlugin-Voice
 
 Download [alexa_constants.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_constants.py)
 
-Download the [voice_monkey.py]
-https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/voice_monkey.py
+Download the [voice_monkey.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/voice_monkey.py)
 
 Place all three files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
 
