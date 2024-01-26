@@ -12,9 +12,8 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
 - Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) and [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) are required)
 
-All of these are "Pro" features of the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) except for the ability to Trigger an Alexa Routine. 
+The Free features of the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) now includes Trigging Alexa Routines and Text-To-Speech. Ask a Prompted Yes/No Question **may** work in the Free version.
 
-The "Pro" features, by the way, are $6 USD per year. With the non-Pro feature (singular), you are limited to, if you want to call it a limit, triggering Alexa routines. 
 
 
 Visit [https://voicemonkey.io/start](https://voicemonkey.io/start) to learn more.
@@ -263,7 +262,7 @@ If everything is working up to this point, you will be able to, from Indigo, cal
     alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
 
 
-## walk thru
+## Walk thru of setup of alexa-remote-control
 
 I documented a walk-through of the installation and configuration of the Alexa Remote Control Project, which foor the macOS requires version 0.2d of the project file.
 
