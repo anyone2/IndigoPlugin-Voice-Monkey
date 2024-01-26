@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import indigo
 import logging
 import subprocess
@@ -7,21 +8,43 @@ import shlex
 from alexa_constants import sounds
 
 
+SCRIPT_NAME = 'alexa_remote_control.sh'
+SCRIPT_PATH = '/Library/Application Support/Perceptive Automation/Scripts/'
+
+
+def does_script_exists():
+
+    full_script_path = os.path.join(SCRIPT_PATH, SCRIPT_NAME)
+    if os.path.exists(full_script_path):
+        return True
+    else:
+        return False
+
+
 def run_shell(the_parameters):
+    """
+    Runs a shell script with parameters and returns its output and errors.
 
-    file_name = 'alexa_remote_control.sh'
-    file_path = '/Library/Application Support/Perceptive Automation/Scripts/'
+    :param the_parameters: A list of parameters to pass to the shell script.
+    :return: A tuple containing stdout and stderr of the shell script.
+    """
+    if not does_script_exists():
+        indigo.server.log("'alexa_remote_control.sh' can not be found.",
+                          level=logging.ERROR)
+        return ("Additional configuration is required. ", "")
 
-    the_parameters.insert(0, f'{file_path}{file_name}')
-
-    with subprocess.Popen(the_parameters,
-                          stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE) as p:
-        output, errors = p.communicate()
-    stdout = output.decode('utf-8')
-    stderr = errors.decode('utf-8')
-
-    return stdout, stderr
+    try:
+        full_script_path = os.path.join(SCRIPT_PATH, SCRIPT_NAME)
+        the_parameters.insert(0, full_script_path)
+        result = subprocess.run(the_parameters, 
+                                stdout=subprocess.PIPE, 
+                                stderr=subprocess.PIPE, 
+                                text=True)
+        return result.stdout, result.stderr
+    except Exception as e:
+        indigo.server.log(f"Error executing the script: {e}",
+                          level=logging.ERROR)
+        return ("", "")
 
 
 def process_output(stdout, stderr, log_entry, function_name):

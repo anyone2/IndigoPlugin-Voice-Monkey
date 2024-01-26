@@ -8,17 +8,11 @@ import indigo
 import random
 import requests
 import textwrap
+import alexa_remote_control
 from urllib.parse import quote
 from urllib.parse import quote_plus  
 from alexa_constants import voices, sounds
 from datetime import datetime, timedelta
-
-try:
-    import alexa_remote_control
-    WAS_IMPORTED = True
-    indigo.server.log('alexa_remote_control was imported')
-except ImportError:
-    WAS_IMPORTED = False
 
 
 ###########################
@@ -47,11 +41,11 @@ class Plugin(indigo.PluginBase):
         self.unanswered = plugin_prefs.get("RepeatingYesNo", indigo.Dict())
 
         # configurable setting for output to the log
-        self.max_text_length = plugin_prefs.get("maxTextLength", 150)
-        self.max_combined_length = plugin_prefs.get("maxCombinedLength", 150)
+        self.max_text_length = int(plugin_prefs.get("maxTextLength", 150))
+        self.max_combined_length = int(plugin_prefs.get("maxCombinedLength", 150))  # noqa
 
-        # determine if alexa_remote_control was imported
-        self.plugin_prefs["AltModuleImported"] = WAS_IMPORTED
+        # determine if the Amazon Alexa command line script is available 
+        plugin_prefs["AltModuleImported"] = alexa_remote_control.does_script_exists()  # noqa
 
         # define the variable updated by the Announcements Plugin
         self.subscription_variable = "spoken_announcement_raw"

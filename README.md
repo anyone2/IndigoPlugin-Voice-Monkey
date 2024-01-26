@@ -263,5 +263,156 @@ If everything is working up to this point, you will be able to, from Indigo, cal
     alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
 
 
+## walk thru
+
+I documented a walk-through of the installation and configuration of the Alexa Remote Control Project, which foor the macOS requires version 0.2d of the project file.
+
+There are Four steps:
+
+1. Install Homebrew and then use Homebrew to install JQ
+    - [Homebrew](https://brew.sh/)
+2. Download, modify, and then run **alexa-cookie-cli-macos-x64**
+    - [alexa-cookie-cli](https://github.com/adn77/alexa-cookie-cli)
+3. Download, modify, and then run v0.20d of **alexa_remote_control.sh**
+    - [alexa_remote_control.sh](https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh)
+4. Place **alexa_remote_control.py** and **alexa_constants.py** in the Python3-includes folder
+    - [Voice Monkey Plugin](https://github.com/anyone2/IndigoPlugin-Voice-Monkey)
+
+
+# 1. Install Homebrew and then use Homebrew to install JQ
+
+The Alexa Remote Control project is based on BASH and uses JQ to efficiently parse JSON. The easiest way to install JQ is with Homebrew.
+
+The [Homebrew](https://brew.sh/) website provides the command to install Homebrew, which is shown below. 
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+After finishing, you need to follow the instructions shown on the screen to add Homebrew to your PATH. The instructions should look something like this, but please note this is not the actual command for your system:
+
+    (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/####/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+
+After Homebrew is installed, in the terminal, you can install JQ with the command:
+
+    brew install jq
+
+You can confirm JQ is installed with the command:
+
+    jq 
+
+And you can find out where JQ was installed with the command:
+
+    whereis jq
+
+# 2. Download, modify, and then run alexa-cookie-cli-macos-x64
+
+The project requires a session cookie to run. The script, **alexa-cookie-cli-macos-x64**, is able to assist with that by providing a REFRESH\_TOKEN. This script only needs to be run once and on any machine.  
+
+The current version is available here [https\://github.com/adn77/alexa-cookie-cli/releases/tag/v5.0.1,](https://github.com/adn77/alexa-cookie-cli/releases/tag/v5.0.1) download the file "alexa-cookie-cli-macos-x64"  
+
+
+Once downloaded, change the permissions to make the file executable\:   
+
+    chmod 755 alexa-cookie-cli-macos-x64  
+
+run the executable, with options requesting the web page to be presented in English  
+
+    ./alexa-cookie-cli-macos-x64 -a en_US -L en_US
+
+You likely will see the following message when you attempt to run the file  
+
+**zsh\: permission denied\: alexa-cookie-cli-macos-x64**  
+
+An error window should also appear which says; "alexa-cookie-cli-macos-x64" cannot e opened because the developer cannot be verified.  macOS cannot verify that this app is free from malware."
+
+
+Click Cancel  
+
+Go to, System Preferences -\> Privacy & Security -\> "Click Allow Anyway"  
+
+Where you see; "alexa-cookie-cli-macos-x64 was blocked from use because it is not from an identified developer"  
+
+
+Go back to terminal and issue the command again  
+
+    ./alexa-cookie-cli-macos-x64 -a en_US -L en_US
+
+
+An error window should also appear which says; "macOS cannot verify the developer of "alexa-cookie-cli-macos-x64". Are you sure you want to open it? By opening this app, you will be overriding system security which can expose your computer and personal inforrmation to malware that may harm your Mac or compromise your privacy."  
+
+
+**Click "Open"**
+
+When successfully ran, you will see the following message in the terminal.  
+
+**Error\: Please open http\://127.0.0.1\:8080/ with your browser and login to Amazon. The cookie will be output here after successfull login. / null**  
+
+Paste URL \(http\://127.0.0.1\:8080/\) into a web browser and then log into your Amazon account on the supplied web page.  
+
+
+
+Once you successfully log in, you'll see this message in the browswer:  
+
+**Amazon Alexa Cookie successfully retrieved. You can close the browser.**  
+
+Go back to terminal, CONTROL-C to exit  
+
+Copy and store the refreshToken which will be shown and should begin with 'Atnr|.........'  
+
+    refreshToken: Atnr|EwICIOOqYSwdviUTUzP1XzhPANwQhzoaL14GsP7zq............
+
+# 3. Download, modify, and then run v0.20d of alexa_remote_control.sh
+
+The macOS compatible version of the project file **alexa_remote_control.sh**, v0.20d, is available at the following link. The easiest way to download it is to click the icon for "Download raw file".
+<https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh>  
+
+Place this file in the **'/Library/Application Support/Perceptive Automation/Script'** folder.  
+
+In an editor, on line 103, comment out this line  
+
+    #SET_LANGUAGE='de,en-US;q=0.7,en;q=0.3'
+
+On line 104, uncomment this line  
+
+    SET_LANGUAGE='en-US'
+
+On line 108, comment out this line  
+
+    #SET_AMAZON='amazon.de'
+
+On line 109, uncomment out this line  
+
+    SET_AMAZON='amazon.com'
+
+On line 132, change the path to the JQ file which was determined earlier with the **whereis** command.  
+
+    SET_JQ='/usr/local/bin/jq'
+
+On line 101, paste in your Refresh Token  
+
+    SET_REFRESH_TOKEN='Atnr|EwICIOOqYSwdviUTUzP1XzhPANwQhzoaL14GsP7zq............' 
+
+Exit and save the **alexa_remote_control.sh** file
+
+update the permissions on the **alexa\_remote\_control.sh** with the command\:     
+
+    chmod 755 alexa_remote_control.sh
+
+
+You can test if **alexa\_remote\_control.sh** can be run with the following command  
+
+    ./alexa_remote_control.sh -a
+
+
+
+# 4. Place alexa_remote_control.py and alexa_constants.py in the Python3-includes folder
+
+Download the **alexa\_remote\_control.py** <https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py>  
+
+Download the **alexa\_remote\_control.py** <https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_constants.py>  
+
+Place both files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
+
+
 
 
