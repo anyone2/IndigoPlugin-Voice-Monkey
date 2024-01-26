@@ -239,7 +239,7 @@ There are Four steps:
     - [alexa-cookie-cli](https://github.com/adn77/alexa-cookie-cli)
 3. Download, modify, and then run v0.20d of **alexa_remote_control.sh**
     - [alexa_remote_control.sh](https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh)
-4. Place **alexa_remote_control.py** and **alexa_constants.py** in the Python3-includes folder
+4. Place three plugin files in the Python3-includes
     - [Voice Monkey Plugin](https://github.com/anyone2/IndigoPlugin-Voice-Monkey)
 
 
@@ -369,7 +369,7 @@ You can test if **alexa\_remote\_control.sh** can be run with the following comm
 
 
 
-# 4. Place alexa_remote_control.py and alexa_constants.py in the Python3-includes folder
+# 4. Place three plugin files in the Python3-includes
 
 Download [alexa_remote_control.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py)
 
