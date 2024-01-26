@@ -371,11 +371,15 @@ You can test if **alexa\_remote\_control.sh** can be run with the following comm
 
 # 4. Place alexa_remote_control.py and alexa_constants.py in the Python3-includes folder
 
-Download the **alexa\_remote\_control.py** <https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py>  
+Download [alexa_remote_control.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py)
 
-Download the **alexa\_remote\_control.py** <https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_constants.py>  
 
-Place both files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
+Download [alexa_constants.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_constants.py)
+
+Download the [voice_monkey.py]
+https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/voice_monkey.py
+
+Place all three files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
 
 
 
