@@ -23,6 +23,10 @@
         <Field id="no_preset_id" type="textfield" defaultValue="">
             <Label>No Preset ID:</Label>
         </Field>
+
+        <Field id="v3DeviceId" type="textfield" defaultValue="" hidden="true">
+            <Label>v3 Device ID:</Label>
+        </Field>
         <Field id="label1" type="label" fontColor="blue" fontSize="small">
             <Label>"To complete this screen, you must first set up a Voice Monkey smart speaker device. Click the '?' button to access https://voicemonkey.io/. Once there, gather the necessary information to fill in the above fields. Leave the Preset ID fields blank, unless you are configuring the 'Yes/No Question' functionality."</Label>
         </Field>

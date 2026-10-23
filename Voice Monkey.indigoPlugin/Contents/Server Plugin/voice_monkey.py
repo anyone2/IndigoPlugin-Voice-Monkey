@@ -108,8 +108,10 @@ def play_audio(audioFileUrl, deviceId):
 
 def play_sound(soundName, deviceId):
     """
-    This function is used to play an audio file on a selected device.
-    The audioFileUrl is passed is the URL location of the file.
+    This function plays a built-in Alexa soundbank sound on the selected
+    device. soundName is the sound's DISPLAY NAME (e.g. 'Electronic Beep 1')
+    as listed in the plugin's Play a Sound action menu.
+    (R22: docstring corrected — was a copy-paste of play_audio.)
     """    
     props = {   
         'soundName': soundName, 
@@ -119,8 +121,9 @@ def play_sound(soundName, deviceId):
 
 def play_background_audio(text, audioFileUrl, deviceId):
     """
-    This function is used to play an audio file on a selected device.
-    The audioFileUrl is passed is the URL location of the file.
+    This function speaks `text` while playing the audio file at
+    `audioFileUrl` underneath it on the selected device.
+    (R22: docstring clarified — TTS component was undocumented.)
     """    
     props = {   
         'backgroundAudioFileUrl': audioFileUrl, 
@@ -132,8 +135,10 @@ def play_background_audio(text, audioFileUrl, deviceId):
 
 def ask_alexa(question, deviceId):
     """
-    This function is used to perform Text-to-Speech on the given device.
-    The text passed will be spoken by the Alexa device.
+    This function sends a typed request to Alexa via alexa_remote_control,
+    as if the question had been spoken to the device (no wake word needed).
+    Requires alexa_remote_control to be installed and configured.
+    (R22: docstring corrected — was a copy-paste of speak.)
     """    
     props = {   
         'RequestOfDevice': question,
@@ -156,22 +161,35 @@ def alexa_speak(text, device, voice=None):
 
 def alexa_routine(routine, device=None):
     """
-    This function is used to perform Text-to-Speech on the given device.
-    The text passed will be spoken by the Alexa device.
+    This function runs an Alexa-app Routine by its EXACT name via
+    alexa_remote_control.
+    (R22: docstring corrected — was a copy-paste of speak.)
+
+    LEGACY-PRESERVED LIMITATION: the `device` parameter is accepted but NOT
+    passed through to the plugin (props carry only the routine name), so the
+    ARC call has no device name and fails with a logged error. This has been
+    broken since the original plugin (it raised NameError there); wiring the
+    device through would change the behavior of existing scripts, so it is
+    deliberately left as-is. Kept for signature compatibility.
     """    
     props = {   
-        'monkeyId': routine,
+        'monkey_id': routine,
     }
     return ifPluginEnabledExecuteAction('AlexaRoutine', props)
 
 
 def pass_cmd_line_args(arguments, deviceId=None):
     """
-    This function is used to perform Text-to-Speech on the given device.
-    The text passed will be spoken by the Alexa device.
+    This function passes raw command-line arguments straight to
+    alexa_remote_control.sh (advanced use; see the ARC documentation).
+    (R22: docstring corrected — was a copy-paste of speak.)
+
+    LEGACY-PRESERVED LIMITATION: `deviceId` is accepted but ignored
+    (the call hardcodes deviceId=None). Kept for signature compatibility;
+    use a '-d <device>' argument inside `arguments` instead.
     """    
     props = {   
         'arguments': arguments,
         
     }
-    return ifPluginEnabledExecuteAction('passArgs', props, deviceId=None)
+    return ifPluginEnabledExecuteAction('PassArgs', props, deviceId=None)

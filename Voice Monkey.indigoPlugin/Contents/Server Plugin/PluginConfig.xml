@@ -116,6 +116,24 @@
         <Label>For info go to: https://github.com/thorsten-gehrig/alexa-remote-control</Label>
     </Field>
 
+    <Field id="apiVersionSeparator" type="separator"></Field>
+
+    <Field id="apiVersion" type="menu" defaultValue="v2">
+        <Label>Voice Monkey API version:</Label>
+        <List>
+            <Option value="v2">v2 (legacy - current default)</Option>
+            <Option value="v3">v3 (not yet supported)</Option>
+        </List>
+    </Field>
+
+    <Field id="v3ApiToken" type="textfield" visibleBindingId="apiVersion" visibleBindingValue="v3">
+        <Label>v3 API Token:</Label>
+    </Field>
+
+    <Field id="v3Label" type="label" fontColor="darkgray" fontSize="small" visibleBindingId="apiVersion" visibleBindingValue="v3">
+        <Label>v3 support is scaffolded but not implemented or verified yet. Leave the selection on v2. v2 and v3 tokens are not interchangeable.</Label>
+    </Field>
+
     <Field id="showDebugInfoSeperator" type="separator"></Field>
 
     <Field id="showDebugInfo" type="checkbox" defaultValue="false">

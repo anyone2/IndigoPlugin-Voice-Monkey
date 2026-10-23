@@ -2,6 +2,26 @@
 
 This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automation platform and allows you to control your Alexa devices from within Indigo. It works with the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) which has the ability to perform text-to-speech, play preset sounds, and execute Alexa routines on an Alexa Smart device such as an Echo or Echo Dot.
 
+## Current Release: 2026.1.3
+
+Version **2026.1.3** is a Voice Monkey v2-compatible rewrite of the plugin. It keeps
+the existing bundle id (`com.anyone.indigoplugin.voice-monkey`), action IDs, callback
+names, config keys, device states, and saved Yes/No question format, so it installs
+as an in-place upgrade over 2022.1.7 and existing Action Groups, devices, and scripts
+keep working. Internally, the old monolithic plugin was replaced by smaller, tested
+modules.
+
+Download `Voice.Monkey.indigoPlugin.zip` from the
+[latest release](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/releases/latest),
+unzip it, and double-click `Voice Monkey.indigoPlugin` to install.
+
+Voice Monkey v3 support is **not yet available**: a v3 option appears in the plugin
+configuration for future use, but the plugin stays on the v2-compatible path, and the
+selector should be left on v2.
+
+See the [release notes](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/releases/tag/2026.1.3)
+for the full list of changes.
+
 
 ## Supported Features:
 
@@ -12,7 +32,7 @@ This plugin is for the [Indigo Domotics](http://www.indigodomo.com/) home automa
 - Play a URL audio file (Dogs barking, etc.) while performing Text-To-Speech
 - Ask a Prompted Yes/No Question, executing an Action Group based on the Yes, No, or No Response. (the [Indigo Alexa Plugin](https://wiki.indigodomo.com/doku.php?id=indigo_2022.2_documentation:plugins:alexa) and [Indigo Smart Home Skill](https://www.amazon.com/Indigo-Domotics-Smart-Home-Skill/dp/B097GBHBZG/ref=sr_1_1?keywords=indigo&qid=1677604743&s=digital-skills&sr=1-1) are required)
 
-The Free features of the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) now includes Trigging Alexa Routines and Text-To-Speech. Ask a Prompted Yes/No Question **may** work in the Free version.
+The Free features of the [Voice Monkey - Smart Home + Routine Triggers + TTS Alexa Skill](https://www.amazon.com/TopVoiceApps-com-Voice-Monkey/dp/B08C6Z4C3R) now includes Triggering Alexa Routines and Text-To-Speech. Ask a Prompted Yes/No Question **may** work in the Free version.
 
 
 
@@ -24,7 +44,7 @@ The support forum for this plugin is located here: [https://forums.indigodomo.co
 ## Additional capabilities worth mentioning:
 
 - Speech Synthesis Markup Language (SSML) is supported in Text-To-Speech
-- Indigo variable substitution is supported in the Text-To-Speech fields and Audi File URL field
+- Indigo variable substitution is supported in the Text-To-Speech fields and Audio File URL field
     - i.e. %%v:12345%% for variables and %%d:12345:someStateId%% for device states 
 - Multiple voices are available to choose from for Text-To-Speech 
     - the voice for the 'Yes or No prompt', unfortunately can not be changed
@@ -38,7 +58,7 @@ Follow the instructions detailed here [https://voicemonkey.io/start](https://voi
 2. Sign-in to the Voice Monkey website (to obtain your API Tokens used by the Plugin)
 
 
-## Indigo Voice Monkey Plugin Installlation Instructions
+## Indigo Voice Monkey Plugin Installation Instructions
 
 1. Download the plugin
 2. After the plugin starts
@@ -72,7 +92,7 @@ Example URL:
 
 ![](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/UserInterface/Configure%20Voice%20Monkey%20Device.png)
 
-After creating a device, no additional configuration is need to perform **Text-To-Speech**, **Play a Sound**, **Play a Audio File** or **Play a Background Audio File** 
+After creating a device, no additional configuration is needed to perform **Text-To-Speech**, **Play a Sound**, **Play a Audio File** or **Play a Background Audio File** 
 
 To perform a function:
 
@@ -183,9 +203,15 @@ Please use version v0.20d of the project file, [available here](https://github.c
     - etc.
 
 
-## Additional Indigo Plugin Installlation Instructions
+## Additional Indigo Plugin Installation Instructions
 
 After configuring **alexa_remote_control**, which you can test using available commands from the macOS command line, only a few more steps are needed.
+
+For version 2026.1.3, the plugin no longer ships the old `alexa_remote_control.py`
+Python helper. The built-in Voice Monkey plugin actions call the configured
+`alexa_remote_control.sh` script through the plugin itself. The legacy
+Python3-includes helper-copy step below is retained only for users of the older
+2022.1.7 scripting helper path.
 
 After you placed the files in the folders shown above:
 
@@ -239,7 +265,7 @@ There are Four steps:
     - [alexa-cookie-cli](https://github.com/adn77/alexa-cookie-cli)
 3. Download, modify, and then run v0.20d of **alexa_remote_control.sh**
     - [alexa_remote_control.sh](https://github.com/thorsten-gehrig/alexa-remote-control/blob/67610c7b282ff2b45b2b39d6713890abef38e463/alexa_remote_control.sh)
-4. Place three plugin files in the Python3-includes
+4. Legacy 2022.1.7 only: place optional scripting helper files in Python3-includes
     - [Voice Monkey Plugin](https://github.com/anyone2/IndigoPlugin-Voice-Monkey)
 
 
@@ -369,22 +395,28 @@ You can test if **alexa\_remote\_control.sh** can be run with the following comm
 
 
 
-# 4. Place three plugin files in the Python3-includes
+# 4. Legacy 2022.1.7 only: optional Python3-includes helpers
 
-Download [alexa_remote_control.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py)
-
+The current 2026.1.3 plugin package does not include `alexa_remote_control.py`.
+This section is kept for older 2022.1.7 installs that used the separate Python
+scripting helper directly. It remains available from the
+[2022.1.7 release](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/2022.1.7/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_remote_control.py).
 
 Download [alexa_constants.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/alexa_constants.py)
 
 Download the [voice_monkey.py](https://github.com/anyone2/IndigoPlugin-Voice-Monkey/blob/main/Voice%20Monkey.indigoPlugin/Contents/Server%20Plugin/voice_monkey.py)
 
-Place all three files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
+Place the optional helper files in the '/Library/Application Support/Perceptive Automation/Python3-includes' folder  
 
 
 
 ## Additional Scripting
 
-If everything is working up to this point, you will be able to, from Indigo, call **alexa_remote_control** functions
+Legacy 2022.1.7 helper examples:
+
+If everything is working up to this point on an older install that includes the
+separate `alexa_remote_control.py` helper, you will be able to, from Indigo, call
+**alexa_remote_control** functions.
 
     import alexa_remote_control
 
@@ -402,5 +434,3 @@ If everything is working up to this point, you will be able to, from Indigo, cal
 
     routine_name = "Loft: Morning Routine"
     alexa_remote_control.alexa_routine(routine_name, "Loft Echo")
-
-
